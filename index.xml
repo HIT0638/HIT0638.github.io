@@ -4,9 +4,17 @@
         <link>https://HIT0638.github.io/</link>
         <description>Hugo theme - LoveIt</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>156294753@qq.com (Ouke)</managingEditor>
-            <webMaster>156294753@qq.com (Ouke)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</lastBuildDate>
+            <webMaster>156294753@qq.com (Ouke)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Mon, 06 Nov 2023 22:49:20 &#43;0800</lastBuildDate>
             <atom:link href="https://HIT0638.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>GithubPage &#43; Hugo博客配置教程（主题：LoveIt）</title>
+    <link>https://HIT0638.github.io/hugo-blog-tutorial/</link>
+    <pubDate>Mon, 06 Nov 2023 22:49:20 &#43;0800</pubDate>
+    <author>Ouke</author>
+    <guid>https://HIT0638.github.io/hugo-blog-tutorial/</guid>
+    <description><![CDATA[前言 折腾了半天，碰到了很多地雷和坑🤕。最后终于是完成了博客网站的创建。所以决定将整个配置流程以及可能遇到问题总结一下。于是有了这个网站的第一]]></description>
+</item>
+<item>
     <title>Emoji 支持</title>
     <link>https://HIT0638.github.io/emoji-support/</link>
     <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
