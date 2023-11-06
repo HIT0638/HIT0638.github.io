@@ -1,17 +1,26 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>LoveIt</title>
+        <title>Ouke按摩店</title>
         <link>https://HIT0638.github.io/</link>
         <description>Hugo theme - LoveIt</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>156294753@qq.com (Ouke)</managingEditor>
+            <webMaster>156294753@qq.com (Ouke)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</lastBuildDate>
             <atom:link href="https://HIT0638.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
-    <title>Emoji Support</title>
-    <link>https://HIT0638.github.io/test-content/</link>
+    <title>宋明烨，我知道你在看</title>
+    <link>https://HIT0638.github.io/index.zh-cn/</link>
+    <pubDate>Mon, 01 Jan 0001 00:00:00 &#43;0000</pubDate>
+    <author>欧克</author>
+    <guid>https://HIT0638.github.io/index.zh-cn/</guid>
+    <description><![CDATA[好好好，你这么玩是吧。]]></description>
+</item>
+<item>
+    <title>Emoji 支持</title>
+    <link>https://HIT0638.github.io/emoji-support/</link>
     <pubDate>Tue, 01 Oct 2019 17:55:28 &#43;0800</pubDate>
     <author>Dillon</author>
-    <guid>https://HIT0638.github.io/test-content/</guid>
-    <description><![CDATA[<p>Emoji can be enabled in a Hugo project in a number of ways.</p>]]></description>
+    <guid>https://HIT0638.github.io/emoji-support/</guid>
+    <description><![CDATA[<p>Emoji 可以通过多种方式在 Hugo 项目中启用.</p>]]></description>
 </item>
 </channel>
 </rss>

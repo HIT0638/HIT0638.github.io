@@ -2,79 +2,47 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://HIT0638.github.io/zh-cn/test-content/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://HIT0638.github.io/index.zh-cn/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://HIT0638.github.io/emoji-support/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://HIT0638.github.io/categories/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://HIT0638.github.io/test-content/"
+                        href="https://HIT0638.github.io/en/categories/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/test-content/"
+                    href="https://HIT0638.github.io/categories/"
                     /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/emoji-support/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/categories/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://HIT0638.github.io/tags/emoji/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://HIT0638.github.io/categories/markdown/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://HIT0638.github.io/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://HIT0638.github.io/categories/"
+                        href="https://HIT0638.github.io/en/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/categories/"
+                    href="https://HIT0638.github.io/"
                     /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/tags/emoji/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://HIT0638.github.io/posts/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://HIT0638.github.io/tags/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://HIT0638.github.io/tags/emoji/"
+                        href="https://HIT0638.github.io/en/tags/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/tags/emoji/"
+                    href="https://HIT0638.github.io/tags/"
                     /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>https://HIT0638.github.io/tags/content/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://HIT0638.github.io/tags/installation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://HIT0638.github.io/categories/documentation/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="https://HIT0638.github.io/"
+                        href="https://HIT0638.github.io/en/categories/documentation/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/"
+                    href="https://HIT0638.github.io/categories/documentation/"
                     /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/categories/markdown/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://HIT0638.github.io/categories/markdown/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/categories/markdown/"
-                    /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/posts/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://HIT0638.github.io/posts/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/posts/"
-                    /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/tags/</loc><lastmod>2019-10-01T17:55:28&#43;08:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://HIT0638.github.io/tags/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/tags/"
-                    /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/tags/content/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/tags/installation/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/categories/documentation/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
-                        rel="alternate"
-                        hreflang="en"
-                        href="https://HIT0638.github.io/categories/documentation/"
-                        /><xhtml:link
-                    rel="alternate"
-                    hreflang="zh-cn"
-                    href="https://HIT0638.github.io/zh-cn/categories/documentation/"
-                    /></url><url>
-            <loc>https://HIT0638.github.io/zh-cn/tags/configuration/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
+            <loc>https://HIT0638.github.io/tags/configuration/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>
