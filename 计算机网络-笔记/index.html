@@ -9,7 +9,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-07T20:37:02+08:00" />
-<meta property="article:modified_time" content="2023-11-07T20:37:02+08:00" /><meta property="og:site_name" content="欧克按摩店" />
+<meta property="article:modified_time" content="2023-11-08T22:03:52+08:00" /><meta property="og:site_name" content="欧克按摩店" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/>
@@ -34,8 +34,8 @@
                             "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/featured-image.png",
                             "width":  1284 ,
                             "height":  1706 
-                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  5923 ,
-        "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/","datePublished": "2023-11-07T20:37:02+08:00","dateModified": "2023-11-07T20:37:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  7819 ,
+        "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/","datePublished": "2023-11-07T20:37:02+08:00","dateModified": "2023-11-08T22:03:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
                 "@type": "Person",
@@ -114,8 +114,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算机网络 笔记(更新中)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5923 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 12 分钟&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 7819 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 16 分钟&nbsp;
     
 
     
@@ -183,6 +183,21 @@
                 <li><a href="#sr协议">SR协议</a></li>
               </ul>
             </li>
+          </ul>
+        </li>
+        <li><a href="#tcp">TCP</a>
+          <ul>
+            <li><a href="#概述-1">概述</a></li>
+            <li><a href="#tcp可靠数据传输">TCP可靠数据传输</a>
+              <ul>
+                <li><a href="#rto的计算">RTO的计算</a></li>
+                <li><a href="#累计确认">累计确认</a></li>
+                <li><a href="#tcp重传">TCP重传</a></li>
+              </ul>
+            </li>
+            <li><a href="#流量控制">流量控制</a></li>
+            <li><a href="#tcp的连接管理">TCP的连接管理</a></li>
+            <li><a href="#拥塞控制">拥塞控制</a></li>
           </ul>
         </li>
       </ul>
@@ -666,8 +681,16 @@ $$发送方利用率U_{sender}=\frac{\frac{L}{R}}{RTT + \frac{L}{R}}$$</p>
 <p>如图所示，大小为L的文件传输，发送时耗$\frac{L}{R}$，传播时延1个RTT。因此计算的到发送方利用率只有0.00027。约等于30毫秒才发送一个分组，很慢。</p>
 <h5 id="流水线机制">流水线机制</h5>
 <p>使用流水线机制的情况如图：
-flow</p>
-<p>如图所示采用如图流水线机制改进数据传输后（一次可以发3个并且接收到正确ACK后就发一下个），经过计算发送方利用率可以发现利用率提高了将近3倍。当然这是没有差错或丢失的情况。</p>
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/pipeline.png" width="902" height="300" />
+    </a></p>
+<p>如图所示采用流水线机制改进数据传输后（一次可以发3个并且接收到正确ACK后就发一下个），经过计算发送方利用率可以发现利用率提高了将近3倍。当然这是没有差错或丢失的情况。</p>
 <p>流水线协议允许发送方在收到ACK之前连续发送多个分组。这表示其有着更大的序列号范围以及可能需要缓存分组。</p>
 <h5 id="滑动窗口协议">滑动窗口协议</h5>
 <p>关于滑动窗口协议，主要掌握的就是其思想以及各种应对状态的措施。<br>
@@ -749,11 +772,140 @@ flow</p>
             alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png" width="926" height="300" />
     </a></li>
 </ul>
+<h3 id="tcp">TCP</h3>
+<h4 id="概述-1">概述</h4>
+<p>TCP是实现可靠数据传输的服务，基于IP层提供的不可靠服务。</p>
+<p>我觉得需要注意的点有：</p>
+<ul>
+<li>全双工，同一连接中能传输双向数据流</li>
+<li>拥塞控制以及流量控制</li>
+<li>TCP段结构中，需要注意的是序列号seq和确认号ack。因为进行的是全双工通信，所以双方需要用seq和ack来互相同步数据的双向传输。<br>
+seq的作用是表明‘<strong>我</strong>’本次发送的数据的第一个字节的编号（不一定从0开始，建立TCP连接时，双方随机选择序列号）。ack的作用是表示'<strong>我</strong>&lsquo;下一个希望接收（你的）到的下一个字节的序号，其实就是我希望你发送的数据的起始字节是哪个。同时，由于TCP使用<strong>累计确认</strong>的方式，该ack序列号之前的所有字节均已正确接受。</li>
+</ul>
+<h4 id="tcp可靠数据传输">TCP可靠数据传输</h4>
+<p>主要包括这些点：</p>
+<ul>
+<li>流水线机制。</li>
+<li>累计确认。</li>
+<li>TCP使用单一重传定时器。</li>
+<li>触发重传的事件包括超时和收到重复ACK。</li>
+</ul>
+<p>注意几点，1是超时时间（RTO）的计算，2是累计确认方式，3是TCP的重传机制。</p>
+<h5 id="rto的计算">RTO的计算</h5>
+<p>TCP会计算每次数据传输的RTT，并且利用该RTT来更新超时时间，我们假设每次测量到的RTT为$SampleRTT$，则RTO计算公式如下：
+$$RTO = EstimatedRTT + 4 \times DevRTT$$
+$$EstimatedRTT = (1-\alpha)\times EstimatedRTT + \alpha \times SampleRTT, \alpha 典型值为0.125$$
+$$DevRTT = (1-\beta) \times DevRTT + \beta \times |SampleRTT - EstimatedRTT|$$</p>
+<p>EstimatedRTT是平滑RTT，为了避免临时网络波动的影响，故采用加权移动平均（EWMA）算法来计算更平滑的RTT。<br>
+DevRTT衡量了RTT的波动程度，反映网络中的不稳定性。</p>
+<h5 id="累计确认">累计确认</h5>
+<p>累计确认的工作原理是：<br>
+接收方不必对每个单独的数据包发送确认，而是可以在收到多个数据包后，发送一个确认信息，表明它已经接收到所有序号小于或等于某个特定值的数据包。这意味着累计确认是对所有前面连续的数据包的确认。</p>
+<h5 id="tcp重传">TCP重传</h5>
+<p>TCP只设置1个定时器，并且超时后只会重传1个分组，这个分组是还没有被确认的<strong>最早的一个分组</strong>。<br>
+当这个分组被成功接收，并且接收方返回了一个累积确认后，发送方才会知道之后的分组是否也在传输过程中丢失。如果累积确认的序号增加了，那么发送方会推断出之后的分组也被成功接收了。如果没有，那么发送方可能需要继续重传后续的分组，但这通常会发生在随后的超时事件之后。</p>
+<h4 id="流量控制">流量控制</h4>
+<p>流量控制部分很简单，就是一个<strong>速度匹配机制</strong>。通过限制sender窗口大小来控制流量。<br>
+Receiver通过在Segment的头部字段将<strong>RcvWindow</strong>告诉Sender-&gt;Sender根据RcvWindow来限制自己的能够发送的数据数量，即已经发送但还未收到ACK的数据多少。</p>
+<h4 id="tcp的连接管理">TCP的连接管理</h4>
+<p>TCP的连接管理包括TCP连接的建立和关闭，即三次握手和四次挥手。</p>
+<ul>
+<li>三次握手（TCP连接建立）：
+<ul>
+<li>第一次握手：客户端发送一个带有SYN（同步序列编号）标志的TCP段到服务器以开始一个新的连接。</li>
+<li>第二次握手：服务器接收到SYN后，回送一个带有SYN/ACK标志的TCP段作为应答。</li>
+<li>第三次握手：最后，客户端发送一个带有ACK标志的TCP段来确认这个响应</li>
+</ul>
+</li>
+</ul>
+<p>这个过程，双方在建立连接的过程中同步了seq和ack序列号。<br>
+如图：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handshake.png" width="649" height="300" />
+    </a></p>
+<ul>
+<li>四次挥手（TCP连接关闭）：
+<ul>
+<li>第一次挥手：当通信的一方完成其数据发送任务后，它会发送一个带有FIN标志的TCP段来关闭连接。</li>
+<li>第二次挥手：另一方接收到这个FIN后，会发送ACK来确认收到了连接释放请求。</li>
+<li>第三次挥手：接收FIN的一方等到其所有待发送的数据都发送完毕后，也会发送一个FIN来指示它也准备关闭连接了。</li>
+<li>第四次挥手：最初发送FIN的一方在收到这个FIN后，发送一个ACK来确认，然后等待足够长的时间确保另一方收到了这个ACK，最后关闭连接。</li>
+</ul>
+</li>
+</ul>
+<p>如图：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/handwave.png" width="442" height="300" />
+    </a></p>
+<h4 id="拥塞控制">拥塞控制</h4>
+<p>TCP采用端系统的拥塞控制，主要概念包括：</p>
+<ul>
+<li>慢启动</li>
+<li>拥塞避免</li>
+<li>快重传</li>
+<li>快恢复</li>
+</ul>
+<p>过程总结如下：</p>
+<ul>
+<li>当拥塞窗口（CongWin）小于阈值时，发送方处于慢启动阶段，窗口呈指数增长。</li>
+<li>当拥塞窗口大于阈值时，发送方进入拥塞避免阶段，窗口呈线性增长。</li>
+<li>当发生三个重复的ACK时，阈值设置为拥塞窗口的一半，拥塞窗口设置为阈值，进入状态’拥塞避免‘。</li>
+<li>当发生超时时，阈值设置为拥塞窗口的一半，拥塞窗口设置为1个最大段大小（MSS）。</li>
+</ul>
+<p>各含义解释如下：</p>
+<table>
+<thead>
+<tr>
+<th>状态</th>
+<th>事件</th>
+<th>TCP发送方动作</th>
+<th>注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>慢启动 (SS)</td>
+<td>收到对之前未确认数据的确认(ACK)</td>
+<td>CongWin = CongWin + MSS, 如果 (CongWin &gt; 阈值) 则状态设置为 “拥塞避免”</td>
+<td>导致每个RTT拥塞窗口翻倍</td>
+</tr>
+<tr>
+<td>拥塞避免 (CA)</td>
+<td>收到对之前未确认数据的确认(ACK)</td>
+<td>CongWin = CongWin + MSS * (MSS/CongWin)</td>
+<td>加性增加，导致每个RTT拥塞窗口增加1个MSS</td>
+</tr>
+<tr>
+<td>SS 或 CA</td>
+<td>通过三个重复的ACK检测到丢失事件</td>
+<td>阈值 = CongWin/2, CongWin = 阈值, 状态设置为 “拥塞避免”</td>
+<td>快速恢复，实现乘法减小。拥塞窗口不会下降至低于1个MSS</td>
+</tr>
+<tr>
+<td>SS 或 CA</td>
+<td>超时</td>
+<td>阈值 = CongWin/2, CongWin = 1 MSS, 状态设置为 “慢启动”</td>
+<td>进入慢启动</td>
+</tr>
+</tbody>
+</table>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>更新于 2023-11-07</span>
+                <span>更新于 2023-11-08</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
