@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>计算机网络 笔记(更新中) - Ouke按摩店</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="计算机网络 笔记(更新中)" />
-<meta property="og:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 第二章 HTTP 网页包含多个对象，如HTML文件、图片、视频、脚本等。 不同主" />
+<meta property="og:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 第二章 HTTP 不同主机进程间通信依靠socket，寻址依赖（IP, PORT" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-07T20:37:02+08:00" />
@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/>
 <meta name="twitter:title" content="计算机网络 笔记(更新中)"/>
-<meta name="twitter:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 第二章 HTTP 网页包含多个对象，如HTML文件、图片、视频、脚本等。 不同主"/>
+<meta name="twitter:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 第二章 HTTP 不同主机进程间通信依靠socket，寻址依赖（IP, PORT"/>
 <meta name="application-name" content="欧克按摩店">
 <meta name="apple-mobile-web-app-title" content="欧克按摩店"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -34,7 +34,7 @@
                             "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/featured-image.png",
                             "width":  1284 ,
                             "height":  1706 
-                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  5318 ,
+                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  5923 ,
         "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/","datePublished": "2023-11-07T20:37:02+08:00","dateModified": "2023-11-07T20:37:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
@@ -114,8 +114,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算机网络 笔记(更新中)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5318 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 11 分钟&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5923 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 12 分钟&nbsp;
     
 
     
@@ -164,27 +164,25 @@
             </li>
           </ul>
         </li>
-      </ul>
-    </li>
-    <li><a href="#第三章">第三章</a>
-      <ul>
-        <li><a href="#传输层要掌握什么">传输层要掌握什么？</a></li>
-        <li><a href="#概述">概述</a></li>
-        <li><a href="#多路复用和多路分用">多路复用和多路分用</a>
+        <li><a href="#第三章">第三章</a>
           <ul>
-            <li><a href="#udp--tcp-in-多路复用分用">UDP &amp; TCP in 多路复用/分用</a></li>
-          </ul>
-        </li>
-        <li><a href="#可靠数据传输">可靠数据传输</a>
-          <ul>
-            <li><a href="#rdt30">rdt3.0</a></li>
-          </ul>
-        </li>
-        <li><a href="#停等协议">停等协议</a></li>
-        <li><a href="#流水线机制">流水线机制</a></li>
-        <li><a href="#滑动窗口协议">滑动窗口协议</a>
-          <ul>
-            <li><a href="#gbn协议">GBN协议</a></li>
+            <li><a href="#传输层要掌握什么">传输层要掌握什么？</a></li>
+            <li><a href="#概述">概述</a></li>
+            <li><a href="#多路复用和多路分用">多路复用和多路分用</a>
+              <ul>
+                <li><a href="#udp--tcp-in-多路复用分用">UDP &amp; TCP in 多路复用/分用</a></li>
+              </ul>
+            </li>
+            <li><a href="#可靠数据传输">可靠数据传输</a>
+              <ul>
+                <li><a href="#rdt30">rdt3.0</a></li>
+                <li><a href="#停等协议">停等协议</a></li>
+                <li><a href="#流水线机制">流水线机制</a></li>
+                <li><a href="#滑动窗口协议">滑动窗口协议</a></li>
+                <li><a href="#gbn协议">GBN协议</a></li>
+                <li><a href="#sr协议">SR协议</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
@@ -199,59 +197,97 @@
 <h4 id="http">HTTP</h4>
 <ul>
 <li>
-<p>网页包含多个对象，如HTML文件、图片、视频、脚本等。</p>
+<p>不同主机进程间<strong>通信依靠socket</strong>，<strong>寻址依赖（IP, PORT）</strong>。</p>
 </li>
 <li>
-<p>不同主机进程间通信依靠socket，寻址依赖（IP, PORT）</p>
+<p>对象的寻址依赖于URL，如{www.hit.edu}(host anme){/images/pic.png}(path name)。</p>
 </li>
 <li>
-<p>对象的寻址依赖于URL，如{www.hit.edu}(host anme){/images/pic.png}(path name)</p>
+<p>记住，HTTP协议是<strong>无状态协议</strong>。<br>
+HTTP1.0 非持久连接，一个TCP连接传一个对象；HTTP1.1 持久连接。</p>
 </li>
 <li>
-<p>记住，HTTP协议是无状态协议。<br>
-HTTP1.0 非持久连接，一个TCP连接传一个对象；HTTP1.1 持久连接</p>
+<p><strong>非持久性连接</strong>通信的过程。需要注意的点包括建立连接需要一个RTT，html文件请求到接收到消息前几个字节需要一个RTT，一个html文件包含的对象也一样，另外还有文件/对象发送时间。  故total=2*RTT+文件发送时间。
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httpnon.png" width="380" height="300" />
+    </a></p>
 </li>
 <li>
-<p>非持久性连接通信的过程。需要注意的点包括建立连接需要一个RTT，html文件请求到接收到消息前几个字节需要一个RTT，一个html文件包含的对象也一样，另外还有文件/对象发送时间。  故total=2*RTT+文件发送时间。</p>
-</li>
-<li>
-<p>非持久性：流水机制，理想情况下，建立连接1RTT，html文件1RTT，收到所有引用对象1RTT，再加上所有文件的发送时间。</p>
+<p>持久性：流水线机制，理想情况下，建立连接1RTT，html文件1RTT，收到所有引用对象1RTT，再加上所有文件的发送时间。
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/httppipe.png" width="541" height="300" />
+    </a></p>
 </li>
 </ul>
 <h4 id="cookie">Cookie</h4>
 <ul>
 <li>Cookie建立过程以及原理。<br>
-原理：无cookie的客户端想web服务器发送http请求，服务器为其设置cookie，返回带cookie头部行的http响应信息。<br>
-cookie文件保存在客户端主机，由浏览器管理。<br>
-cookie文件对应的数据也就是用户数据保存在web服务器端数据库。<br>
-当client在次发送包含cookie头部行的请求时，web服务器可以根据cookie来获取对应的用户数据，而产生对该用户的记忆。而无需用户每次请求都需要输入相关信息。</li>
+<strong>原理</strong>：
+<ul>
+<li>无cookie的客户端向web服务器发送http请求-&gt;服务器为其设置cookie-&gt;返回带cookie头部行的http响应信息。</li>
+<li>cookie文件<strong>保存在客户端主机，由浏览器管理</strong>。</li>
+<li>cookie文件对应的数据也就是<strong>用户数据保存在web服务器端数据库</strong>。</li>
+<li>当client在次发送包含cookie头部行的请求时，web服务器可以根据cookie来获取对应的用户数据，而产生对该用户的记忆。而无需用户每次请求都需要输入相关信息。</li>
+</ul>
+</li>
 </ul>
 <h4 id="web缓存代理服务器">Web缓存/代理服务器</h4>
 <ul>
 <li>Web缓存/代理服务器<br>
-原理：将请求的Web数据缓存在缓存/代理服务器中。当进行Web访问时，先在缓存/代理服务器中寻找。如果失效或者没有，则正常进行http请求；否则直接转发缓存对象给客户端。<br>
+<strong>原理</strong>：<br>
+将请求的Web数据缓存在缓存/代理服务器中。当进行Web访问时，先在缓存/代理服务器中寻找。如果失效或者没有，则正常进行http请求；否则直接转发缓存对象给客户端。<br>
 使用缓存时，用包含if-modified-since来想Web服务器获取缓存状态。如果缓存版本最新，则会接收到<code>HTTP/1.0 304 Not Modified</code>，否则不会，说明不是最新。</li>
 </ul>
 <h4 id="email">Email</h4>
 <ul>
 <li>Email应用<br>
-其构件包括邮件客户端user agent，邮寄服务器email server以及SMTP协议。<br>
+其构件包括<strong>邮件客户端user agent</strong>，<strong>邮寄服务器email server</strong>以及<strong>SMTP协议</strong>。<br>
 注意的是，邮件的发送和接收是在email server上发生的，user agent仅仅将邮件送到server或者从server拉取邮件。
 mail server用邮箱存储接收道德email，同时有一个消息队列存储等待发送的email。</li>
 </ul>
 <h5 id="smtp">SMTP</h5>
 <p>SMTP需要注意的如下：</p>
 <ul>
-<li>是一个‘推’协议，只能将邮件从mail server发送到server，不能被user agent用来从邮箱中‘拉取’邮件。</li>
+<li>是一个‘<strong>推</strong>’协议，只能将邮件从mail server发送到server，不能被user agent用来从邮箱中‘拉取’邮件。</li>
 <li>用TCP，25端口。</li>
 </ul>
 <ul>
-<li>
-<p>email信息格式：header：to/r/b from/r/n subjetc/r/n body：msg（写着玩的，大概率不考）</p>
-</li>
-<li>
-<p>那如何拉取邮件？有如POP，IMAP或者使用HTTP的163,QQ Mail等。</p>
-</li>
+<li>email信息格式：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">header：
+to: 
+from: 
+subjetc: 
+
+body：msg
+（写着玩的，大概率不考）
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>那如何拉取邮件？有如POP，IMAP或者使用HTTP的163,QQ Mail等。</li>
 </ul>
 <h4 id="dns">DNS</h4>
 <p>关于DNS，需要注意的是：</p>
@@ -267,26 +303,31 @@ mail server用邮箱存储接收道德email，同时有一个消息队列存储�
 <h4 id="p2p--文件分发">P2P &amp; 文件分发</h4>
 <ul>
 <li>P2P架构
-这部分要掌握的就是端系统之间直接通信，没有传统意义上的服务器。<br>
-另外可能出现的计算题是C/S架构和P2P架构的文件分发时间。<br>
+这部分要掌握的就是端系统之间直接通信，没有传统意义上的服务器。另外可能出现的计算题是<strong>C/S架构和P2P架构的文件分发时间</strong>。<br>
 举个栗子，一个服务器向N个节点分发一个文件，文件size为F，服务器上传带宽为$u_s$，节点i上传带宽和下载带宽分别为$u_i$和$d_i$。<br>
-则如果使用C/S架构，那么分发该文件到N节点的时间d_{cs}=max{$\frac{NF}{u_s}$,$\frac{F}{min(d_i)}$}。因为服务器要上传N个文件副本，故有$\frac{NF}{u_s}$，同时，该过程中还有节点的下载时间，如果最慢下载实践比上传N个副本时间都长，那么就有$\frac{F}{min(d_i)}$。<br>
-如果使用P2P架构，那么该过程中涉及的操作及其时间包括‘服务器必须发送一个副本’，客户机i下载时间，总共需要的文件下载时间。故时间$d_{P2P}$=max{$\frac{F}{u_s}$,$\frac{F}{min(d_i)}$,$\frac{NF}{(u_s+\sum{u_i})}$}。</li>
+则如果使用C/S架构，那么分发该文件到N节点的时间$$d_{cs}=max{\frac{NF}{u_s},\frac{F}{min(d_i)}}$$<br>
+因为服务器要上传N个文件副本，故有$\frac{NF}{u_s}$的耗时；同时，该过程中还有节点的下载时间，如果最慢下载时间比上传N个副本时间都长，那么就有$\frac{F}{min(d_i)}$。<br>
+如果使用P2P架构，那么该过程中涉及的操作及其时间包括‘服务器必须发送一个副本’，客户机i下载时间，总共需要的文件下载时间。故时间$$d_{P2P}=max{\frac{F}{u_s},\frac{F}{min(d_i)},\frac{NF}{(u_s+\sum{u_i})}}$$</li>
 </ul>
 <ul>
-<li>另外，关于P2P，还有很重要的一点就是其“索引”。<br>
+<li>另外，关于P2P，还有很重要的一点就是其“<strong>索引</strong>”。<br>
 在P2P中，搜索信息指的是查找网络上的文件或资源。为什么？因为P2P没有中央服务器，因此节点需要通过P2P网络上的其它机制来发现和定位数据。</li>
 </ul>
 <h5 id="p2p系统的索引">P2P系统的索引</h5>
-<p><strong>P2P系统的索引</strong>，这个‘索引’是名词，它是一个映射表，记录文件/资源和它们所在节点的位置（IP+PORT）之间的关系。这个索引可以是分布式的，分散在网络的多个节点。<br>
+<ul>
+<li>
+<p><strong>P2P系统的索引</strong>：<br>
+这个‘<strong>索引</strong>’是名词，它是一个映射表，记录文件/资源和它们所在节点的位置（IP+PORT）之间的关系。这个索引可以是分布式的，分散在网络的多个节点。<br>
 例如，在文件共享系统中，索引会动态跟踪那些节点共享了哪些文件。节点加入网络并想要共享文件时，首先需要告知索引自己的文件列表。当需要找某个文件时，则在索引中搜素具有该文件的节点信息，并从这些节点中下载文件。<br>
 或者在如QQ这样的即时消息系统中，索引的作用是将用户名和账号映射到实际的网络位置。 <br>
 具体实现包括：<strong>集中式索引</strong>、<strong>洪泛式查询Query flooding</strong>、层次式覆盖网络。</p>
-<ul>
-<li>文件分发：BitTorrent，以256KB的chunk对数据进行分发，tit-for-tat.</li>
+</li>
+<li>
+<p>文件分发：BitTorrent，以256KB的chunk对数据进行分发，tit-for-tat.</p>
+</li>
 </ul>
-<h2 id="第三章">第三章</h2>
-<h3 id="传输层要掌握什么">传输层要掌握什么？</h3>
+<h3 id="第三章">第三章</h3>
+<h4 id="传输层要掌握什么">传输层要掌握什么？</h4>
 <ul>
 <li>理解传输层服务基本理论和基本机制：
 <ul>
@@ -304,16 +345,16 @@ mail server用邮箱存储接收道德email，同时有一个消息队列存储�
 </ul>
 </li>
 </ul>
-<h3 id="概述">概述</h3>
+<h4 id="概述">概述</h4>
 <p>传输层为不同主机的进程提供逻辑上端到端的通信。与网络层比较来说，网络层是提供<strong>主机</strong>之间的逻辑通信机制。而传输层是提供<strong>应用进程</strong>之间的逻辑通信机制。
 我们主要掌握两个Internet传输层协议，分别是可靠按序的TCP和Best-effort（尽力而为）的UDP。</p>
-<h3 id="多路复用和多路分用">多路复用和多路分用</h3>
+<h4 id="多路复用和多路分用">多路复用和多路分用</h4>
 <p>我觉得这部分要理解‘<strong>多路</strong>’和‘<strong>复用</strong>’‘<strong>分用</strong>’体现在哪里，需要首先知道没有多路复用或者分用的情况。<br>
 在计算机网络中，对于一个主机来说，物理上可能只有一条网络连接，比如一个网线或者一个无线连接。如果<strong>没有多路复用</strong>，那么你的主机可能就只有一条<strong>单一的通信线路</strong>，即每个应用程序都需要有一个物理的网络连接才能进行通信，这样造成效率低下、成本增加等问题。如果没有多路分用，则各数据到达设备时，没有端口号来识别数据应该传给哪个应用程序。并且造成应用程序冲突。</p>
 <p>因此，多路复用就体现在<strong>将单一的网络连接通道被化为逻辑上的多路通道进行复用</strong>，主要完成的工作是每个应用程序数据发送请求被赋予一个<strong>唯一的端口号</strong>，传输层使用端口号来区分不同的应用程序。当数据包被发送到网络时，每个包都会包含这个端口号，以此来标记它属于哪个应用程序。</p>
 <p>而多路分用呢则是当各数据包到达设备时，传输层查看每个数据包的‘<strong>目的端口号</strong>’，如何根据端口号将数据发送给绑定该端口的对应应用程序。成功正确的完成数据的接收和转发。</p>
 <p>核心知识点就在于<strong>如何标识数据包使得发送方和接收方都能成功分析并完成正确的数据传</strong>输。具体就是‘<strong>端口号</strong>’的设置。</p>
-<h4 id="udp--tcp-in-多路复用分用">UDP &amp; TCP in 多路复用/分用</h4>
+<h5 id="udp--tcp-in-多路复用分用">UDP &amp; TCP in 多路复用/分用</h5>
 <ul>
 <li>同时，根据连接存在情况可以分为<strong>无连接的分用UDP</strong>和<strong>有连接的TCP</strong>。
 <ul>
@@ -333,7 +374,7 @@ mail server用邮箱存储接收道德email，同时有一个消息队列存储�
 <li>通过在应用层加可靠机制和错误恢复机制可以实现UDP的可靠数据传输。</li>
 <li>UDP校验和（checksum）的计算方法：将段内容视为多个16-bit整数。对所有整数求和后（进位加在后面）按位取反，得到校验和。接收方对接受的段计算校验和后与校验和字段比较，相等则大概率无错；否则错误，丢弃。</li>
 </ul>
-<h3 id="可靠数据传输">可靠数据传输</h3>
+<h4 id="可靠数据传输">可靠数据传输</h4>
 <p>可靠数据传输需要达到的目标是数据传输的不错（检错纠错机制）、不丢（重传机制）、不乱（序号、缓存机制）。
 关于rdt1.0到rdt3.0的发展过程不做赘述，具体查看<a href="https://online.fliphtml5.com/ovbgh/xfnp/" target="_blank" rel="noopener noreffer ">PDF文档</a></p>
 <!-- <script src= '/js/pdf-js/build/pdf.js'></script>
@@ -604,13 +645,13 @@ View the PDF file <a class="pdf-source" id="pdf-source-noscript-9a5afc42" href="
 <ul>
 <li>因此，在rdt3.0中，为了解决这个问题，引入了“定时器”策略；即为发送方设置一个计时器，如果在规定的合理时间内没有收到期望的ACK，则认为数据包/ACK丢失，重传丢失数据包；同时，如果分组/ACK只是延迟而未丢失，则出现了重复分组情况，但我们已经有序列号机制来解决这个问题了。</li>
 </ul>
-<h4 id="rdt30">rdt3.0</h4>
+<h5 id="rdt30">rdt3.0</h5>
 <p>虽然rdt3.0确实能可靠的进行工作，但有一个问题，就是性能很差。<br>
 在这里有一个公式需要注意，即：
 $$发送方利用率U_{sender}=\frac{\frac{L}{R}}{RTT + \frac{L}{R}}$$</p>
 <p>发送方的利用率就是一个数据包成功传输所需要的时间里，实际上正在发送数据的时间占比。除去实际发送数据的时间，剩下的时间都是在传输过程中浪费或者消耗的。通过计算这个发送方利用率，可以评判数据发送的效率，即发现是不是大多数时候在做无用功。</p>
 <p>同时，我们下面介绍三个实现可靠数据传输的方式，停等协议、流水线机制、滑动窗口协议，并分析它们的性能。</p>
-<h3 id="停等协议">停等协议</h3>
+<h5 id="停等协议">停等协议</h5>
 <p>主要理解每次只能发一个分组，并且sender接收到该分组的ACK后才能发送下一个分组。<br>
 示例：1Gbps链路，15ms端到端传播延迟，1KB分组：
 <a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png">
@@ -623,12 +664,12 @@ $$发送方利用率U_{sender}=\frac{\frac{L}{R}}{RTT + \frac{L}{R}}$$</p>
             alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png" width="667" height="200" />
     </a></p>
 <p>如图所示，大小为L的文件传输，发送时耗$\frac{L}{R}$，传播时延1个RTT。因此计算的到发送方利用率只有0.00027。约等于30毫秒才发送一个分组，很慢。</p>
-<h3 id="流水线机制">流水线机制</h3>
+<h5 id="流水线机制">流水线机制</h5>
 <p>使用流水线机制的情况如图：
 flow</p>
 <p>如图所示采用如图流水线机制改进数据传输后（一次可以发3个并且接收到正确ACK后就发一下个），经过计算发送方利用率可以发现利用率提高了将近3倍。当然这是没有差错或丢失的情况。</p>
 <p>流水线协议允许发送方在收到ACK之前连续发送多个分组。这表示其有着更大的序列号范围以及可能需要缓存分组。</p>
-<h3 id="滑动窗口协议">滑动窗口协议</h3>
+<h5 id="滑动窗口协议">滑动窗口协议</h5>
 <p>关于滑动窗口协议，主要掌握的就是其思想以及各种应对状态的措施。<br>
 窗口代表着当前可以发送的分组组合，并且以窗口为单位对分组进行划分和管理。</p>
 <p><strong>需要注意的出题点如下</strong>：</p>
@@ -638,8 +679,76 @@ flow</p>
 <li>接受数据<strong>序号重叠</strong>问题，这要求窗口的长度必须小于等于总区间（序号）长度的一半。
 &hellip;</li>
 </ul>
-<p>另外，滑动窗口协议的具体实现方式包括GBN(Give-Back-N)和SR(Select Repeat)。</p>
-<h4 id="gbn协议">GBN协议</h4>
+<p>另外，滑动窗口协议的具体实现方式包括GBN(Go-Back-N)和SR(Select Repeat)。</p>
+<h5 id="gbn协议">GBN协议</h5>
+<p>GBN协议主要需要注意的是其<strong>应答特征以及策略</strong>。<br>
+如图：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbn.png" width="875" height="200" />
+    </a></p>
+<p>我认为GBN主要需要注意的特征是：</p>
+<ul>
+<li>GBN的发送窗口大小m大于等于1，接收窗口大小只能为1。</li>
+<li>sender为整个窗口设置一个定时器，当窗口做左侧即第一个分组send_base的ACK到达时，窗口定时器重置，同时窗口向右滑动。</li>
+<li>当sender未能成功接收send_base分组的ACK导致超时时，重传当前窗口内<strong>已发送</strong>但还未收到ACK的所有分组；也就是如图[send_base,nextseqnum)的所有分组。</li>
+<li>由于接受窗口的大小为1，如果接收到的是该窗口分组，则发送对应ACK并挪动窗口；故乱序到达的分组，都会被丢弃，并且重传最近确认分组序号的ACK。</li>
+<li>特殊情况：当sender接收到了大于send_base序号的分组（假如是n）时，由于接收方窗口为1的缘故，故可以得出n及n以前的分组都已经被正确接收了，故可以直接挪动窗口send_base到n+1。</li>
+</ul>
+<p>下面是GBN的有限状态机图，可供捋过程的时候参考使用：</p>
+<ul>
+<li>发送方：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsms.png" width="783" height="300" />
+    </a></li>
+<li>接收方：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnfsmr.png" width="724" height="300" />
+    </a></li>
+</ul>
+<p>课上习题：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/gbnpra.png" width="926" height="300" />
+    </a></p>
+<h5 id="sr协议">SR协议</h5>
+<p>SR协议，即选择重传协议。和GBN的区别在于对接收到的窗口内分组的ACK进行缓存，并且为每个发送出去的分组设置一个定时器，当i分组的定时器超时时，只会重传i分组；而不像GBN一样重传所有的已发送但未收到ACK的分组。<br>
+也因为如此，SR协议的接收方窗口不再限制为1，而可以是任意非零正数。</p>
+<p>SR协议的发送方、接收方状态转移情况以及应答措施：</p>
+<ul>
+<li>发送方&amp;接收方：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/srfsm.png" width="926" height="300" />
+    </a></li>
+</ul>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
