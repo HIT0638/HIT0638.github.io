@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>计算机网络 笔记(更新中) - Ouke按摩店</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="计算机网络 笔记(更新中)" />
+<meta property="og:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 第二章 HTTP 网页包含多个对象，如HTML文件、图片、视频、脚本等。 不同主" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-07T20:37:02+08:00" />
+<meta property="article:modified_time" content="2023-11-07T20:37:02+08:00" /><meta property="og:site_name" content="欧克按摩店" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/>
+<meta name="twitter:title" content="计算机网络 笔记(更新中)"/>
+<meta name="twitter:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 第二章 HTTP 网页包含多个对象，如HTML文件、图片、视频、脚本等。 不同主"/>
+<meta name="application-name" content="欧克按摩店">
+<meta name="apple-mobile-web-app-title" content="欧克按摩店"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" /><link rel="prev" href="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0/" /><link rel="next" href="https://HIT0638.github.io/hugo-blog-tutorial/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "计算机网络 笔记(更新中)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/featured-image.png",
+                            "width":  1284 ,
+                            "height":  1706 
+                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  5318 ,
+        "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/","datePublished": "2023-11-07T20:37:02+08:00","dateModified": "2023-11-07T20:37:02+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "欧克"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算机网络 笔记(更新中)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 5318 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 11 分钟&nbsp;
+    
+
+    
+        
+
+        
+        
+            <span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+                
+                <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+        
+    
+
+</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"
+        data-srcset="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png, /%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png 1.5x, /%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"
+        title="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#ppt知识梳理">ppt知识梳理</a>
+      <ul>
+        <li><a href="#第二章">第二章</a>
+          <ul>
+            <li><a href="#http">HTTP</a></li>
+            <li><a href="#cookie">Cookie</a></li>
+            <li><a href="#web缓存代理服务器">Web缓存/代理服务器</a></li>
+            <li><a href="#email">Email</a>
+              <ul>
+                <li><a href="#smtp">SMTP</a></li>
+              </ul>
+            </li>
+            <li><a href="#dns">DNS</a></li>
+            <li><a href="#p2p--文件分发">P2P &amp; 文件分发</a>
+              <ul>
+                <li><a href="#p2p系统的索引">P2P系统的索引</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#第三章">第三章</a>
+      <ul>
+        <li><a href="#传输层要掌握什么">传输层要掌握什么？</a></li>
+        <li><a href="#概述">概述</a></li>
+        <li><a href="#多路复用和多路分用">多路复用和多路分用</a>
+          <ul>
+            <li><a href="#udp--tcp-in-多路复用分用">UDP &amp; TCP in 多路复用/分用</a></li>
+          </ul>
+        </li>
+        <li><a href="#可靠数据传输">可靠数据传输</a>
+          <ul>
+            <li><a href="#rdt30">rdt3.0</a></li>
+          </ul>
+        </li>
+        <li><a href="#停等协议">停等协议</a></li>
+        <li><a href="#流水线机制">流水线机制</a></li>
+        <li><a href="#滑动窗口协议">滑动窗口协议</a>
+          <ul>
+            <li><a href="#gbn协议">GBN协议</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<p>这里用来记录我计算机网络学习以及复习过程中的笔记。</p>
+<h1 id="正题">正题</h1>
+<h2 id="ppt知识梳理">ppt知识梳理</h2>
+<h3 id="第二章">第二章</h3>
+<h4 id="http">HTTP</h4>
+<ul>
+<li>
+<p>网页包含多个对象，如HTML文件、图片、视频、脚本等。</p>
+</li>
+<li>
+<p>不同主机进程间通信依靠socket，寻址依赖（IP, PORT）</p>
+</li>
+<li>
+<p>对象的寻址依赖于URL，如{www.hit.edu}(host anme){/images/pic.png}(path name)</p>
+</li>
+<li>
+<p>记住，HTTP协议是无状态协议。<br>
+HTTP1.0 非持久连接，一个TCP连接传一个对象；HTTP1.1 持久连接</p>
+</li>
+<li>
+<p>非持久性连接通信的过程。需要注意的点包括建立连接需要一个RTT，html文件请求到接收到消息前几个字节需要一个RTT，一个html文件包含的对象也一样，另外还有文件/对象发送时间。  故total=2*RTT+文件发送时间。</p>
+</li>
+<li>
+<p>非持久性：流水机制，理想情况下，建立连接1RTT，html文件1RTT，收到所有引用对象1RTT，再加上所有文件的发送时间。</p>
+</li>
+</ul>
+<h4 id="cookie">Cookie</h4>
+<ul>
+<li>Cookie建立过程以及原理。<br>
+原理：无cookie的客户端想web服务器发送http请求，服务器为其设置cookie，返回带cookie头部行的http响应信息。<br>
+cookie文件保存在客户端主机，由浏览器管理。<br>
+cookie文件对应的数据也就是用户数据保存在web服务器端数据库。<br>
+当client在次发送包含cookie头部行的请求时，web服务器可以根据cookie来获取对应的用户数据，而产生对该用户的记忆。而无需用户每次请求都需要输入相关信息。</li>
+</ul>
+<h4 id="web缓存代理服务器">Web缓存/代理服务器</h4>
+<ul>
+<li>Web缓存/代理服务器<br>
+原理：将请求的Web数据缓存在缓存/代理服务器中。当进行Web访问时，先在缓存/代理服务器中寻找。如果失效或者没有，则正常进行http请求；否则直接转发缓存对象给客户端。<br>
+使用缓存时，用包含if-modified-since来想Web服务器获取缓存状态。如果缓存版本最新，则会接收到<code>HTTP/1.0 304 Not Modified</code>，否则不会，说明不是最新。</li>
+</ul>
+<h4 id="email">Email</h4>
+<ul>
+<li>Email应用<br>
+其构件包括邮件客户端user agent，邮寄服务器email server以及SMTP协议。<br>
+注意的是，邮件的发送和接收是在email server上发生的，user agent仅仅将邮件送到server或者从server拉取邮件。
+mail server用邮箱存储接收道德email，同时有一个消息队列存储等待发送的email。</li>
+</ul>
+<h5 id="smtp">SMTP</h5>
+<p>SMTP需要注意的如下：</p>
+<ul>
+<li>是一个‘推’协议，只能将邮件从mail server发送到server，不能被user agent用来从邮箱中‘拉取’邮件。</li>
+<li>用TCP，25端口。</li>
+</ul>
+<ul>
+<li>
+<p>email信息格式：header：to/r/b from/r/n subjetc/r/n body：msg（写着玩的，大概率不考）</p>
+</li>
+<li>
+<p>那如何拉取邮件？有如POP，IMAP或者使用HTTP的163,QQ Mail等。</p>
+</li>
+</ul>
+<h4 id="dns">DNS</h4>
+<p>关于DNS，需要注意的是：</p>
+<ul>
+<li>应用层协议</li>
+<li>多层命名，分布式数据库。</li>
+<li>功能是将域名解析为IP地址</li>
+<li>几层域名的功能：根-&gt;顶级-&gt;权威（-&gt;本地）。</li>
+<li>同理，主机不自行完成解析任务，本地域名服务器完成后将结果转发给主机。</li>
+<li>DNS缓存</li>
+</ul>
+<p>DNS协议包括查询query和恢复reply信息，信息格式相同。</p>
+<h4 id="p2p--文件分发">P2P &amp; 文件分发</h4>
+<ul>
+<li>P2P架构
+这部分要掌握的就是端系统之间直接通信，没有传统意义上的服务器。<br>
+另外可能出现的计算题是C/S架构和P2P架构的文件分发时间。<br>
+举个栗子，一个服务器向N个节点分发一个文件，文件size为F，服务器上传带宽为$u_s$，节点i上传带宽和下载带宽分别为$u_i$和$d_i$。<br>
+则如果使用C/S架构，那么分发该文件到N节点的时间d_{cs}=max{$\frac{NF}{u_s}$,$\frac{F}{min(d_i)}$}。因为服务器要上传N个文件副本，故有$\frac{NF}{u_s}$，同时，该过程中还有节点的下载时间，如果最慢下载实践比上传N个副本时间都长，那么就有$\frac{F}{min(d_i)}$。<br>
+如果使用P2P架构，那么该过程中涉及的操作及其时间包括‘服务器必须发送一个副本’，客户机i下载时间，总共需要的文件下载时间。故时间$d_{P2P}$=max{$\frac{F}{u_s}$,$\frac{F}{min(d_i)}$,$\frac{NF}{(u_s+\sum{u_i})}$}。</li>
+</ul>
+<ul>
+<li>另外，关于P2P，还有很重要的一点就是其“索引”。<br>
+在P2P中，搜索信息指的是查找网络上的文件或资源。为什么？因为P2P没有中央服务器，因此节点需要通过P2P网络上的其它机制来发现和定位数据。</li>
+</ul>
+<h5 id="p2p系统的索引">P2P系统的索引</h5>
+<p><strong>P2P系统的索引</strong>，这个‘索引’是名词，它是一个映射表，记录文件/资源和它们所在节点的位置（IP+PORT）之间的关系。这个索引可以是分布式的，分散在网络的多个节点。<br>
+例如，在文件共享系统中，索引会动态跟踪那些节点共享了哪些文件。节点加入网络并想要共享文件时，首先需要告知索引自己的文件列表。当需要找某个文件时，则在索引中搜素具有该文件的节点信息，并从这些节点中下载文件。<br>
+或者在如QQ这样的即时消息系统中，索引的作用是将用户名和账号映射到实际的网络位置。 <br>
+具体实现包括：<strong>集中式索引</strong>、<strong>洪泛式查询Query flooding</strong>、层次式覆盖网络。</p>
+<ul>
+<li>文件分发：BitTorrent，以256KB的chunk对数据进行分发，tit-for-tat.</li>
+</ul>
+<h2 id="第三章">第三章</h2>
+<h3 id="传输层要掌握什么">传输层要掌握什么？</h3>
+<ul>
+<li>理解传输层服务基本理论和基本机制：
+<ul>
+<li>复用/分用;</li>
+<li>可靠数据传输机制;</li>
+<li>流量控制机制；</li>
+<li>拥塞控制机制。</li>
+</ul>
+</li>
+<li>掌握Internet的传输层协议：
+<ul>
+<li>UDP;</li>
+<li>TCP;</li>
+<li>TCP拥塞控制。</li>
+</ul>
+</li>
+</ul>
+<h3 id="概述">概述</h3>
+<p>传输层为不同主机的进程提供逻辑上端到端的通信。与网络层比较来说，网络层是提供<strong>主机</strong>之间的逻辑通信机制。而传输层是提供<strong>应用进程</strong>之间的逻辑通信机制。
+我们主要掌握两个Internet传输层协议，分别是可靠按序的TCP和Best-effort（尽力而为）的UDP。</p>
+<h3 id="多路复用和多路分用">多路复用和多路分用</h3>
+<p>我觉得这部分要理解‘<strong>多路</strong>’和‘<strong>复用</strong>’‘<strong>分用</strong>’体现在哪里，需要首先知道没有多路复用或者分用的情况。<br>
+在计算机网络中，对于一个主机来说，物理上可能只有一条网络连接，比如一个网线或者一个无线连接。如果<strong>没有多路复用</strong>，那么你的主机可能就只有一条<strong>单一的通信线路</strong>，即每个应用程序都需要有一个物理的网络连接才能进行通信，这样造成效率低下、成本增加等问题。如果没有多路分用，则各数据到达设备时，没有端口号来识别数据应该传给哪个应用程序。并且造成应用程序冲突。</p>
+<p>因此，多路复用就体现在<strong>将单一的网络连接通道被化为逻辑上的多路通道进行复用</strong>，主要完成的工作是每个应用程序数据发送请求被赋予一个<strong>唯一的端口号</strong>，传输层使用端口号来区分不同的应用程序。当数据包被发送到网络时，每个包都会包含这个端口号，以此来标记它属于哪个应用程序。</p>
+<p>而多路分用呢则是当各数据包到达设备时，传输层查看每个数据包的‘<strong>目的端口号</strong>’，如何根据端口号将数据发送给绑定该端口的对应应用程序。成功正确的完成数据的接收和转发。</p>
+<p>核心知识点就在于<strong>如何标识数据包使得发送方和接收方都能成功分析并完成正确的数据传</strong>输。具体就是‘<strong>端口号</strong>’的设置。</p>
+<h4 id="udp--tcp-in-多路复用分用">UDP &amp; TCP in 多路复用/分用</h4>
+<ul>
+<li>同时，根据连接存在情况可以分为<strong>无连接的分用UDP</strong>和<strong>有连接的TCP</strong>。
+<ul>
+<li>无连接：UDP发送时被Socket用二元组（目的IP，目的PORT）来进行标识。主机收到UDP后，根据段中的目的PORT来进行向上层的转交。转交的依据仅参考目的PORT，这意味着来自不同源IP和源端口号的IP数据包会被导向同一个Socket。</li>
+<li>有连接：TCP的Socket用四元组（源IP，源PORT，目的IP，目的PORT）来标识。</li>
+</ul>
+</li>
+</ul>
+<p>UDP很简单，因此它带来的优点也是头部开少，又因为没有拥塞控制，故应用可更好的控制发送时间和速率。
+对UDP，主要注意以下特点：</p>
+<ul>
+<li>基于Internet IP协议，有简单的错误校验（checksum）</li>
+<li>‘Best effort’尽力交付服务，UDP段可能丢失或错序到达。</li>
+<li>无连接，无需握手。</li>
+<li>常用于如流媒体应用一样能够容忍丢失，速率敏感的应用。因为UDP无需握手等繁杂步骤，因此发送速率快于TCP。</li>
+<li>UDP还用于DNS、SNMP等应用层协议。</li>
+<li>通过在应用层加可靠机制和错误恢复机制可以实现UDP的可靠数据传输。</li>
+<li>UDP校验和（checksum）的计算方法：将段内容视为多个16-bit整数。对所有整数求和后（进位加在后面）按位取反，得到校验和。接收方对接受的段计算校验和后与校验和字段比较，相等则大概率无错；否则错误，丢弃。</li>
+</ul>
+<h3 id="可靠数据传输">可靠数据传输</h3>
+<p>可靠数据传输需要达到的目标是数据传输的不错（检错纠错机制）、不丢（重传机制）、不乱（序号、缓存机制）。
+关于rdt1.0到rdt3.0的发展过程不做赘述，具体查看<a href="https://online.fliphtml5.com/ovbgh/xfnp/" target="_blank" rel="noopener noreffer ">PDF文档</a></p>
+<!-- <script src= '/js/pdf-js/build/pdf.js'></script>
+
+<style>
+  #embed-pdf-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 20vh;
+     
+  }
+  
+  .pdf-canvas {
+    border: 1px solid black;
+    direction: ltr;
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+  
+  #the-canvas {
+    border: 1px solid black;
+    direction: ltr;
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+  
+  
+  .pdf-loadingWrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 350px;
+  }
+  
+  .pdf-loading {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #d2d0d0;;
+    border-radius: 50%;
+    border-top-color: #383838;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+  }
+  
+  
+  
+  
+  
+  #overlayText {
+    word-wrap: break-word;
+    display: grid;
+    justify-content: end;
+  }
+  
+  #overlayText a {
+    position: relative;
+    top: 10px;
+    right: 4px;
+    color: #000;
+    margin: auto;
+    background-color: #eeeeee;
+    padding: 0.3em 1em;
+    border: solid 2px;
+    border-radius: 12px;
+    border-color: #00000030;
+    text-decoration: none;
+  }
+  
+  #overlayText svg {
+    height: clamp(1em, 2vw, 1.4em);
+    width:  clamp(1em, 2vw, 1.4em);
+  }
+  
+  
+  
+  @keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  </style><div class="embed-pdf-container" id="embed-pdf-container-9a5afc42">
+    <div class="pdf-loadingWrapper" id="pdf-loadingWrapper-9a5afc42">
+        <div class="pdf-loading" id="pdf-loading-9a5afc42"></div>
+    </div>
+    <div id="overlayText">
+      <a href="%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c-%e7%ac%94%e8%ae%b0/rdt.pdf" aria-label="Download" download>
+        <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
+            <path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zm-7 2h14v2H2z" />
+        </svg>
+      </a>
+    </div>
+    <canvas class="pdf-canvas" id="pdf-canvas-9a5afc42"></canvas>
+</div>
+
+<div class="pdf-paginator" id="pdf-paginator-9a5afc42">
+    <button id="pdf-prev-9a5afc42">Previous</button>
+    <button id="pdf-next-9a5afc42">Next</button> &nbsp; &nbsp;
+    <span>
+      <span class="pdf-pagenum" id="pdf-pagenum-9a5afc42"></span> / <span class="pdf-pagecount" id="pdf-pagecount-9a5afc42"></span>
+    </span>
+    <a class="pdf-source" id="pdf-source-9a5afc42" href="%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c-%e7%ac%94%e8%ae%b0/rdt.pdf">[pdf]</a>
+</div>
+
+<noscript>
+View the PDF file <a class="pdf-source" id="pdf-source-noscript-9a5afc42" href="%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bd%91%e7%bb%9c-%e7%ac%94%e8%ae%b0/rdt.pdf">here</a>.
+</noscript>
+
+<script type="text/javascript">
+    (function(){
+    var url = '计算机网络-笔记\/rdt.pdf';
+
+    var hidePaginator = "" === "true";
+    var hideLoader = "" === "true";
+    var selectedPageNum = parseInt("5") || 1;
+
+    
+    var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+    
+    if (pdfjsLib.GlobalWorkerOptions.workerSrc == '')
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https:\/\/HIT0638.github.io\/" + 'js/pdf-js/build/pdf.worker.js';
+
+    
+    var pdfDoc = null,
+        pageNum = selectedPageNum,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 3,
+        canvas = document.getElementById('pdf-canvas-9a5afc42'),
+        ctx = canvas.getContext('2d'),
+        paginator = document.getElementById("pdf-paginator-9a5afc42"),
+        loadingWrapper = document.getElementById('pdf-loadingWrapper-9a5afc42');
+
+
+    
+    showPaginator();
+    showLoader();
+
+    
+
+    function renderPage(num) {
+      pageRendering = true;
+      
+      pdfDoc.getPage(num).then(function(page) {
+        var viewport = page.getViewport({scale: scale});
+        canvas.height = viewport.height;
+        canvas.width = viewport.width;
+
+        
+        var renderContext = {
+          canvasContext: ctx,
+          viewport: viewport
+        };
+        var renderTask = page.render(renderContext);
+
+        
+        renderTask.promise.then(function() {
+          pageRendering = false;
+          showContent();
+
+          if (pageNumPending !== null) {
+            
+            renderPage(pageNumPending);
+            pageNumPending = null;
+          }
+        });
+      });
+
+      
+      document.getElementById('pdf-pagenum-9a5afc42').textContent = num;
+    }
+
+    
+
+    function showContent() {
+      loadingWrapper.style.display = 'none';
+      canvas.style.display = 'block';
+    }
+
+    
+
+    function showLoader() {
+      if(hideLoader) return
+      loadingWrapper.style.display = 'flex';
+      canvas.style.display = 'none';
+    }
+
+    
+
+    function showPaginator() {
+      if(hidePaginator) return
+      paginator.style.display = 'block';
+    }
+
+    
+
+    function queueRenderPage(num) {
+      if (pageRendering) {
+        pageNumPending = num;
+      } else {
+        renderPage(num);
+      }
+    }
+
+    
+
+    function onPrevPage() {
+      if (pageNum <= 1) {
+        return;
+      }
+      pageNum--;
+      queueRenderPage(pageNum);
+    }
+    document.getElementById('pdf-prev-9a5afc42').addEventListener('click', onPrevPage);
+
+    
+
+    function onNextPage() {
+      if (pageNum >= pdfDoc.numPages) {
+        return;
+      }
+      pageNum++;
+      queueRenderPage(pageNum);
+    }
+    document.getElementById('pdf-next-9a5afc42').addEventListener('click', onNextPage);
+
+    
+
+    pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+      pdfDoc = pdfDoc_;
+      var numPages = pdfDoc.numPages;
+      document.getElementById('pdf-pagecount-9a5afc42').textContent = numPages;
+
+      
+      if(pageNum > numPages) {
+        pageNum = numPages
+      }
+
+      
+      renderPage(pageNum);
+    });
+    })();
+</script>
+ -->
+<!-- <center><embed src="rdt.pdf"" width="850" height="600"></center> -->
+<p><strong>然后我总结一下</strong>：</p>
+<ul>
+<li>rdt1.0信任底层信道完全可靠，不会发生错误以及丢弃分组；此时发送方和接收方只需要单纯的进行数据的发送和接收即可。</li>
+<li>rdt2.0中认为信道可能会使比特数据出错，即翻转某些位；故加入了差错检测、接收方反馈控制信息ACK/NAK以及重传策略。</li>
+</ul>
+<p>但rdt2.0中并不能解决ACK/NAK信息出错的情况，同时若ACK/NAK数据出错时简单重传，则会导致<strong>重复分组</strong>的错误情况（因为接收方并不知道发送方是否正确接收ACK/NAK，故在其看来它只要把ACK/NAK发送出去就标志着数据接收成功了）。</p>
+<ul>
+<li>
+<p>故在rdt2.1中，加入了ACK/NAK错误重传机制，并且为了解决重复分组问题，引进了<strong>序列号</strong>方法，即发送方为每个分组增加序列号，接收方会丢弃重复到达的分组。</p>
+</li>
+<li>
+<p>rdt2.2中，NAK信息被认为是多余的，故删去了NAK消息，通过在ACK中加入被确认分组的序号策略来完成其工作；逻辑为发送方收到重复ACK以后，重传该ACK确认分组序号+1的分组。</p>
+</li>
+</ul>
+<p>在此之前的所有rdt版本中，都默认了信道不会发生分组丢失的情况，那如果会呢？这时候‘校验和+序列号+ACK+重传’机制能解决问题吗？ <br>
+显然是不能的，很简单，如果ACK在过程中丢失，那么两方则再也不知道该怎么做了。</p>
+<ul>
+<li>因此，在rdt3.0中，为了解决这个问题，引入了“定时器”策略；即为发送方设置一个计时器，如果在规定的合理时间内没有收到期望的ACK，则认为数据包/ACK丢失，重传丢失数据包；同时，如果分组/ACK只是延迟而未丢失，则出现了重复分组情况，但我们已经有序列号机制来解决这个问题了。</li>
+</ul>
+<h4 id="rdt30">rdt3.0</h4>
+<p>虽然rdt3.0确实能可靠的进行工作，但有一个问题，就是性能很差。<br>
+在这里有一个公式需要注意，即：
+$$发送方利用率U_{sender}=\frac{\frac{L}{R}}{RTT + \frac{L}{R}}$$</p>
+<p>发送方的利用率就是一个数据包成功传输所需要的时间里，实际上正在发送数据的时间占比。除去实际发送数据的时间，剩下的时间都是在传输过程中浪费或者消耗的。通过计算这个发送方利用率，可以评判数据发送的效率，即发现是不是大多数时候在做无用功。</p>
+<p>同时，我们下面介绍三个实现可靠数据传输的方式，停等协议、流水线机制、滑动窗口协议，并分析它们的性能。</p>
+<h3 id="停等协议">停等协议</h3>
+<p>主要理解每次只能发一个分组，并且sender接收到该分组的ACK后才能发送下一个分组。<br>
+示例：1Gbps链路，15ms端到端传播延迟，1KB分组：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/waitstop.png" width="667" height="200" />
+    </a></p>
+<p>如图所示，大小为L的文件传输，发送时耗$\frac{L}{R}$，传播时延1个RTT。因此计算的到发送方利用率只有0.00027。约等于30毫秒才发送一个分组，很慢。</p>
+<h3 id="流水线机制">流水线机制</h3>
+<p>使用流水线机制的情况如图：
+flow</p>
+<p>如图所示采用如图流水线机制改进数据传输后（一次可以发3个并且接收到正确ACK后就发一下个），经过计算发送方利用率可以发现利用率提高了将近3倍。当然这是没有差错或丢失的情况。</p>
+<p>流水线协议允许发送方在收到ACK之前连续发送多个分组。这表示其有着更大的序列号范围以及可能需要缓存分组。</p>
+<h3 id="滑动窗口协议">滑动窗口协议</h3>
+<p>关于滑动窗口协议，主要掌握的就是其思想以及各种应对状态的措施。<br>
+窗口代表着当前可以发送的分组组合，并且以窗口为单位对分组进行划分和管理。</p>
+<p><strong>需要注意的出题点如下</strong>：</p>
+<ul>
+<li>序列号问题，n位序列字段可以分配0~$2^{n-1}$的序列号。</li>
+<li>序列号按模n编号。</li>
+<li>接受数据<strong>序号重叠</strong>问题，这要求窗口的长度必须小于等于总区间（序号）长度的一半。
+&hellip;</li>
+</ul>
+<p>另外，滑动窗口协议的具体实现方式包括GBN(Give-Back-N)和SR(Select Repeat)。</p>
+<h4 id="gbn协议">GBN协议</h4>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-11-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" data-title="计算机网络 笔记(更新中)" data-hashtags="计算机网络,学习笔记"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" data-hashtag="计算机网络"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" data-title="计算机网络 笔记(更新中)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" data-title="计算机网络 笔记(更新中)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" data-title="计算机网络 笔记(更新中)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>,&nbsp;<a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0/" class="prev" rel="prev" title="计算机网络 做题笔记(更新中)"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>计算机网络 做题笔记(更新中)</a>
+            <a href="/hugo-blog-tutorial/" class="next" rel="next" title="GithubPage &#43; Hugo博客配置教程（主题：LoveIt）">GithubPage + Hugo博客配置教程（主题：LoveIt）<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Ouke</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    
+        
+        <script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+    
+
+    
+        
+            <section>
+                
+                    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+                        
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+
+                
+                    &nbsp;|&nbsp;              
+                
+
+                
+                    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+                        
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+            </section>
+        
+
+        
+        
+    
+
+</div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOKqgQVM4CawmO","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"zh-CN","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"HIT0638/Giscus","repoId":"R_kgDOKqgQVA"}},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
