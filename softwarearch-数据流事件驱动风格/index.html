@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Software-Arch 数据流&amp;事件驱动风格(更新中) - Ouke按摩店</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Software-Arch 数据流&amp;事件驱动风格(更新中)" />
+<meta property="og:description" content="前言 本篇介绍的相关内容概括 数据流风格的基本概念，包括构件、连接件以及拓扑结构。 管道-过滤器风格的概念、组成及特征介绍 管道-过滤器风格的应用介" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" /><meta property="og:image" content="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-07T08:39:42+08:00" />
+<meta property="article:modified_time" content="2023-11-07T08:39:42+08:00" /><meta property="og:site_name" content="欧克按摩店" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png"/>
+<meta name="twitter:title" content="Software-Arch 数据流&amp;事件驱动风格(更新中)"/>
+<meta name="twitter:description" content="前言 本篇介绍的相关内容概括 数据流风格的基本概念，包括构件、连接件以及拓扑结构。 管道-过滤器风格的概念、组成及特征介绍 管道-过滤器风格的应用介"/>
+<meta name="application-name" content="欧克按摩店">
+<meta name="apple-mobile-web-app-title" content="欧克按摩店"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" /><link rel="prev" href="https://HIT0638.github.io/emoji-support/" /><link rel="next" href="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Software-Arch 数据流\u0026事件驱动风格(更新中)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/HIT0638.github.io\/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/HIT0638.github.io\/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC\/featured-image.png",
+                            "width":  1284 ,
+                            "height":  1278 
+                        }],"genre": "posts","keywords": "软件架构, 架构风格","wordcount":  704 ,
+        "url": "https:\/\/HIT0638.github.io\/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC\/","datePublished": "2023-11-07T08:39:42+08:00","dateModified": "2023-11-07T08:39:42+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "欧克"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Software-Arch 数据流&事件驱动风格(更新中)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>软件架构</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 704 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;
+    
+
+    
+        
+
+        
+        
+            <span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+                
+                <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+        
+    
+
+</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png"
+        data-srcset="/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png, /softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png 1.5x, /softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png"
+        title="/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/featured-image.png" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-数据流风格概述">1 数据流风格概述</a></li>
+    <li><a href="#2-管道-过滤器风格">2 管道-过滤器风格</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="前言">前言</h1>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>本篇介绍的相关内容概括<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li>数据流风格的基本概念，包括构件、连接件以及拓扑结构。</li>
+<li>管道-过滤器风格的概念、组成及特征介绍</li>
+<li>管道-过滤器风格的应用介绍（以KWIC为例）</li>
+</ul>
+</div>
+        </div>
+    </div>
+<h1 id="正题">正题</h1>
+<h2 id="1-数据流风格概述">1 数据流风格概述</h2>
+<p>首先介绍一下数据流风格的构件以及连接件。</p>
+<p>数据流风格的基本构件是数据处理模块，其包含一个输入端口和一个输出端口。
+构件从输入端口读取数据后，在模块内利用其计算模型对接收到的数据进行计算/处理，然后通过输出端口将数据输出，利用连接件到达下一个构件或者直接输出。</p>
+<a class="lightgallery" href="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png" title="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png" data-thumbnail="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png"
+            data-srcset="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png, /images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png 1.5x, /images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png 2x"
+            data-sizes="auto"
+            alt="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/comp.png" width="945" height="100" />
+    </a>
+<p>如上图所示，当数据到达后，构件便开始工作（一旦接收到可用数据就开始工作，而不是等待数据接受完毕）。</p>
+<p>数据流风格的连接件的核心是数据流，其实现方式包括但不限于管道等。</p>
+<p>一个数据流连接件包含输入和输出接口，也就是reader和writer。其基本功能是将数据从一个构件/处理的端口传送到另一个处理的输入端口。但需要注意的是，数据流连接件必须是单向的，根据实现的不同也能具有异步、缓冲的能力。而且，连接件不能进行数据的计算以及处理，其承担的角色只是一个单纯的数据搬运工。</p>
+<a class="lightgallery" href="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png" title="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png" data-thumbnail="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png"
+            data-srcset="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png, /images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png 1.5x, /images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png 2x"
+            data-sizes="auto"
+            alt="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/linker.png" width="1116" height="100" />
+    </a>
+<p>如上图所示，连接件提供了数据的缓存以及reader和writer的异步。实现了一边读一边写的功能。</p>
+<p>接收前一个构件输入的数据，然后将数据输出给目标构件。</p>
+<p>最后，数据流风格由于其构件驱动取决于数据流的流动，并且整个架构的核心在于数据流，故其在拓扑结构上并无特别限制，可以是任意拓扑结构的图。</p>
+<p>综上所述，我们对数据流风格作一个宏观上的直观理解：
+<a class="lightgallery" href="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png" title="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png" data-thumbnail="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png"
+            data-srcset="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png, /images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png 1.5x, /images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png 2x"
+            data-sizes="auto"
+            alt="/images/softwareArch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/dataArch.png" width="536" height="300" />
+    </a></p>
+<p>如上图所示，在数据流风格架构中，其总体的处理操作可以被概括为：</p>
+<blockquote>
+<p>数据到达时被激活，无数据时不工作。</p>
+</blockquote>
+<p>但注意，这个数据是可用的数据，当可用数据到达时，各模块才开始工作。</p>
+<h2 id="2-管道-过滤器风格">2 管道-过滤器风格</h2>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-11-07</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" data-title="Software-Arch 数据流&amp;事件驱动风格(更新中)" data-hashtags="软件架构,架构风格"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" data-hashtag="软件架构"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" data-title="Software-Arch 数据流&amp;事件驱动风格(更新中)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" data-title="Software-Arch 数据流&amp;事件驱动风格(更新中)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/" data-title="Software-Arch 数据流&amp;事件驱动风格(更新中)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84/">软件架构</a>,&nbsp;<a href="/tags/%E6%9E%B6%E6%9E%84%E9%A3%8E%E6%A0%BC/">架构风格</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/emoji-support/" class="prev" rel="prev" title="Emoji 支持"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Emoji 支持</a>
+            <a href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E5%81%9A%E9%A2%98%E7%AC%94%E8%AE%B0/" class="next" rel="next" title="计算机网络 做题笔记(更新中)">计算机网络 做题笔记(更新中)<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Ouke</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    
+        
+        <script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+    
+
+    
+        
+            <section>
+                
+                    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+                        
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+
+                
+                    &nbsp;|&nbsp;              
+                
+
+                
+                    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+                        
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+            </section>
+        
+
+        
+        
+    
+
+</div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOKqgQVM4CawmO","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"zh-CN","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"HIT0638/Giscus","repoId":"R_kgDOKqgQVA"}},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
