@@ -4,7 +4,7 @@
         <link>https://HIT0638.github.io/</link>
         <description>Hugo theme - LoveIt</description>
         <generator>Hugo -- gohugo.io</generator><language>zh-CN</language><managingEditor>156294753@qq.com (Ouke)</managingEditor>
-            <webMaster>156294753@qq.com (Ouke)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Tue, 07 Nov 2023 20:37:02 &#43;0800</lastBuildDate>
+            <webMaster>156294753@qq.com (Ouke)</webMaster><copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><lastBuildDate>Wed, 08 Nov 2023 22:13:16 &#43;0800</lastBuildDate>
             <atom:link href="https://HIT0638.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
     <title>GithubPage &#43; Hugo博客配置教程（主题：LoveIt）</title>
@@ -37,6 +37,22 @@
     <author>欧克</author>
     <guid>https://HIT0638.github.io/softwarearch-%E6%95%B0%E6%8D%AE%E6%B5%81%E4%BA%8B%E4%BB%B6%E9%A9%B1%E5%8A%A8%E9%A3%8E%E6%A0%BC/</guid>
     <description><![CDATA[前言 本篇介绍的相关内容概括 数据流风格的基本概念，包括构件、连接件以及拓扑结构。 管道-过滤器风格的概念、组成及特征介绍 管道-过滤器风格的应用介]]></description>
+</item>
+<item>
+    <title>A Structure Self-Aware Model for Discourse Parsing on Multi-Party Dialogues</title>
+    <link>https://HIT0638.github.io/a-structure-self-aware-model-for-discourse-parsing-on-multi-party-dialogues/</link>
+    <pubDate>Wed, 08 Nov 2023 22:13:16 &#43;0800</pubDate>
+    <author>欧克</author>
+    <guid>https://HIT0638.github.io/a-structure-self-aware-model-for-discourse-parsing-on-multi-party-dialogues/</guid>
+    <description><![CDATA[论文地址：https://www.aminer.cn/pub/60da8fc20abde95dc965f7f0/a-structure-se]]></description>
+</item>
+<item>
+    <title>A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues</title>
+    <link>https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/</link>
+    <pubDate>Wed, 08 Nov 2023 22:11:24 &#43;0800</pubDate>
+    <author>欧克</author>
+    <guid>https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/</guid>
+    <description><![CDATA[论文地址：A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues 0. Summary This paper introduces a deep sequential model to address some limitations of existing methods in discourse parsing for multi-party dialogues. These limitations arise from the pipeline framework commonly employed in previous studies. On one hand, the pipeline framework lacks global information, affecting the probability estimation for each dependency relation between two EDUs. On]]></description>
 </item>
 <item>
     <title>Emoji 支持</title>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues - Ouke按摩店</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues" />
+<meta property="og:description" content="论文地址：A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues 0. Summary This paper introduces a deep sequential model to address some limitations of existing methods in discourse parsing for multi-party dialogues. These limitations arise from the pipeline framework commonly employed in previous studies. On one hand, the pipeline framework lacks global information, affecting the probability estimation for each dependency relation between two EDUs. On" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" /><meta property="og:image" content="https://HIT0638.github.io/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-08T22:11:24+08:00" />
+<meta property="article:modified_time" content="2023-11-08T22:11:24+08:00" /><meta property="og:site_name" content="欧克按摩店" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://HIT0638.github.io/avatar.png"/>
+
+<meta name="twitter:title" content="A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues"/>
+<meta name="twitter:description" content="论文地址：A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues 0. Summary This paper introduces a deep sequential model to address some limitations of existing methods in discourse parsing for multi-party dialogues. These limitations arise from the pipeline framework commonly employed in previous studies. On one hand, the pipeline framework lacks global information, affecting the probability estimation for each dependency relation between two EDUs. On"/>
+<meta name="application-name" content="欧克按摩店">
+<meta name="apple-mobile-web-app-title" content="欧克按摩店"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" /><link rel="prev" href="https://HIT0638.github.io/emoji-support/" /><link rel="next" href="https://HIT0638.github.io/a-structure-self-aware-model-for-discourse-parsing-on-multi-party-dialogues/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/HIT0638.github.io\/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/HIT0638.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "论文阅读, 深度学习","wordcount":  1072 ,
+        "url": "https:\/\/HIT0638.github.io\/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues\/","datePublished": "2023-11-08T22:11:24+08:00","dateModified": "2023-11-08T22:11:24+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "欧克"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>论文阅读</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-08">2023-11-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 1072 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 3 分钟&nbsp;
+    
+
+    
+        
+
+        
+        
+            <span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+                
+                <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+        
+    
+
+</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#0-summary">0. Summary</a></li>
+    <li><a href="#1-research-objective">1. Research Objective</a></li>
+    <li><a href="#2-backgroud-and-problems">2. Backgroud and Problems</a></li>
+    <li><a href="#3-method">3. Method</a>
+      <ul>
+        <li><a href="#31-overview">3.1 Overview</a></li>
+        <li><a href="#32-details">3.2 Details</a>
+          <ul>
+            <li><a href="#321-local-representations-and-non-structured-global-representations">3.2.1 Local representations and non-structured global representations</a></li>
+            <li><a href="#322-structured-global-representation">3.2.2 Structured global representation</a></li>
+          </ul>
+        </li>
+        <li><a href="#323-link-prediction-and-relation-classification">3.2.3 Link prediction and Relation Classification</a></li>
+      </ul>
+    </li>
+    <li><a href="#notes">Notes</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>论文地址：<a href="https://arxiv.org/abs/1812.00176" target="_blank" rel="noopener noreffer ">A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues</a></p>
+<h2 id="0-summary">0. Summary</h2>
+<p>This paper introduces a deep sequential model to address some limitations of existing methods in discourse parsing for multi-party dialogues. These limitations arise from the pipeline framework commonly employed in previous studies. On one hand, the pipeline framework lacks global information, affecting the probability estimation for each dependency relation between two EDUs. On the other hand, separating the steps of dependency prediction and dialogue structure construction inhibits information sharing between them, leading to suboptimal model performance. To mitigate these issues, the deep sequential model employs GRUs to obtain both local and global representations of EDUs. Coupled with the Speaker Highlighting Mechanism, this model achieves state-of-the-art performance in link prediction and relation classification compared to prior work.</p>
+<h2 id="1-research-objective">1. Research Objective</h2>
+<p>This paper introduces a deep sequential model to address certain limitations of existing methods in discourse parsing for multi-party dialogues. This model focuses on the global information of EDUs and highlights the speaker for each utterance.</p>
+<h2 id="2-backgroud-and-problems">2. Backgroud and Problems</h2>
+<p>Background: In Natural Language Processing (NLP), discourse parsing is a crucial task. It helps in understanding the dependencies and structures within multi-party dialogues. These dependencies and structures aid various NLP tasks such as machine translation, question-answering systems, and so on.</p>
+<p>Problems:</p>
+<ol>
+<li>How to accurately parse dependencies and structures in multi-party dialogues?</li>
+<li>How to utilize both local information (current dialogue units) and global information (the overall dialogue structure) for prediction?</li>
+<li>How to improve the performance of dependency parsing in multi-party dialogues?</li>
+</ol>
+<h2 id="3-method">3. Method</h2>
+<h3 id="31-overview">3.1 Overview</h3>
+<p>Model overview:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://pic.imgdb.cn/item/652d01dbc458853aef6c4a71.png"
+        data-srcset="https://pic.imgdb.cn/item/652d01dbc458853aef6c4a71.png, https://pic.imgdb.cn/item/652d01dbc458853aef6c4a71.png 1.5x, https://pic.imgdb.cn/item/652d01dbc458853aef6c4a71.png 2x"
+        data-sizes="auto"
+        alt="https://pic.imgdb.cn/item/652d01dbc458853aef6c4a71.png"
+        title="https://pic.imgdb.cn/item/652d01dbc458853aef6c4a71.png" /></p>
+<p>1）The model computes the non-structure representations of EDUs using hierarchical Gated Recurrent Unit(GRU) encoders.</p>
+<p>2）Next, the model makes a sequential scan of the EDUs and do the following steps：</p>
+<p>2.1）Link prediction：The model computes a score between the current EDU $u_i$ and each linking candidate $u_j$ (j &lt; i) using an MLP.
+These scores are the converted into probabilitis distributed over the previous EDUs using softmax. The EDU with the highest probability is selected as the linked EDU.</p>
+<p>2.2）Relation classification：After identifying the link for current EDU $u_i$,
+the model performs relation classification to predict the relation type between $p_i$(the parents of $u_i$) and $u_i$ using a relation classifier.
+Similar to link predition, both non-sturcture and structured representations are used.</p>
+<p>2.3）Structured representation encoding：After determining the link of current EDU $u_i$ between $u_j$ and the relation type of the link,  the relation embedding $r_{ji}$, the non-structure representation of $u_i$, and the strtuctured representation of $p_i = u_j$ are fed into the encoder to derive the strcture representation of $u_i$.</p>
+<h3 id="32-details">3.2 Details</h3>
+<h4 id="321-local-representations-and-non-structured-global-representations">3.2.1 Local representations and non-structured global representations</h4>
+<p>The first step involves the local representations and non-structure global representations.
+In the case of local representations, the paper employs a bidirectional GRU encoder to process the word sequence, ultimately yielding the local representation $u_i$, denoted as $h_i$.
+In the case of non-structure global representations, a GRU is applied to the local representations of the EDUs $h_0,h_1,&hellip;,h_n$, and the resulting hidden states serve as the non-structure global representations of the EDUs, denoted as $g^{NS}_0,g^{NS}_1,\dots,g^{NS}_n$.</p>
+<h4 id="322-structured-global-representation">3.2.2 Structured global representation</h4>
+<p>There are two key points to note:</p>
+<ol>
+<li>The derivation of the Structured Global Representation (SGR) for an EDU is carried out by a structure encoder along the development path of the predicted dependency tree for that EDU, for example, $u_0​→u_1​→u_2​→u_4​$. The encoder operates along this path, and the final hidden layer for $u_4$​ is considered its structured representation.</li>
+<li>In this paper, the authors introduce a mechanism called the Speaker Highlighting Mechanism (SHM) to optimize the generation of SR. This mechanism is similar to the attention mechanism but simpler. The idea behind this mechanism is to enhance the influence of a particular speaker on the current utterance by highlighting a previous utterance along the dependency tree&rsquo;s generative path. This is akin to allocating more attention in the attention mechanism, thereby optimizing the model&rsquo;s predictions.&quot;</li>
+</ol>
+<p>the function of structured representation as follows:
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://pic.imgdb.cn/item/652d01e6c458853aef6c657d.png"
+        data-srcset="https://pic.imgdb.cn/item/652d01e6c458853aef6c657d.png, https://pic.imgdb.cn/item/652d01e6c458853aef6c657d.png 1.5x, https://pic.imgdb.cn/item/652d01e6c458853aef6c657d.png 2x"
+        data-sizes="auto"
+        alt="https://pic.imgdb.cn/item/652d01e6c458853aef6c657d.png"
+        title="https://pic.imgdb.cn/item/652d01e6c458853aef6c657d.png" />
+$g^S_{0,a}$ is set to zero vector since the dummy root contains no real infomation.</p>
+<blockquote>
+<p>The paper places the steps for obtaining SGR (Structured Global Representation) before those for Link Prediction and Relation Classification. This is done to introduce the concept of SHM (Speaker Highlighting Mechanism). However, upon examining the formulas, it becomes evident that the acquisition of SGR requires information about the current EDU&rsquo;s related relations. Therefore, in actual implementation, Link Prediction and Relation Classification precede the calculation of Structured Representation. Although the processing of links and relations requires structural information obtained from SHM, this information pertains to previous nodes, not the current node&rsquo;s Structured Representation. The SGR for the root node is set as a zero vector, thus ensuring that the computational dependencies among various variables are satisfied</p>
+</blockquote>
+<h3 id="323-link-prediction-and-relation-classification">3.2.3 Link prediction and Relation Classification</h3>
+<p>By integrating previous useful information, the authors obtain a new input vector that serves as the input for both the link predictor and the relation classifier.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://pic.imgdb.cn/item/652d02b4c458853aef6e2d5a.png"
+        data-srcset="https://pic.imgdb.cn/item/652d02b4c458853aef6e2d5a.png, https://pic.imgdb.cn/item/652d02b4c458853aef6e2d5a.png 1.5x, https://pic.imgdb.cn/item/652d02b4c458853aef6e2d5a.png 2x"
+        data-sizes="auto"
+        alt="https://pic.imgdb.cn/item/652d02b4c458853aef6e2d5a.png"
+        title="https://pic.imgdb.cn/item/652d02b4c458853aef6e2d5a.png" />
+Taking $H_{i,&lt;i}(H_{i,&lt;i}=H_{i,0},\dots,H_{i,i-1})$ as input, the link predictor estimates the probability thar each $u_j(j&lt;i)$ is the parent of $u_i$ on the dependency tree. The relation classifier the predicts the relation type between $u_j$ and $u_i$, if $u_j$ is the predicted parent of $u_i$.</p>
+<p>The processes of link prediction and relation classification are quite similar. Both involve a single hidden layer followed by a softmax operation, with the outcome having the highest probability being selected as the result. For detailed formulas pertaining to these processes, please refer to the paper.</p>
+<h2 id="notes">Notes</h2>
+<p>What I gained from this paper is the exposure to a potential neural network architecture for the task of multi-party dialogue parsing. Additionally, the similarities between the SHM (Speaker Highlighting Mechanism) and the Attention mechanism in Transformers have deepened my understanding of the steps involved in neural network-based task processing.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2023-11-08</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" data-title="A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues" data-hashtags="论文阅读,深度学习"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" data-hashtag="论文阅读"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" data-title="A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" data-title="A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://HIT0638.github.io/a-deep-sequential-model-for-discourse-parsing-on-multi-party-dialogues/" data-title="A Deep Sequential Model for Discourse Parsing on Multi-Party Dialogues"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a>,&nbsp;<a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/emoji-support/" class="prev" rel="prev" title="Emoji 支持"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Emoji 支持</a>
+            <a href="/a-structure-self-aware-model-for-discourse-parsing-on-multi-party-dialogues/" class="next" rel="next" title="A Structure Self-Aware Model for Discourse Parsing on Multi-Party Dialogues">A Structure Self-Aware Model for Discourse Parsing on Multi-Party Dialogues<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Ouke</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    
+        
+        <script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+    
+
+    
+        
+            <section>
+                
+                    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+                        
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+
+                
+                    &nbsp;|&nbsp;              
+                
+
+                
+                    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+                        
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+            </section>
+        
+
+        
+        
+    
+
+</div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOKqgQVM4CawmO","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"zh-CN","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"HIT0638/Giscus","repoId":"R_kgDOKqgQVA"}},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
