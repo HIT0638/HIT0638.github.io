@@ -34,7 +34,7 @@
                             "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/featured-image.png",
                             "width":  1284 ,
                             "height":  1706 
-                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  7856 ,
+                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  8985 ,
         "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/","datePublished": "2023-11-07T20:37:02+08:00","dateModified": "2023-11-08T22:03:52+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
@@ -114,8 +114,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算机网络 笔记(更新中)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 7856 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 16 分钟&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 8985 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 18 分钟&nbsp;
     
 
     
@@ -201,6 +201,26 @@
           </ul>
         </li>
         <li><a href="#网络层--数据链路层">网络层 &amp; 数据链路层</a></li>
+        <li><a href="#数据链路层">数据链路层</a>
+          <ul>
+            <li><a href="#mac协议">MAC协议</a>
+              <ul>
+                <li><a href="#mac协议的分类">MAC协议的分类</a></li>
+              </ul>
+            </li>
+            <li><a href="#mac地址">MAC地址</a></li>
+            <li><a href="#以太网">以太网</a>
+              <ul>
+                <li><a href="#以太网帧结构">以太网帧结构</a></li>
+              </ul>
+            </li>
+            <li><a href="#交换机">交换机</a>
+              <ul>
+                <li><a href="#交换表--自学习">交换表 &amp; 自学习</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -903,7 +923,92 @@ Receiver通过在Segment的头部字段将<strong>RcvWindow</strong>告诉Sender
 </tbody>
 </table>
 <h3 id="网络层--数据链路层">网络层 &amp; 数据链路层</h3>
-<p>网络层和数据链路层的数据我是手写的，有时间了再码字上传。</p>
+<p>网络层和数据链路层的数据我是手写的，有时间了再慢慢码字上传。</p>
+<h3 id="数据链路层">数据链路层</h3>
+<p>链路层协议如何实现？链路层协议的实现依赖于“适配器”，即网络接口卡-NIC及其驱动。另外，物理层协议也是由网卡实现的。<br>
+在物理层面上依赖于网卡以及各种软硬件。</p>
+<ul>
+<li>以太网网卡：802.11网卡；以太网芯片组</li>
+</ul>
+<p>如图是网卡间的通信：</p>
+<h4 id="mac协议">MAC协议</h4>
+<p>MAC（multiple access control）协议，即多路访问控制协议，是用来确保多结点能正确在共享广播信道上传输数据的协议。</p>
+<p>首先要知道有两类链路：</p>
+<ul>
+<li>点对点链路
+<ul>
+<li>拨号接入的PPP</li>
+<li>以太网交换机和主机之间的点对点链路</li>
+</ul>
+</li>
+<li><strong>广播链路（共享介质）</strong>
+<ul>
+<li>早期总线以太网</li>
+<li>802.11无线局域网</li>
+</ul>
+</li>
+</ul>
+<p>在单一共享广播信道上传输时，若出现两个或两个以上结点同时传输的情况，则会出现数据传输的<strong>干扰</strong>；另外，若结点同时接收到两个或者多个信号，则会产生<strong>冲突</strong>，导致接受失败。</p>
+<h5 id="mac协议的分类">MAC协议的分类</h5>
+<ul>
+<li>信道划分MAC协议
+<ul>
+<li>多路复用技术</li>
+<li>TDMA（时分）、FDMA（频分）、CDMA（码分）、WDMA&hellip;</li>
+</ul>
+</li>
+<li>随机访问MAC协议
+<ul>
+<li>信道不划分，允许冲突；并采用冲突<strong>恢复</strong>机制来控制结点的访问。</li>
+<li>ALOHA，时隙ALOHA、、CSMA、CSMA/CD、CSMA\CA</li>
+</ul>
+</li>
+<li>轮转MAC协议
+<ul>
+<li>结点轮流使用信道</li>
+<li>主结点轮询；令牌传递</li>
+</ul>
+</li>
+</ul>
+<h4 id="mac地址">MAC地址</h4>
+<p>互联网中的每一个网卡都有一个唯一的MAC地址。</p>
+<h4 id="以太网">以太网</h4>
+<p>以太网是一种局域网技术。
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>局域网技术<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">局域网技术一般专注于OSI模型的底层，也就是数据链路层和物理层。<br>
+局域网技术通常不涉及网络层及以上层次的事务，如路由选择、数据分段、会话管理等，这些是由更高层的网络协议（如IP协议）来处理的。局域网的设计通常假设网络中的所有设备都在同一个广播域中，这意味着它们可以直接通过数据链路层通信，而无需进行复杂的路由决策。</div>
+        </div>
+    </div></p>
+<p>以下是需要注意的点：</p>
+<ul>
+<li>以太网提供无连接、不可靠的服务，如没有握手过程，差错帧直接丢弃等。</li>
+<li>以太网的MAC协议使用<strong>二进制指数退避算法的CSMA/CD</strong>。</li>
+</ul>
+<h5 id="以太网帧结构">以太网帧结构</h5>
+<p>以太网的帧结构如图：</p>
+<p>包括前导码、源/目的MAC地址、上层协议类型、数据以及CRC循环冗余校验码。</p>
+<h4 id="交换机">交换机</h4>
+<p>以太网交换机包含以下四个特点：</p>
+<ul>
+<li>属于链路层设备：进行存储转发以太帧；利用CSMA/CD访问链路。</li>
+<li>透明：主机感知不到交换机的存在。</li>
+<li>即插即用。</li>
+<li><strong>自学习</strong>。</li>
+</ul>
+<h5 id="交换表--自学习">交换表 &amp; 自学习</h5>
+<p>每个交换机都有一个交换表，表项格式如：<br>
+<code>(主机MAC地址，到达主机的接口，时间戳)</code>
+如图：</p>
+<p>同时，交换机采用自学习来获知转发信息的策略：</p>
+<ul>
+<li>当收到帧时，交换机通过帧的源MAC地址，学习到**该主机位于接收到该帧接口的LAN网段。**然后将发送主机MAC地址/接口记录到交换表中。</li>
+</ul>
+<p>若交换机接收到的帧所标识的目的MAC地址不在表项中，则使用<strong>泛洪法</strong>（向除接收到该帧的接口之外的所有接口转发）来进行学习。</p>
+<p>总而言之，交换机自学习和转发的过程可以被概括为：<strong>泛洪</strong>与<strong>选择性转发</strong>。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
