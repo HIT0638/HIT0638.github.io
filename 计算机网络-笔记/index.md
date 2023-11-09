@@ -303,7 +303,7 @@ TCP采用端系统的拥塞控制，主要概念包括：
 - 以太网网卡：802.11网卡；以太网芯片组
 
 如图是网卡间的通信：
-
+{{< image src="images/计算机网络-笔记/NIC.png" height=300 >}}
 
 #### MAC协议
 MAC（multiple access control）协议，即多路访问控制协议，是用来确保多结点能正确在共享广播信道上传输数据的协议。  
@@ -345,7 +345,7 @@ MAC（multiple access control）协议，即多路访问控制协议，是用来
 
 ##### 以太网帧结构
 以太网的帧结构如图：
-
+{{< image src="images/计算机网络-笔记/framestructure.png" >}}
 包括前导码、源/目的MAC地址、上层协议类型、数据以及CRC循环冗余校验码。
 
 #### 交换机
