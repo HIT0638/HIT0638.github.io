@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <title>计算机网络-笔记-PPT知识梳理(更新中) - Ouke按摩店</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="计算机网络-笔记-PPT知识梳理(更新中)" />
-<meta property="og:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 应用层 HTTP 不同主机进程间通信依靠socket，寻址依赖（IP, PORT" />
+<meta property="og:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 由于本人才疏学浅，故部分陈述的错误难以避免。烦请大家发现错误或者疑问之后在评论区或者邮" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/" /><meta property="og:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-11-07T20:37:02+08:00" />
@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://HIT0638.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/featured-image.png"/>
 <meta name="twitter:title" content="计算机网络-笔记-PPT知识梳理(更新中)"/>
-<meta name="twitter:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 正题 ppt知识梳理 应用层 HTTP 不同主机进程间通信依靠socket，寻址依赖（IP, PORT"/>
+<meta name="twitter:description" content="前言 这里用来记录我计算机网络学习以及复习过程中的笔记。 由于本人才疏学浅，故部分陈述的错误难以避免。烦请大家发现错误或者疑问之后在评论区或者邮"/>
 <meta name="application-name" content="欧克按摩店">
 <meta name="apple-mobile-web-app-title" content="欧克按摩店"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -34,7 +34,7 @@
                             "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/featured-image.png",
                             "width":  1284 ,
                             "height":  1706 
-                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  10710 ,
+                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  11702 ,
         "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/","datePublished": "2023-11-07T20:37:02+08:00","dateModified": "2023-11-10T00:00:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
@@ -114,8 +114,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算机网络-笔记-PPT知识梳理(更新中)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 10710 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 22 分钟&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 11702 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 24 分钟&nbsp;
     
 
     
@@ -228,6 +228,20 @@
             <li><a href="#数据通信基础">数据通信基础</a>
               <ul>
                 <li><a href="#异步通信和同步通信">异步通信和同步通信</a></li>
+                <li><a href="#信源编码">信源编码</a></li>
+              </ul>
+            </li>
+            <li><a href="#物理介质">物理介质</a></li>
+            <li><a href="#信道与信道容量">信道与信道容量</a>
+              <ul>
+                <li><a href="#信道分类">信道分类</a></li>
+                <li><a href="#信道容量">信道容量</a></li>
+              </ul>
+            </li>
+            <li><a href="#基带传输基础">基带传输基础</a></li>
+            <li><a href="#频带传输基础">频带传输基础</a>
+              <ul>
+                <li><a href="#数字调制系统">数字调制系统</a></li>
               </ul>
             </li>
           </ul>
@@ -237,7 +251,8 @@
   </ul>
 </nav></div>
             </div><div class="content" id="content"><h1 id="前言">前言</h1>
-<p>这里用来记录我计算机网络学习以及复习过程中的笔记。</p>
+<p>这里用来记录我计算机网络学习以及复习过程中的笔记。<br>
+由于本人才疏学浅，故部分陈述的错误难以避免。烦请大家发现错误或者疑问之后在评论区或者邮件告知我，感激不尽。</p>
 <h1 id="正题">正题</h1>
 <h2 id="ppt知识梳理">ppt知识梳理</h2>
 <h3 id="应用层">应用层</h3>
@@ -1031,7 +1046,16 @@ Receiver通过在Segment的头部字段将<strong>RcvWindow</strong>告诉Sender
 <h5 id="交换表--自学习">交换表 &amp; 自学习</h5>
 <p>每个交换机都有一个交换表，表项格式如：<br>
 <code>(主机MAC地址，到达主机的接口，时间戳)</code>
-如图：</p>
+如图：
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E8%A1%A8%E9%A1%B9.png" width="483" height="250" />
+    </a></p>
 <p>同时，交换机采用自学习来获知转发信息的策略：</p>
 <ul>
 <li>当收到帧时，交换机通过帧的源MAC地址，学习到**该主机位于接收到该帧接口的LAN网段。**然后将发送主机MAC地址/接口记录到交换表中。</li>
@@ -1158,6 +1182,98 @@ NAT可以分为<strong>Basic NAT</strong>和<strong>PAT</strong>：</p>
 因此，异步通信采取的方式是：以RS232协议规定为例，异步通信每次只发送一个字符，传输字符时，用‘起始位’（低电平，逻辑值0）标识字符传输的开始，然后紧接着是一个字符的比特，最后以‘停止位’（高电平，逻辑值1）结束。字符数据由5~8位组成，后接1位校验位。<br>
 接收方空闲时，会将保持高电平，因此当接收到起始位低电平0时会有一个下跳沿。此时标志着异步通信字符传输开始。</li>
 </ul>
+<h5 id="信源编码">信源编码</h5>
+<p>信源编码就是将信源产生的模拟数据（连续）编码为数字数据（离散）。典型的方法是PCM。</p>
+<h4 id="物理介质">物理介质</h4>
+<p>这块应该不考。感兴趣的看文档。</p>
+<h4 id="信道与信道容量">信道与信道容量</h4>
+<h5 id="信道分类">信道分类</h5>
+<p>狭义上的信道只包括<strong>信号传输介质</strong>。广义上的信道将通信系统的一些变换装置也算作信道的一部分。如发送/接收设备、天线和调制器等。
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E4%BF%A1%E9%81%93.png" width="876" height="300" />
+    </a></p>
+<h5 id="信道容量">信道容量</h5>
+<p>首先是信道容量的概念：</p>
+<ul>
+<li>信道容量指信道无差错传输信息的<strong>最大平均信息速率</strong>。</li>
+</ul>
+<p>如何计算呢？对于无噪声和有噪声的信道，分别有公式来计算信道容量。</p>
+<ul>
+<li>
+<p>理想的无噪声信道使用<strong>奈奎斯特信道容量公式</strong>来计算信道容量： $$C=2B\log_2(M)$$<br>
+其中，C是信道容量，单位是bps；B是信道带宽，单位是Hz；M是信号状态数。这计算的是理想信道的<strong>极限容量</strong>。<br>
+例题：<br>
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png" width="908" height="200" />
+    </a></p>
+</li>
+<li>
+<p>有噪声信道的使用<strong>香农信道容量公式</strong>来计算信道容量：$$C=Blog_2(1+\frac{S}{N})$$<br>
+其中$\frac{S}{N}$是信噪比，也就是信号能力与噪声能量之比，通常以<strong>分贝(dB)</strong> 为单位：$$(\frac{S}{N})_{dB} = 10 log_⑩(\frac{信号能量}{噪声能量})$$<br>
+例题：<br>
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/%E6%9C%89%E5%99%AA%E5%A3%B0%E4%BE%8B%E9%A2%981.png" width="893" height="200" />
+    </a></p>
+</li>
+</ul>
+<h4 id="基带传输基础">基带传输基础</h4>
+<p>什么是基带信号？</p>
+<ul>
+<li>基带信号指的是信源发出的原始电信号；比如模拟信源或数字信源发出的原始电信号就分别叫做模拟基带信号和数字基带信号。<br>
+基带信号中包含较多<strong>低频成分</strong>，因此基带信号适合在具有<strong>低通特性</strong>的有线信道中传播，不适合无线信道。</li>
+</ul>
+<p>典型的数字基带信号码型包括：</p>
+<ul>
+<li>单极不归零码。</li>
+<li>双极不归零码。</li>
+<li>单极归零码。</li>
+<li>双极归零码。</li>
+<li>差分码。</li>
+<li>AMI码。</li>
+<li>双相码。</li>
+<li>nBmB码。</li>
+</ul>
+<p>具体看文档。</p>
+<h4 id="频带传输基础">频带传输基础</h4>
+<p>为了在不具有低通特性<strong>带通信道</strong>中传输信号，只能将基带信号进行调制，得到与对应信道传输特性匹配的载波信号来进行信息的传输；即通过在信道中传送经过调制的载波信号实现将基带信号携带的信息传送出去。
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>带通信道<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">带通信道（Bandpass Channel）是指一种特定类型的通信信道，它允许一个特定频率范围内的信号通过，同时阻止低于和高于这个范围的频率。这个频率范围被称为带宽。带通信道常用于无线通信系统，如无线网络、广播和手机通信等，因为它们可以减少不同信号之间的干扰，确保信号的清晰传输。<br>
+带桶信道如无线信道等不具有低通特性。</div>
+        </div>
+    </div></p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>名词补充<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">利用模拟基带信号调制载波，称为 <strong>模拟调制</strong> 。
+利用数字基带信号调制载波，称为 <strong>数字调制</strong>。</div>
+        </div>
+    </div>
+<h5 id="数字调制系统">数字调制系统</h5>
+<p>见文档。</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
