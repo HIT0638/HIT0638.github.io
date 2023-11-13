@@ -34,7 +34,7 @@
                             "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/featured-image.png",
                             "width":  1284 ,
                             "height":  1706 
-                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  11728 ,
+                        }],"genre": "posts","keywords": "计算机网络, 学习笔记","wordcount":  13918 ,
         "url": "https:\/\/HIT0638.github.io\/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0\/","datePublished": "2023-11-07T20:37:02+08:00","dateModified": "2023-11-10T00:00:37+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
             "@type": "Organization",
             "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
@@ -114,8 +114,8 @@
             <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">计算机网络-笔记-PPT知识梳理(更新中)</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>计算机网络</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 11728 字&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 24 分钟&nbsp;
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-11-07">2023-11-07</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 13918 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 28 分钟&nbsp;
     
 
     
@@ -203,6 +203,25 @@
         <li><a href="#网络层--数据链路层">网络层 &amp; 数据链路层</a></li>
         <li><a href="#数据链路层">数据链路层</a>
           <ul>
+            <li><a href="#数据链路层的功能">数据链路层的功能</a>
+              <ul>
+                <li><a href="#组帧">组帧</a></li>
+                <li><a href="#差错检测">差错检测</a>
+                  <ul>
+                    <li><a href="#循环冗余校验crc">循环冗余校验CRC</a></li>
+                    <li><a href="#纠错检测汉明码">纠错检测汉明码</a></li>
+                  </ul>
+                </li>
+                <li><a href="#介质访问控制">介质访问控制</a>
+                  <ul>
+                    <li><a href="#信道划分">信道划分</a></li>
+                    <li><a href="#随机访问">随机访问</a></li>
+                    <li><a href="#轮询访问">轮询访问</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#链路层协议的实现">链路层协议的实现</a></li>
             <li><a href="#mac协议">MAC协议</a>
               <ul>
                 <li><a href="#mac协议的分类">MAC协议的分类</a></li>
@@ -952,7 +971,114 @@ Receiver通过在Segment的头部字段将<strong>RcvWindow</strong>告诉Sender
 <h3 id="网络层--数据链路层">网络层 &amp; 数据链路层</h3>
 <p>网络层和数据链路层的数据我是手写的，有时间了再慢慢码字上传。</p>
 <h3 id="数据链路层">数据链路层</h3>
-<p>链路层协议如何实现？链路层协议的实现依赖于“适配器”，即网络接口卡-NIC及其驱动。另外，物理层协议也是由网卡实现的。<br>
+<p>这部分我主要看王道服务的，可能与学的内容有偏差。</p>
+<h4 id="数据链路层的功能">数据链路层的功能</h4>
+<p>功能:<br>
+① 继下（物理层）向上（网络层）提供服务。<br>
+② 链路管理，包括建立、维持、释放，也包括资源分配与调度。<br>
+③ 帧定界，帧同步和透明传输。<br>
+④ 流量控制。<br>
+⑤ 差错控制。</p>
+<p>其中呢，①是借助物理层的服务，以此为基础，向网络层提供服务，网络层需要其提供的服务是能够将源机器网络层的数据传输到目标机器的网络层。这种服务由于目标的不同可以分为<br>
+1）无确认的无连接服务；<br>
+2）有确认的无连接服务；<br>
+3）有确认的有连接服务。</p>
+<p>②中定界（确定帧的界限）+同步（接收方能正确分出帧的首、尾）+透明传输（可支持各种此特流的传输），共同保证了数据的发送与接收。</p>
+<h5 id="组帧">组帧</h5>
+<p><strong>组帧</strong>：是指发送允将数据组装成帧，在数据链路层，数据是以帧为单位进行传输的（<strong>send&amp;receive</strong>）。<br>
+组帧主要解决功能③的3个问题。<br>
+主要有以下方法：</p>
+<ol>
+<li>字符计数法</li>
+<li>字符填充法</li>
+<li>零比特填充法</li>
+<li>违规编码法。</li>
+</ol>
+<p><strong>数据链路层的差错检测主要讨论比特差错</strong>。</p>
+<h5 id="差错检测">差错检测</h5>
+<p>通常用编码技术来进行差错检测。主要有两种：<br>
+① 自动重传请求ARQ和② 前向纠错FEC。</p>
+<p>ARQ中接收方收到错误后会设法通知发送方<strong>重传</strong>。同时也有一类叫<strong>检错丢弃</strong>，会在检测到错误后丢弃当前帧。<br>
+其中，检错编码通常使用<strong>冗余编码技术</strong>，常见的包括：</p>
+<ul>
+<li>奇偶校验码：只能检测奇数位错误。</li>
+<li>CRC，<strong>循环冗余校验</strong>，又称多项式码，重点。</li>
+</ul>
+<h6 id="循环冗余校验crc">循环冗余校验CRC</h6>
+<p>CRC的编码过程如下：<br>
+直接看例子：<br>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-info-circle fa-fw" aria-hidden="true"></i>CRC<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>eg：一个m位的帧要发送，约定的G(x)，为r阶，则步骤如下：</p>
+<ol>
+<li>在m位帧后加r个0。</li>
+<li>模2除法，G(x)除步骤1中得到的m+r帧，得到r位的余数R，即冗余码。</li>
+<li>将m位帧与R拼接，得到发送的m+r位数帧。</li>
+</ol>
+<p>如G(x)=1101，r=3，待传数据M=101001，加0后101001000，然后G(x)除这个，除后得余数001，则$\frac{101001}{M}\frac{001}{R}$ 为发送数据。</p>
+</div>
+        </div>
+    </div>
+可以发现，CRC有纠错能力，但一般不这么做。</p>
+<h6 id="纠错检测汉明码">纠错检测汉明码</h6>
+<p>纠错检测一般使用汉明码。<br>
+<strong>汉明码的原理</strong>是将几个校验位插入有效信息位中成汉明码。校验位(第i个)在汉明码编号为$2^{i-1}$的位置，即若有n个校验位，其分别在第1、2、4、&hellip;、$2^{n-1}$ 位上。校验位的值如何确定？第i个校验位的值是将有效信息位号都化为2进制后，其2进制位号的第i位为1的所有有效信息位的异或值，如第2个校验位 $p_2=D_1 \oplus D_3 \oplus D_4$。<br>
+为什么是$D_1,D_2,D_3$?<br>
+<a class="lightgallery" href="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png" title="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png" data-thumbnail="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png">
+        <img
+            class="lazyload"
+            src="/svg/loading.min.svg"
+            data-src="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png"
+            data-srcset="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png 1.5x, /images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png 2x"
+            data-sizes="auto"
+            alt="/images/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%AC%94%E8%AE%B0/hanming.png" width="473" height="150" />
+    </a></p>
+<p><strong>汉明码的检验原理</strong>是：有n个校验位，就有n个校验组，且校验组的值是校验位与其构成的信息位的异或值，如：
+$$S_1 = P_1 \oplus D_1 \oplus D_2 \oplus D_3 \oplus D_4$$
+$$S_2 = P_2 \oplus D_1 \oplus D_3 \oplus D_4$$
+$$S_3 = P_3 \oplus D_2 \oplus D_3 \oplus D_4$$
+最后得到一个二进制数$S_1S_2S_3$，这个数是几就说明第几位错了。</p>
+<h5 id="介质访问控制">介质访问控制</h5>
+<p>介质访问控制是用来调度站点数据发送及信道资源分配管理的。具体进行广播信道中协议使用决定的是数据链路层的一个子层：<strong>介质论问控制（Medium Access control，MAC）子层</strong>。<br>
+主要的目的是<strong>在保证结点间通信不会相互干扰的基础上提高信道利用率</strong>。</p>
+<p>常见的方法包括：</p>
+<ul>
+<li><strong>信道划分</strong></li>
+<li><strong>随机访问</strong></li>
+<li><strong>轮询访问</strong></li>
+</ul>
+<h6 id="信道划分">信道划分</h6>
+<p>主要使用<strong>多路复用技术</strong>，是静态的划分方法，将信道的时域和频域资源合理分配。可以分为以下4种技术：<br>
+a. 频分多路复用；<br>
+b. 时分多路复用；<br>
+c. 波分多路复用；<br>
+d. 码分多路复用。<br>
+abc很简单，主要讲讲d，d又称<strong>码分多址（CDMA）</strong>，其核心思想是“<strong>码片</strong>”（chip）。<br>
+原理为：将每个比特时间再划分为m个短时间槽，即m位的码片。每个站点被分配一个码片序列作为自己的标识向量，要求是<strong>各站点的标识向量（m位）相互正交</strong>。在此基础上，制定规则：各站点要发送1时，发送其码片序列；发送0时，发送其码片序列的反码。<strong>当两个以上站点同时发送时，各路数据在信道中线性相加</strong>。而由于各站点码片序列相互正交，故当接收方知道发送方码片序列时，将该信号与序列作规格化正交，即可分离发送方所发序列的值。<strong>注，码片序列中。0用-1代，1用+1代</strong>。例子见王道。</p>
+<h6 id="随机访问">随机访问</h6>
+<p>随机访问的核心是<strong>不采用集中控制公式</strong>，而是用各种机制如<strong>碰撞重发/侦听/坚持/碰撞检测</strong>等。协议主要有：</p>
+<ul>
+<li><strong>ALOHA</strong>：简要概括就是各站点自由发送，没有收到确认信息就等待一段时间后重新发送。</li>
+<li><strong>时隙ALOHA</strong>：在ALOHA的基础上进行了<strong>时隙限制</strong>，在时隙内，每个站点只能在开始时发一个帧。(而不是任意时刻自由发送)。</li>
+<li><strong>CSMA</strong>：是载波侦听多路访问，站点侦听到信道空闲才会尝试访问；否则，若检查到不空闲，根据应对策略还可以被分为<strong>1-坚持CSMA</strong>、<strong>非坚持CSMA</strong>以及<strong>p-坚持CSMA</strong>。</li>
+<li><strong>CSMA/CD</strong>：是CSMA/CD（碰撞检测），其特点是<strong>边发送加侦听</strong>，当信道空闲时发送；若发送中侦听到碰撞，则启动<strong>指数退避算法</strong>。</li>
+<li><strong>CSMA/CA</strong>：是CSMA/CA（碰撞避免），由于在无线局域网下CSMA/CD不适用（因为侦听条件难以达成），故将检测改变避免。这可以理解为“退一步海阔天空”，<strong>在检测到空闲时也会等一段时间后再发送；否则就执行退避算法。</strong></li>
+</ul>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw" aria-hidden="true"></i>CRC<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">注意，这里总结的很简单，只是提及了一些关键内容。关于各方式的具体过程和策略也是考察的范围，需要自行详细查看。</div>
+        </div>
+    </div>
+<h6 id="轮询访问">轮询访问</h6>
+<p>轮询访问的核心就在于<strong>令牌传递</strong>，有令牌的站点才能发送，站点在逻辑上构成一个环。</p>
+<h4 id="链路层协议的实现">链路层协议的实现</h4>
+<p>链路层协议如何实现？链路层随机访问的核心是不采用集中控制公式，而是用各种机制如碰撞重发/侦听/坚持/碰撞检测等。协议主要有：协议的实现依赖于“适配器”，即网络接口卡-NIC及其驱动。另外，物理层协议也是由网卡实现的。<br>
 在物理层面上依赖于网卡以及各种软硬件。</p>
 <ul>
 <li>以太网网卡：802.11网卡；以太网芯片组</li>
