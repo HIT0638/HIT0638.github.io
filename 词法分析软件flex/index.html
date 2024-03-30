@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>词法分析软件Flex使用(更新中) - Ouke按摩店</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="词法分析软件Flex使用(更新中)" />
+<meta property="og:description" content="Before the article References: Lexical Analysis With Flex, for Flex 2.6.2 Introduction flex is a tool for generating scanners. A scanner is a program which recognizes lexical patterns in text. The flex program reads the given input files, or its standard input if no file names are given, for a description of a scanner to generate. The description is in the form of pairs of regular expressions and C code," />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://HIT0638.github.io/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" /><meta property="og:image" content="https://HIT0638.github.io/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-29T20:58:07+08:00" />
+<meta property="article:modified_time" content="2024-03-29T20:58:07+08:00" /><meta property="og:site_name" content="欧克按摩店" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://HIT0638.github.io/avatar.png"/>
+
+<meta name="twitter:title" content="词法分析软件Flex使用(更新中)"/>
+<meta name="twitter:description" content="Before the article References: Lexical Analysis With Flex, for Flex 2.6.2 Introduction flex is a tool for generating scanners. A scanner is a program which recognizes lexical patterns in text. The flex program reads the given input files, or its standard input if no file names are given, for a description of a scanner to generate. The description is in the form of pairs of regular expressions and C code,"/>
+<meta name="application-name" content="欧克按摩店">
+<meta name="apple-mobile-web-app-title" content="欧克按摩店"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://HIT0638.github.io/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" /><link rel="prev" href="https://HIT0638.github.io/hugo-blog-tutorial/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "词法分析软件Flex使用(更新中)",
+        "inLanguage": "zh-CN",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/HIT0638.github.io\/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "https:\/\/HIT0638.github.io\/images\/Apple-Devices-Preview.png",
+                            "width":  3200 ,
+                            "height":  2048 
+                        }],"genre": "posts","keywords": "lexial analysis, Flex","wordcount":  569 ,
+        "url": "https:\/\/HIT0638.github.io\/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex\/","datePublished": "2024-03-29T20:58:07+08:00","dateModified": "2024-03-29T20:58:07+08:00","license": "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.","publisher": {
+            "@type": "Organization",
+            "name": "Ouke","logo": "https:\/\/HIT0638.github.io\/avatar.png"},"author": {
+                "@type": "Person",
+                "name": "欧克"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> 所有文章 </a><a class="menu-item" href="/tags/"> 标签 </a><a class="menu-item" href="/categories/"> 分类 </a><a class="menu-item" href="/categories/documentation/"> 文档 </a><a class="menu-item" href="/about/"> 关于 </a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i>  </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="选择语言">
+                    <i class="fa fa-globe" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" selected>简体中文</option></select>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Ouke按摩店"><span class="header-title-pre"><i class='far fa-kiss-wink-heart fa-fw' aria-hidden='true'></i></span>欧克按摩店</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="搜索文章标题或内容..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="搜索">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="清空">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        取消
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">所有文章</a><a class="menu-item" href="/tags/" title="">标签</a><a class="menu-item" href="/categories/" title="">分类</a><a class="menu-item" href="/categories/documentation/" title="">文档</a><a class="menu-item" href="/about/" title="">关于</a><a class="menu-item" href="https://github.com/HIT0638/HIt0638.github.io" title="GitHub" rel="noopener noreffer" target="_blank"><i class='fab fa-github fa-fw' aria-hidden='true'></i></a><a href="javascript:void(0);" class="menu-item theme-switch" title="切换主题">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a><a href="javascript:void(0);" class="menu-item" title="选择语言">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" selected>简体中文</option></select>
+                </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">目录</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">词法分析软件Flex使用(更新中)</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://HIT0638.github.io" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>欧克</a></span>&nbsp;<span class="post-category">收录于 <a href="/categories/compilerprinciple/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>CompilerPrinciple</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-29">2024-03-29</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;约 569 字&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;预计阅读 2 分钟&nbsp;
+    
+
+    
+        
+
+        
+        
+            <span id="busuanzi_container_value_page_pv"><i class="far fa-eye fa-fw"></i>
+                
+                <span id="busuanzi_value_page_pv"></span>&nbsp;次阅读</span>
+        
+    
+
+</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>目录</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><h1 id="before-the-article">Before the article</h1>
+<p>References:</p>
+<ul>
+<li><a href="https://westes.github.io/flex/manual/index.html#SEC_Contents" target="_blank" rel="noopener noreffer ">Lexical Analysis With Flex, for Flex 2.6.2</a></li>
+</ul>
+<h1 id="introduction">Introduction</h1>
+<p>flex is a tool for <strong>generating scanners</strong>. A scanner is a program which <strong>recognizes lexical patterns in text</strong>.<br>
+The flex program reads the given input files, or its standard input if no file names are given, for a description of a scanner to generate.<br>
+The description is in the form of pairs of regular expressions and C code, called rules. flex generates as output a C source file, <code>lex.yy.c</code> by default, which defines a routine <code>yylex()</code>. This file can be compiled and linked with the flex runtime library to produce an executable. When the executable is run, it analyzes its input for occurrences of the regular expressions. Whenever it finds one, it executes the corresponding C code.</p>
+<h1 id="download--install">Download &amp; Install</h1>
+<p>In Ubuntu, use the command below to download and install _the Flex and Bison.</p>
+<blockquote>
+<p>sudo apt-get install flex bison</p>
+</blockquote>
+<p>After that, you can test whether it was successful or not by running the following commands:</p>
+<blockquote>
+<p>flex &ndash;version</p>
+</blockquote>
+<blockquote>
+<p>bison &ndash;version</p>
+</blockquote>
+<p>We can write a example to test:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">// example t.l
+%{
+int chars = 0;
+int words = 0;
+int lines = 0;
+%}
+%%
+[a-zA-Z]*    { words++; chars += strlen(yytext); }
+\n           { lines++; }
+.            { chars++; }
+%%
+
+void main(int argc, char** argv)
+{
+    yylex();
+    printf(&#34;%8d%8d%8d\n&#34;, lines, words, chars);
+}
+</code></pre></td></tr></table>
+</div>
+</div><p>The result:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://tb-pic-bed.oss-cn-beijing.aliyuncs.com/blog/%7BE37F027A-6B0E-45e4-806C-FFE6318C7D13%7D.png"
+        data-srcset="https://tb-pic-bed.oss-cn-beijing.aliyuncs.com/blog/%7BE37F027A-6B0E-45e4-806C-FFE6318C7D13%7D.png, https://tb-pic-bed.oss-cn-beijing.aliyuncs.com/blog/%7BE37F027A-6B0E-45e4-806C-FFE6318C7D13%7D.png 1.5x, https://tb-pic-bed.oss-cn-beijing.aliyuncs.com/blog/%7BE37F027A-6B0E-45e4-806C-FFE6318C7D13%7D.png 2x"
+        data-sizes="auto"
+        alt="https://tb-pic-bed.oss-cn-beijing.aliyuncs.com/blog/%7BE37F027A-6B0E-45e4-806C-FFE6318C7D13%7D.png"
+        title="https://tb-pic-bed.oss-cn-beijing.aliyuncs.com/blog/%7BE37F027A-6B0E-45e4-806C-FFE6318C7D13%7D.png" /></p>
+<h1 id="format-of-the-input-file">Format of the Input file</h1>
+<p>The flex input file consists of three sections, separated by a line containing only ‘%%’.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">definitions
+%%
+rules
+%%
+user code
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="match">Match</h1>
+<p>When the scanner is run, it begins to look for <strong>strings that match any of its pattern</strong>s. If there are <strong>more than one match</strong>, it matches the one <strong>matching the most text</strong>. If there are <strong>two or more matches of the same length</strong>, the rule listed <strong>first</strong> in the flex input file is chosen.</p>
+<blockquote>
+<p>Once the match determined, the token(text corresponding to the match) is made available in global character pointer <code>yytext</code>, and its length in the global integer <code>yyleng</code>. The <em>Action</em> corresponded to the matched pattern is the executed.</p>
+</blockquote>
+<p>Note that <code>yytext</code> can be defined in two ways:</p>
+<ul>
+<li>as a character <em>pointer</em>.</li>
+<li>as a character <em>array</em>.</li>
+</ul>
+<p>You can make this definition in the <code>definition</code> part of the flex file by including one of the special directives <code>%pointer%</code> or <code>%array</code>. The default is <code>%pointer</code>.</p>
+<h1 id="action">Action</h1>
+<p>The action of each pattern can be any arbitrary C statement. And of course it can be empty too which means the input token is discarded.
+for example:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">%%
+&#34;zap me&#34;
+</code></pre></td></tr></table>
+</div>
+</div><p>When the pattern above is matched, this example will just copy all characters in the input to the output.</p>
+<p>There are some type of actions:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">%%
+pattern1 putchar(&#39; &#39;);
+pattern2 /* ignore this token */
+pattern3 { /* C statement */ }
+</code></pre></td></tr></table>
+</div>
+</div><p>Next we will introduce some special actions:</p>
+<ul>
+<li><strong>|</strong>: An action consists only of a vertical bar('|') means &ldquo;same as the action of the next rule&rdquo;. For example</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">%%
+a        |
+ab       |
+abc      |
+abcd     ECHO; REJECT;
+.|\n     /* eat up any unmatched character */
+</code></pre></td></tr></table>
+</div>
+</div><p>The first three rules share the fourth`s action since they use the special &lsquo;|&rsquo; action.</p>
+<ul>
+<li>
+<p><strong>ECHO</strong>: copies <code>yytext</code> to the scanners' output.</p>
+</li>
+<li>
+<p><strong>BEGIN</strong>:</p>
+</li>
+<li>
+<p><strong>REJECT</strong>:</p>
+</li>
+<li>
+<p><strong>yymore()</strong>:</p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>更新于 2024-03-29</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/index.md" target="_blank">阅读原始文档</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="分享到 Twitter" data-sharer="twitter" data-url="https://HIT0638.github.io/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" data-title="词法分析软件Flex使用(更新中)" data-hashtags="lexial analysis,Flex"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Facebook" data-sharer="facebook" data-url="https://HIT0638.github.io/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" data-hashtag="lexial analysis"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Hacker News" data-sharer="hackernews" data-url="https://HIT0638.github.io/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" data-title="词法分析软件Flex使用(更新中)"><i class="fab fa-hacker-news fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 Line" data-sharer="line" data-url="https://HIT0638.github.io/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" data-title="词法分析软件Flex使用(更新中)"><i data-svg-src="https://cdn.jsdelivr.net/npm/simple-icons@7.3.0/icons/line.svg" aria-hidden="true"></i></a><a href="javascript:void(0);" title="分享到 微博" data-sharer="weibo" data-url="https://HIT0638.github.io/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E8%BD%AF%E4%BB%B6flex/" data-title="词法分析软件Flex使用(更新中)"><i class="fab fa-weibo fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/lexial-analysis/">lexial analysis</a>,&nbsp;<a href="/tags/flex/">Flex</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">返回</a></span>&nbsp;|&nbsp;<span><a href="/">主页</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/hugo-blog-tutorial/" class="prev" rel="prev" title="GithubPage &#43; Hugo博客配置教程（主题：LoveIt）"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GithubPage + Hugo博客配置教程（主题：LoveIt）</a></div>
+</div>
+<div id="comments"><div id="giscus" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">由 <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.92.2">Hugo</a> 强力驱动 | 主题 - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2023 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Ouke</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    
+        
+        <script async src=" //busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js "></script>
+    
+
+    
+        
+            <section>
+                
+                    <span id="busuanzi_container_value_site_pv"><i class="far fa-eye fa-fw"></i>
+                        
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+
+                
+                    &nbsp;|&nbsp;              
+                
+
+                
+                    <span id="busuanzi_container_value_site_uv"><i class="fa fa-user"></i>
+                        
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+            </section>
+        
+
+        
+        
+    
+
+</div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="回到顶部">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="查看评论">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/css/lightgallery-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/lightgallery.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/thumbnail/lg-thumbnail.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lightgallery@2.5.0/plugins/zoom/lg-zoom.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"复制到剪贴板","maxShownLines":50},"comment":{"giscus":{"category":"Announcements","categoryId":"DIC_kwDOKqgQVM4CawmO","darkTheme":"dark","emitMetadata":"0","inputPosition":"bottom","lang":"zh-CN","lazyLoading":false,"lightTheme":"light","mapping":"pathname","reactionsEnabled":"1","repo":"HIT0638/Giscus","repoId":"R_kgDOKqgQVA"}},"lightgallery":true,"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"PASDMWALPK","algoliaIndex":"index.zh-cn","algoliaSearchKey":"b42948e51daaa93df92381c8e2ac0f93","highlightTag":"em","maxResultLength":10,"noResultsFound":"没有找到结果","snippetLength":50,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
