@@ -150,10 +150,10 @@ a:focus-visible {
 .hero-section {
   flex: 1 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.47fr);
-  gap: clamp(42px, 7vw, 86px);
+  grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
+  gap: clamp(60px, 10vw, 150px);
   align-items: start;
-  min-height: 0;
+  min-height: 650px;
   padding: 90px 0 112px;
 }
 
@@ -327,11 +327,8 @@ a:focus-visible {
   position: sticky;
   top: 28px;
   align-self: start;
-  min-height: 280px;
-  max-width: 290px;
-  justify-self: end;
-  width: 100%;
-  padding: 16px;
+  min-height: 450px;
+  padding: 24px;
   overflow: hidden;
   background: var(--blue);
   color: var(--white);
@@ -348,16 +345,16 @@ a:focus-visible {
 }
 
 .hero-card::before {
-  width: 300px;
-  height: 300px;
-  top: 30px;
+  width: 480px;
+  height: 480px;
+  top: 54px;
   left: 13%;
 }
 
 .hero-card::after {
-  width: 165px;
-  height: 165px;
-  top: 100px;
+  width: 265px;
+  height: 265px;
+  top: 160px;
   left: 33%;
   border-color: rgba(242, 138, 75, 0.45);
 }
@@ -372,12 +369,12 @@ a:focus-visible {
 }
 
 .orbit-one {
-  top: 76px;
+  top: 134px;
   left: 73%;
 }
 
 .orbit-two {
-  top: 222px;
+  top: 362px;
   left: 17%;
   background: var(--white);
 }
@@ -393,22 +390,22 @@ a:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 130px;
+  min-height: 265px;
 }
 
 .portrait-initials {
   color: var(--orange);
   font-family: Georgia, serif;
-  font-size: clamp(66px, 8vw, 92px);
+  font-size: clamp(100px, 15vw, 160px);
   letter-spacing: -0.12em;
   line-height: 0.8;
 }
 
 .portrait-caption {
-  margin-top: 10px;
+  margin-top: 19px;
   color: rgba(251, 250, 247, 0.72);
   font-family: monospace;
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -416,8 +413,8 @@ a:focus-visible {
 .card-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 9px;
-  padding-top: 11px;
+  gap: 18px;
+  padding-top: 18px;
   border-top: 1px solid rgba(251, 250, 247, 0.26);
 }
 
@@ -429,24 +426,11 @@ a:focus-visible {
 
 .meta-label {
   color: rgba(251, 250, 247, 0.58);
-  font-size: 9px;
 }
 
 .card-meta strong {
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 500;
-}
-
-.card-note {
-  position: absolute;
-  right: 16px;
-  bottom: 13px;
-  left: 16px;
-  margin: 0;
-  color: rgba(251, 250, 247, 0.75);
-  font-family: Georgia, serif;
-  font-size: 10px;
-  font-style: italic;
 }
 
 .ticker {
@@ -765,7 +749,7 @@ a:focus-visible {
   .hero-card {
     position: relative;
     top: auto;
-    min-height: 270px;
+    min-height: 410px;
   }
 
   .ticker-track {

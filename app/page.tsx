@@ -49,7 +49,7 @@ export default function Home() {
           <div className="card-orbit orbit-one" aria-hidden="true" />
           <div className="card-orbit orbit-two" aria-hidden="true" />
           <div className="card-topline">
-            <span>NAME STUDY / 001</span>
+            <span>PERSONAL ARCHIVE</span>
             <span>Lero β</span>
           </div>
           <div className="portrait-placeholder">
@@ -58,17 +58,14 @@ export default function Home() {
           </div>
           <div className="card-meta">
             <div>
-              <span className="meta-label">署名</span>
-              <strong>Lero β</strong>
+              <span className="meta-label">中文名</span>
+              <strong>李斌</strong>
             </div>
             <div>
-              <span className="meta-label">读法</span>
-              <strong>Lero / 诶罗</strong>
+              <span className="meta-label">署名</span>
+              <strong>Lero β.</strong>
             </div>
           </div>
-          <p className="card-note">
-            “不是匿名，是选择一种更自由的署名。”
-          </p>
         </div>
       </div>
 
