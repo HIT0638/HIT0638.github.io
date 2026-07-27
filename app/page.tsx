@@ -1,17 +1,4 @@
-const articles = [
-  {
-    title: "关于开始记录这件事",
-    date: "2026.07.27",
-  },
-  {
-    title: "如何把一个想法慢慢做出来",
-    date: "2026.07.18",
-  },
-  {
-    title: "一些还在形成中的问题",
-    date: "2026.06.30",
-  },
-];
+import { articles } from "./articles";
 
 export default function Home() {
   return (
@@ -46,9 +33,9 @@ export default function Home() {
                 <h2>{article.title}</h2>
                 <time
                   className="article-date"
-                  dateTime={article.date.replaceAll(".", "-")}
+                  dateTime={article.date}
                 >
-                  {article.date}
+                  {article.date.replaceAll("-", ".")}
                 </time>
                 <span className="article-arrow" aria-hidden="true">
                   ↗
