@@ -2,19 +2,16 @@ const articles = [
   {
     number: "01",
     title: "关于开始记录这件事",
-    type: "随笔",
     date: "2026.07.27",
   },
   {
     number: "02",
     title: "如何把一个想法慢慢做出来",
-    type: "思考",
     date: "2026.07.18",
   },
   {
     number: "03",
     title: "一些还在形成中的问题",
-    type: "观察",
     date: "2026.06.30",
   },
 ];
@@ -53,7 +50,6 @@ export default function Home() {
                 <div className="article-main">
                   <h2>{article.title}</h2>
                   <div className="article-meta">
-                    <span>{article.type}</span>
                     <time dateTime={article.date.replaceAll(".", "-")}>
                       {article.date}
                     </time>

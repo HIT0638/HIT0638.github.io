@@ -146,10 +146,10 @@ a:focus-visible {
 
 .hero-section {
   display: grid;
-  grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
-  gap: clamp(60px, 10vw, 150px);
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.47fr);
+  gap: clamp(42px, 7vw, 86px);
   align-items: start;
-  min-height: 650px;
+  min-height: 0;
   padding: 90px 0 112px;
 }
 
@@ -217,18 +217,9 @@ a:focus-visible {
 }
 
 .article-meta {
-  display: flex;
-  gap: 16px;
   margin-top: 13px;
   color: var(--muted);
   font-size: 11px;
-}
-
-.article-meta span::after {
-  display: inline-block;
-  margin-left: 16px;
-  content: "/";
-  color: var(--line);
 }
 
 .article-arrow {
@@ -335,9 +326,11 @@ a:focus-visible {
 }
 
 .hero-card {
-  position: relative;
-  min-height: 450px;
-  padding: 24px;
+  position: sticky;
+  top: 28px;
+  align-self: start;
+  min-height: 340px;
+  padding: 20px;
   overflow: hidden;
   background: var(--blue);
   color: var(--white);
@@ -354,16 +347,16 @@ a:focus-visible {
 }
 
 .hero-card::before {
-  width: 480px;
-  height: 480px;
-  top: 54px;
+  width: 350px;
+  height: 350px;
+  top: 38px;
   left: 13%;
 }
 
 .hero-card::after {
-  width: 265px;
-  height: 265px;
-  top: 160px;
+  width: 195px;
+  height: 195px;
+  top: 122px;
   left: 33%;
   border-color: rgba(242, 138, 75, 0.45);
 }
@@ -378,12 +371,12 @@ a:focus-visible {
 }
 
 .orbit-one {
-  top: 134px;
+  top: 94px;
   left: 73%;
 }
 
 .orbit-two {
-  top: 362px;
+  top: 270px;
   left: 17%;
   background: var(--white);
 }
@@ -399,19 +392,19 @@ a:focus-visible {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 265px;
+  min-height: 178px;
 }
 
 .portrait-initials {
   color: var(--orange);
   font-family: Georgia, serif;
-  font-size: clamp(100px, 15vw, 160px);
+  font-size: clamp(82px, 10vw, 120px);
   letter-spacing: -0.12em;
   line-height: 0.8;
 }
 
 .portrait-caption {
-  margin-top: 19px;
+  margin-top: 14px;
   color: rgba(251, 250, 247, 0.72);
   font-family: monospace;
   font-size: 10px;
@@ -422,8 +415,8 @@ a:focus-visible {
 .card-meta {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  padding-top: 18px;
+  gap: 12px;
+  padding-top: 14px;
   border-top: 1px solid rgba(251, 250, 247, 0.26);
 }
 
@@ -438,19 +431,19 @@ a:focus-visible {
 }
 
 .card-meta strong {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .card-note {
   position: absolute;
-  right: 24px;
-  bottom: 22px;
-  left: 24px;
+  right: 20px;
+  bottom: 17px;
+  left: 20px;
   margin: 0;
   color: rgba(251, 250, 247, 0.75);
   font-family: Georgia, serif;
-  font-size: 14px;
+  font-size: 12px;
   font-style: italic;
 }
 
@@ -763,7 +756,9 @@ a:focus-visible {
   }
 
   .hero-card {
-    min-height: 410px;
+    position: relative;
+    top: auto;
+    min-height: 330px;
   }
 
   .ticker-track {
