@@ -1,16 +1,13 @@
 const articles = [
   {
-    number: "01",
     title: "关于开始记录这件事",
     date: "2026.07.27",
   },
   {
-    number: "02",
     title: "如何把一个想法慢慢做出来",
     date: "2026.07.18",
   },
   {
-    number: "03",
     title: "一些还在形成中的问题",
     date: "2026.06.30",
   },
@@ -45,16 +42,14 @@ export default function Home() {
 
           <div className="article-list" role="list">
             {articles.map((article) => (
-              <article className="article-row" key={article.number} role="listitem">
-                <span className="article-number">{article.number}</span>
-                <div className="article-main">
-                  <h2>{article.title}</h2>
-                  <div className="article-meta">
-                    <time dateTime={article.date.replaceAll(".", "-")}>
-                      {article.date}
-                    </time>
-                  </div>
-                </div>
+              <article className="article-row" key={article.title} role="listitem">
+                <h2>{article.title}</h2>
+                <time
+                  className="article-date"
+                  dateTime={article.date.replaceAll(".", "-")}
+                >
+                  {article.date}
+                </time>
                 <span className="article-arrow" aria-hidden="true">
                   ↗
                 </span>
