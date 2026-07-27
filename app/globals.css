@@ -81,10 +81,11 @@ a:focus-visible {
 }
 
 .brand-mark {
-  display: grid;
+  display: flex;
   width: 31px;
   height: 31px;
-  place-items: center;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--ink);
   border-radius: 50%;
   font-family: Georgia, serif;
