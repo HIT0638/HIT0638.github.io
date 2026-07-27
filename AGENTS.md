@@ -39,12 +39,16 @@ support them.
 
 - `main` is the stable, reviewable branch and the only branch eligible for
   GitHub Pages deployment.
-- Never develop directly on `main`. Start every change from the latest
-  `main` using a focused branch:
-  - `content/<topic>` for notes and writing;
+- Notes and writing may be committed directly to `main`. This keeps the
+  normal publishing flow lightweight and lets Git provide the writing history.
+  Keep these commits focused, and use `draft: true` for unfinished notes when
+  the site renderer supports draft filtering.
+- Never develop site code directly on `main`. Start code, design, tooling, and
+  bug-fix work from the latest `main` using a focused branch:
   - `feat/<topic>` for a new capability;
   - `fix/<topic>` for a correction;
-  - `design/<topic>` for visual work.
+  - `design/<topic>` for visual work;
+  - `chore/<topic>` for tooling or maintenance.
 - Keep commits small and single-purpose. Prefer messages such as
   `content: add note on ...` or `design: simplify notes index`.
 - Before editing, run `git status --short --branch` and confirm there are no
@@ -70,7 +74,8 @@ support them.
 
 ## Handoff checklist
 
-1. Confirm the branch is not `main` for feature or content work.
+1. Confirm the branch is not `main` for feature, design, fix, or tooling work.
+   Content-only notes and writing may intentionally stay on `main`.
 2. Read the relevant files and preserve unrelated user changes.
 3. Make one focused change and review the diff.
 4. Run the smallest relevant validation, including `npm run build` before a
