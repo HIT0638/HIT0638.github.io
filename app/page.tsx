@@ -29,7 +29,12 @@ export default function Home() {
 
           <div className="article-list" role="list">
             {articles.map((article) => (
-              <article className="article-row" key={article.title} role="listitem">
+              <a
+                className="article-row"
+                href={`/articles/${article.slug}`}
+                key={article.slug}
+                role="listitem"
+              >
                 <h2>{article.title}</h2>
                 <time
                   className="article-date"
@@ -40,7 +45,7 @@ export default function Home() {
                 <span className="article-arrow" aria-hidden="true">
                   ↗
                 </span>
-              </article>
+              </a>
             ))}
           </div>
         </section>

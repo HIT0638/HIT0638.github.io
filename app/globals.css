@@ -197,6 +197,11 @@ a:focus-visible {
   transition: padding 180ms ease, background 180ms ease;
 }
 
+.article-row:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 4px;
+}
+
 .article-row:hover {
   padding-right: 10px;
   padding-left: 10px;
@@ -673,6 +678,81 @@ a:focus-visible {
   gap: 25px;
 }
 
+.article-page-shell {
+  width: min(760px, calc(100% - 72px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 34px 0 90px;
+}
+
+.article-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 21px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-family: monospace;
+  font-size: 11px;
+}
+
+.article-page-back {
+  color: var(--ink);
+  font-family: inherit;
+  transition: color 180ms ease;
+}
+
+.article-page-back:hover {
+  color: var(--orange);
+}
+
+.article-page-content {
+  padding: 92px 0 0;
+}
+
+.article-page-content h1 {
+  max-width: 680px;
+  margin: 0;
+  font-family: Georgia, "Songti SC", "STSong", serif;
+  font-size: clamp(38px, 6vw, 68px);
+  font-weight: 400;
+  letter-spacing: -0.07em;
+  line-height: 1.12;
+}
+
+.article-body {
+  max-width: 650px;
+  padding-top: 48px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 2;
+}
+
+.article-body p {
+  margin: 0 0 25px;
+}
+
+.article-body h2 {
+  margin: 42px 0 17px;
+  color: var(--ink);
+  font-family: Georgia, "Songti SC", "STSong", serif;
+  font-size: 27px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.article-body pre {
+  margin: 28px 0;
+  padding: 18px 20px;
+  overflow-x: auto;
+  background: var(--paper-deep);
+  color: var(--ink);
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 @media (max-width: 800px) {
   .site-header,
   .hero-section,
@@ -825,6 +905,20 @@ a:focus-visible {
     flex-direction: column-reverse;
     gap: 15px;
     padding-bottom: 24px;
+  }
+
+  .article-page-shell {
+    width: min(100% - 40px, 600px);
+    padding-top: 24px;
+  }
+
+  .article-page-content {
+    padding-top: 65px;
+  }
+
+  .article-body {
+    padding-top: 35px;
+    font-size: 15px;
   }
 }
 

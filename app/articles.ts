@@ -4,6 +4,7 @@ export type Article = {
   title: string;
   date: string;
   slug: string;
+  body: string;
 };
 
 const rawNotes = import.meta.glob("../content/notes/*.md", {
@@ -51,6 +52,7 @@ function parseArticle(path: string, source: string): Article | null {
     title: frontMatter.title,
     date: frontMatter.date,
     slug: fileName.replace(/\.md$/, ""),
+    body: source.slice(frontMatterMatch[0].length).trim(),
   };
 }
 
