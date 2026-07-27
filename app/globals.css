@@ -44,6 +44,8 @@ a:focus-visible {
 }
 
 .site-shell {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
 }
@@ -145,6 +147,7 @@ a:focus-visible {
 }
 
 .hero-section {
+  flex: 1 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(240px, 0.47fr);
   gap: clamp(42px, 7vw, 86px);
@@ -675,6 +678,7 @@ a:focus-visible {
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  margin-top: auto;
   padding: 23px 0 28px;
   color: var(--muted);
   font-size: 11px;
