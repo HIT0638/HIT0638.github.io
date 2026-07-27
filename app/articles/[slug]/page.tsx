@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { articles } from "../../articles";
+import { renderMarkdown } from "../../markdown";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -22,32 +23,6 @@ export async function generateMetadata({
   };
 }
 
-function renderArticleBody(body: string) {
-  return body.split(/\n{2,}/).map((block, index) => {
-    const lines = block.trim().split(/\r?\n/);
-    const firstLine = lines[0] ?? "";
-    const text = lines.slice(1).join(" ");
-
-    if (firstLine.startsWith("## ")) {
-      return <h2 key={index}>{firstLine.slice(3)}</h2>;
-    }
-
-    if (firstLine.startsWith("# ")) {
-      return <h2 key={index}>{firstLine.slice(2)}</h2>;
-    }
-
-    if (firstLine.startsWith("```") && lines.at(-1) === "```") {
-      return (
-        <pre key={index}>
-          <code>{lines.slice(1, -1).join("\n")}</code>
-        </pre>
-      );
-    }
-
-    return <p key={index}>{[firstLine, text].filter(Boolean).join(" ")}</p>;
-  });
-}
-
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
   const article = articles.find((item) => item.slug === slug);
@@ -61,6 +36,8 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     );
   }
 
+  const articleHtml = await renderMarkdown(article.body);
+
   return (
     <main className="article-page-shell">
       <header className="article-page-header">
@@ -72,7 +49,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
       <article className="article-page-content">
         <h1>{article.title}</h1>
-        <div className="article-body">{renderArticleBody(article.body)}</div>
+        <div
+          className="article-body"
+          dangerouslySetInnerHTML={{ __html: articleHtml }}
+        />
       </article>
     </main>
   );

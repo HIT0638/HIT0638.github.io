@@ -753,6 +753,24 @@ a:focus-visible {
   line-height: 1.7;
 }
 
+.article-body .katex {
+  color: var(--ink);
+  font-size: 1.05em;
+}
+
+.article-body .katex-display {
+  margin: 32px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 6px 0;
+}
+
+.article-body .katex-error {
+  color: var(--orange);
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
 @media (max-width: 800px) {
   .site-header,
   .hero-section,

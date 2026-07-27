@@ -22,3 +22,7 @@ draft: false
 
 The site will render these files into static pages. Keep drafts as
 `draft: true` until they are ready to publish.
+
+Article bodies use Markdown with GitHub-Flavored Markdown extensions. Math can
+be written with LaTeX syntax: use `$...$` for inline math and `$$...$$` for a
+displayed formula.
