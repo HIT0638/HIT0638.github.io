@@ -718,6 +718,11 @@ a:focus-visible {
   display: block;
 }
 
+.article-page-layout:not(.article-page-layout-no-toc) > .article-page-content {
+  grid-column: 2;
+  min-width: 0;
+}
+
 .article-toc {
   position: fixed;
   left: max(24px, calc((100vw - 1060px) / 2));
