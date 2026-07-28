@@ -679,7 +679,7 @@ a:focus-visible {
 }
 
 .article-page-shell {
-  width: min(1100px, calc(100% - 72px));
+  width: min(1060px, calc(100% - 72px));
   min-height: 100vh;
   margin: 0 auto;
   padding: 34px 0 90px;
@@ -709,8 +709,8 @@ a:focus-visible {
 
 .article-page-layout {
   display: grid;
-  grid-template-columns: minmax(150px, 190px) minmax(0, 820px);
-  gap: 42px;
+  grid-template-columns: minmax(140px, 164px) minmax(0, 820px);
+  gap: 28px;
   align-items: start;
 }
 
@@ -719,15 +719,18 @@ a:focus-visible {
 }
 
 .article-toc {
-  position: sticky;
-  top: 32px;
-  max-height: calc(100vh - 64px);
+  position: fixed;
+  left: max(24px, calc((100vw - 1060px) / 2));
+  top: 50%;
+  width: 164px;
+  max-height: min(68vh, 560px);
   overflow-y: auto;
   color: var(--muted);
   font-family: monospace;
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 10px;
+  line-height: 1.35;
   scrollbar-width: thin;
+  transform: translateY(-50%);
 }
 
 .article-toc-mobile-trigger {
@@ -752,14 +755,14 @@ a:focus-visible {
   display: flex;
   align-items: center;
   gap: 4px;
-  min-height: 25px;
+  min-height: 21px;
 }
 
 .article-toc-link {
   display: block;
   min-width: 0;
   flex: 1;
-  padding: 4px 6px 4px 10px;
+  padding: 3px 4px 3px 8px;
   overflow: hidden;
   border-left: 1px solid transparent;
   text-overflow: ellipsis;
@@ -780,32 +783,43 @@ a:focus-visible {
 
 .article-toc-link[data-level="1"] {
   color: var(--ink);
+  font-size: 10.5px;
   font-weight: 600;
 }
 
 .article-toc-link[data-level="2"] {
-  padding-left: 17px;
+  padding-left: 14px;
 }
 
 .article-toc-link[data-level="3"] {
-  padding-left: 24px;
+  padding-left: 20px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 9px;
+}
+
+.article-toc .katex {
+  font-size: 0.9em;
+}
+
+.article-toc .katex-display {
+  display: inline;
+  margin: 0;
+  padding: 0;
 }
 
 .article-toc-toggle {
   display: inline-flex;
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 20px;
   align-items: center;
   justify-content: center;
-  flex: 0 0 22px;
+  flex: 0 0 18px;
   border: 0;
   background: transparent;
   color: var(--orange);
   cursor: pointer;
   font-family: monospace;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1;
 }
 
@@ -814,7 +828,7 @@ a:focus-visible {
 }
 
 .article-toc-children {
-  margin-left: 10px;
+  margin-left: 8px;
   border-left: 1px solid var(--line);
 }
 
@@ -969,9 +983,12 @@ a:focus-visible {
 
   .article-toc {
     position: static;
+    left: auto;
+    width: auto;
     max-height: none;
     margin-bottom: 32px;
     overflow: visible;
+    transform: none;
   }
 
   .article-toc-mobile-trigger {
