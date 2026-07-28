@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { articles } from "../../articles";
+import MermaidRenderer from "../../mermaid-renderer";
 import { renderMarkdown } from "../../markdown";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
 };
+
+function removeRenderedTitle(body: string, title: string) {
+  const headingMatch = body.match(/^#\s+([^\r\n]+)\r?\n+/);
+
+  if (headingMatch?.[1].trim() === title.trim()) {
+    return body.slice(headingMatch[0].length);
+  }
+
+  return body;
+}
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -19,7 +30,7 @@ export async function generateMetadata({
 
   return {
     title: article ? `${article.title} — Lero β` : "文章 — Lero β",
-    description: article?.title,
+    description: article?.summary ?? article?.title,
   };
 }
 
@@ -36,7 +47,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     );
   }
 
-  const articleHtml = await renderMarkdown(article.body);
+  const articleHtml = await renderMarkdown(
+    removeRenderedTitle(article.body, article.title),
+  );
 
   return (
     <main className="article-page-shell">
@@ -53,6 +66,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           className="article-body"
           dangerouslySetInnerHTML={{ __html: articleHtml }}
         />
+        <MermaidRenderer />
       </article>
     </main>
   );

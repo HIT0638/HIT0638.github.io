@@ -3,6 +3,7 @@
 export type Article = {
   title: string;
   date: string;
+  summary?: string;
   slug: string;
   body: string;
 };
@@ -51,6 +52,7 @@ function parseArticle(path: string, source: string): Article | null {
   return {
     title: frontMatter.title,
     date: frontMatter.date,
+    summary: frontMatter.summary,
     slug: fileName.replace(/\.md$/, ""),
     body: source.slice(frontMatterMatch[0].length).trim(),
   };

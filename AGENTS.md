@@ -19,11 +19,12 @@ support them.
   title: A note title
   date: 2026-07-27
   summary: One sentence that helps the archive scan well.
-  tags: [thinking, notes]
   draft: false
   ---
   ```
 
+- Do not add tags by default. The current archive has no tag interface, and the
+  writing style should stay text-led rather than becoming tag-led.
 - Markdown is the source of truth. The site build turns it into static pages
   for GitHub Pages, so notes remain portable, searchable in Git, and easy to
   edit without an online database.
@@ -34,6 +35,77 @@ support them.
   accounts, comments, private drafts, or another feature that cannot be
   represented as versioned files. If that happens, keep Markdown as the
   canonical archive where practical and add a database deliberately.
+
+## Article authoring and agent editing contract
+
+### Default article structure
+
+- Use one stable Markdown file per article with an ISO date in its filename:
+  `YYYY-MM-DD-short-slug.md`. Prefer lowercase English kebab-case slugs so
+  article URLs stay short and predictable.
+- Required front matter is `title`, `date`, `summary`, and `draft`. Use an ISO
+  date (`YYYY-MM-DD`) and keep `summary` to one sentence.
+- The front matter `title` is the canonical page title. A leading body H1 with
+  the same text is allowed for editor readability; the site suppresses that
+  duplicate when rendering. Do not add a second, different H1.
+- Use H2 for major sections, H3 for topics inside them, and H4 only when a
+  topic genuinely needs another level. Do not skip heading levels.
+- Keep paragraphs readable and use lists for enumerations. Preserve the
+  author's uncertainty, terminology, numbers, variables, formulas, code, and
+  diagram source unless a content change was explicitly requested.
+
+### What an agent may change
+
+- If the request is “格式整理”, the default scope is front matter, filename,
+  heading hierarchy, whitespace, code-fence language labels, link syntax, and
+  rendering compatibility. Do not rewrite the argument or scientific data.
+- If the request is “润色”, improve wording and transitions while preserving
+  claims and meaning. Do not silently correct a formula, result, citation, or
+  interpretation; flag suspected problems for the author.
+- If the request would substantially reorder sections or change the argument,
+  first summarize the proposed outline and ask for confirmation. Small
+  heading/paragraph cleanup does not need a separate approval.
+- Never invent citations, experimental results, references, or missing values.
+  Add sources only when the author provides them or explicitly asks for
+  research and citation work.
+
+### Math, diagrams, icons, and other Markdown
+
+- The article renderer supports GitHub-Flavored Markdown and static KaTeX
+  math. Prefer `$...$` for inline math and `$$...$$` for display math. Existing
+  Obsidian-style `\(...\)` and `\[...\]` delimiters are also supported; keep
+  those delimiters in the source instead of rewriting them automatically.
+- Treat formulas as data. Check that delimiters and LaTeX syntax render, but do
+  not change the mathematical expression's meaning without explicit approval.
+  Math-like text inside fenced code blocks must remain code.
+- Keep structural diagrams as Mermaid source in fenced `mermaid` blocks. Add
+  `accTitle` and `accDescr`, use `snake_case` node IDs, concise labels, and no
+  `%%{init}` or inline `style` directives. Article pages enhance valid Mermaid
+  blocks into themed SVG diagrams in the browser; the Markdown source remains
+  canonical, and a syntax error leaves the source block visible.
+- Emoji are text accents, not an icon system. Use them sparingly—never in the
+  H1, and at most one meaningful emoji at the start of an H2 or Mermaid node.
+  Do not introduce an icon library or hand-written SVG for an article.
+- Use fenced code blocks with a language identifier, such as a Python or text
+  fence. Images should use Markdown syntax with descriptive alt text and live
+  under the site's public asset path. Do not invent image-layout classes until
+  the renderer defines them.
+
+## Troubleshooting and maintenance records
+
+- Keep confirmed, reusable implementation lessons and rendering, build, or
+  workflow incidents under `docs/troubleshooting/`.
+- Use one dated Markdown file per issue:
+  `YYYY-MM-DD-short-slug.md`. Record the symptom, affected scope, root cause,
+  final fix, validation, and any useful failed approach or follow-up.
+- Add or update a record when an agent resolves a non-obvious bug,
+  compatibility issue, or maintenance trap. Do not create records for trivial
+  typos or transient tool failures with no reusable lesson.
+- Keep Markdown, Mermaid, formulas, and other source files canonical. A static
+  image may be used as a deliberate fallback, but the record must explain the
+  tradeoff and preserve the source whenever practical.
+- Mention the relevant troubleshooting record in the handoff when it changes
+  future authoring or maintenance behavior.
 
 ## Git safety and branch policy
 
