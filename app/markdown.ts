@@ -12,6 +12,49 @@ import {
   type MarkdownRoot,
 } from "./article-outline.ts";
 
+type HtmlNode = {
+  type: string;
+  tagName?: string;
+  properties?: Record<string, unknown>;
+  children?: HtmlNode[];
+};
+
+function collectHeadingLabelHtml(root: HtmlNode): Map<string, string> {
+  const labels = new Map<string, string>();
+
+  function visit(node: HtmlNode) {
+    if (
+      node.type === "element" &&
+      /^(h2|h3|h4)$/.test(node.tagName ?? "")
+    ) {
+      const id = node.properties?.id;
+      if (typeof id === "string") {
+        const fragment = {
+          type: "root",
+          children: node.children ?? [],
+        } as never;
+        labels.set(id, String(markdownProcessor.stringify(fragment)));
+      }
+    }
+
+    for (const child of node.children ?? []) visit(child);
+  }
+
+  visit(root);
+  return labels;
+}
+
+function addHeadingLabelHtml(
+  items: ArticleTocItem[],
+  labels: Map<string, string>,
+): ArticleTocItem[] {
+  return items.map((item) => ({
+    ...item,
+    labelHtml: labels.get(item.id) ?? item.labelHtml,
+    children: addHeadingLabelHtml(item.children, labels),
+  }));
+}
+
 const markdownProcessor = unified()
   .use(remarkParse)
   .use(remarkGfm)
@@ -65,9 +108,10 @@ export async function renderMarkdown(
   ) as MarkdownRoot;
   const toc = annotateArticleHeadings(tree, tocConfig);
   const transformedTree = await markdownProcessor.run(tree);
+  const labels = collectHeadingLabelHtml(transformedTree as HtmlNode);
 
   return {
     html: String(markdownProcessor.stringify(transformedTree)),
-    toc,
+    toc: addHeadingLabelHtml(toc, labels),
   };
 }

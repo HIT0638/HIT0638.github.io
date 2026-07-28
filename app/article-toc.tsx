@@ -141,7 +141,11 @@ export default function ArticleToc({ items }: ArticleTocProps) {
             aria-current={activeId === item.id ? "location" : undefined}
             onClick={(event) => handleAnchorClick(event, item.id)}
           >
-            {item.text}
+            {item.labelHtml ? (
+              <span dangerouslySetInnerHTML={{ __html: item.labelHtml }} />
+            ) : (
+              item.text
+            )}
           </a>
           {hasChildren ? (
             <button
@@ -207,7 +211,13 @@ export default function ArticleToc({ items }: ArticleTocProps) {
                     }
                     onClick={(event) => handleAnchorClick(event, item.id)}
                   >
-                    {item.text}
+                    {item.labelHtml ? (
+                      <span
+                        dangerouslySetInnerHTML={{ __html: item.labelHtml }}
+                      />
+                    ) : (
+                      item.text
+                    )}
                   </a>
                   {hasChildren ? (
                     <button

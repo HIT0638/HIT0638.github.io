@@ -8,6 +8,7 @@ export type ArticleTocConfig = {
 export type ArticleTocItem = {
   id: string;
   text: string;
+  labelHtml?: string;
   headingDepth: 2 | 3 | 4;
   level: 1 | 2 | 3;
   children: ArticleTocItem[];

@@ -204,6 +204,18 @@ test("keeps math and Mermaid source compatible when TOC is disabled", async () =
   assert.match(rendered.html, /flowchart TD/);
 });
 
+test("renders inline math inside TOC labels", async () => {
+  const rendered = await renderMarkdown(
+    "## Probability $\\omega$",
+    parseArticleTocConfig({}),
+  );
+
+  assert.equal(rendered.toc.length, 1);
+  assert.match(rendered.toc[0].labelHtml ?? "", /class="katex"/);
+  assert.match(rendered.toc[0].labelHtml ?? "", /class="katex-html"/);
+  assert.match(rendered.toc[0].labelHtml ?? "", />ω<\/span>/);
+});
+
 test("handles sparse heading structures without mutating the Markdown source", async () => {
   const source = [
     "A paragraph before any headings.",
