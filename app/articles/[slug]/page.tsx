@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { articles } from "../../articles";
+import ArticleToc from "../../article-toc";
 import MermaidRenderer from "../../mermaid-renderer";
 import { renderMarkdown } from "../../markdown";
 
@@ -47,9 +48,11 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     );
   }
 
-  const articleHtml = await renderMarkdown(
+  const renderedArticle = await renderMarkdown(
     removeRenderedTitle(article.body, article.title),
+    article.toc,
   );
+  const toc = article.toc.enabled ? renderedArticle.toc : [];
 
   return (
     <main className="article-page-shell">
@@ -60,14 +63,21 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         <time dateTime={article.date}>{article.date.replaceAll("-", ".")}</time>
       </header>
 
-      <article className="article-page-content">
-        <h1>{article.title}</h1>
-        <div
-          className="article-body"
-          dangerouslySetInnerHTML={{ __html: articleHtml }}
-        />
-        <MermaidRenderer />
-      </article>
+      <div
+        className={`article-page-layout${
+          toc.length === 0 ? " article-page-layout-no-toc" : ""
+        }`}
+      >
+        <ArticleToc items={toc} />
+        <article className="article-page-content">
+          <h1>{article.title}</h1>
+          <div
+            className="article-body"
+            dangerouslySetInnerHTML={{ __html: renderedArticle.html }}
+          />
+          <MermaidRenderer />
+        </article>
+      </div>
     </main>
   );
 }
