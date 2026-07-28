@@ -9,6 +9,7 @@ import {
   type ArticleTocItem,
   type MarkdownRoot,
 } from "../app/article-outline.ts";
+import { renderMarkdown } from "../app/markdown.ts";
 
 const parseMarkdown = (source: string): MarkdownRoot =>
   unified().use(remarkParse).parse(source) as MarkdownRoot;
@@ -137,4 +138,68 @@ test("front matter accepts only exact false for disabling and only 2 for compact
   assert.equal(parseArticleTocConfig({ toc: "0" }).enabled, true);
   assert.equal(parseArticleTocConfig({ tocDepth: "2" }).depth, 2);
   assert.equal(parseArticleTocConfig({ tocDepth: "4" }).depth, 3);
+});
+
+test("renders matching heading IDs and returns a nested TOC", async () => {
+  const rendered = await renderMarkdown(
+    [
+      "# Ignored page title",
+      "",
+      "## First section",
+      "",
+      "### A topic",
+      "",
+      "#### A detail",
+      "",
+      "## First section",
+    ].join("\n"),
+    parseArticleTocConfig({}),
+  );
+
+  assert.match(rendered.html, /<h2 id="first-section">First section<\/h2>/);
+  assert.match(rendered.html, /<h3 id="a-topic">A topic<\/h3>/);
+  assert.match(rendered.html, /<h4 id="a-detail">A detail<\/h4>/);
+  assert.match(
+    rendered.html,
+    /<h2 id="first-section-2">First section<\/h2>/,
+  );
+  assert.deepEqual(
+    rendered.toc.map((item) => [
+      item.id,
+      item.children.map((child) => [
+        child.id,
+        child.children.map((grandchild) => grandchild.id),
+      ]),
+    ]),
+    [
+      ["first-section", [["a-topic", ["a-detail"]]]],
+      ["first-section-2", []],
+    ],
+  );
+  assert.doesNotMatch(rendered.html, /<h1[^>]*id=/);
+});
+
+test("keeps math and Mermaid source compatible when TOC is disabled", async () => {
+  const rendered = await renderMarkdown(
+    [
+      "## Probability $\\omega$",
+      "",
+      "$$",
+      "P(X = k) = \\binom{n}{k}p^k(1-p)^{n-k}",
+      "$$",
+      "",
+      "```mermaid",
+      "flowchart TD",
+      "    start_node[Start] --> end_node[End]",
+      "```",
+    ].join("\n"),
+    parseArticleTocConfig({ toc: "false" }),
+  );
+
+  assert.deepEqual(rendered.toc, []);
+  assert.match(rendered.html, /<h2 id="probability-omega">/);
+  assert.match(rendered.html, /class="katex"/);
+  assert.match(rendered.html, /class="katex-display"/);
+  assert.match(rendered.html, /<code class="language-mermaid">/);
+  assert.match(rendered.html, /flowchart TD/);
 });

@@ -3,7 +3,7 @@
 import {
   parseArticleTocConfig,
   type ArticleTocConfig,
-} from "./article-outline";
+} from "./article-outline.ts";
 
 export type Article = {
   title: string;

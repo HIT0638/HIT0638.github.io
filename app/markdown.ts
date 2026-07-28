@@ -5,6 +5,12 @@ import remarkMath from "remark-math";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { unified } from "unified";
+import {
+  annotateArticleHeadings,
+  type ArticleTocConfig,
+  type ArticleTocItem,
+  type MarkdownRoot,
+} from "./article-outline.ts";
 
 const markdownProcessor = unified()
   .use(remarkParse)
@@ -45,9 +51,23 @@ function normalizeMathDelimiters(source: string) {
     .join("\n");
 }
 
-export async function renderMarkdown(source: string) {
-  const file = await markdownProcessor.process(
+export type RenderedMarkdown = {
+  html: string;
+  toc: ArticleTocItem[];
+};
+
+export async function renderMarkdown(
+  source: string,
+  tocConfig: ArticleTocConfig,
+): Promise<RenderedMarkdown> {
+  const tree = markdownProcessor.parse(
     normalizeMathDelimiters(source),
-  );
-  return String(file);
+  ) as MarkdownRoot;
+  const toc = annotateArticleHeadings(tree, tocConfig);
+  const transformedTree = await markdownProcessor.run(tree);
+
+  return {
+    html: String(markdownProcessor.stringify(transformedTree)),
+    toc,
+  };
 }
