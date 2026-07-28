@@ -1,11 +1,17 @@
 /// <reference types="vite/client" />
 
+import {
+  parseArticleTocConfig,
+  type ArticleTocConfig,
+} from "./article-outline";
+
 export type Article = {
   title: string;
   date: string;
   summary?: string;
   slug: string;
   body: string;
+  toc: ArticleTocConfig;
 };
 
 const rawNotes = import.meta.glob("../content/notes/*.md", {
@@ -55,6 +61,7 @@ function parseArticle(path: string, source: string): Article | null {
     summary: frontMatter.summary,
     slug: fileName.replace(/\.md$/, ""),
     body: source.slice(frontMatterMatch[0].length).trim(),
+    toc: parseArticleTocConfig(frontMatter),
   };
 }
 
