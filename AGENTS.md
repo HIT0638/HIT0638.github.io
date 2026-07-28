@@ -20,6 +20,7 @@ support them.
   date: 2026-07-27
   summary: One sentence that helps the archive scan well.
   draft: false
+  # Optional: tocDepth: 2 for H2/H3 only; toc: false to hide the TOC.
   ---
   ```
 
@@ -50,6 +51,12 @@ support them.
   duplicate when rendering. Do not add a second, different H1.
 - Use H2 for major sections, H3 for topics inside them, and H4 only when a
   topic genuinely needs another level. Do not skip heading levels.
+- Article pages exclude H1 from the TOC. By default, the TOC includes H2, H3,
+  and H4 (`tocDepth: 3`), with H2 as the first level. Use `tocDepth: 2` for a
+  compact H2/H3 TOC, or `toc: false` when an article should have no TOC.
+- Treat headings as semantic structure, not decorative styling. Do not promote
+  a sentence to H2/H3 solely to change its appearance; it will become a
+  navigable TOC entry and receive an anchor ID.
 - Keep paragraphs readable and use lists for enumerations. Preserve the
   author's uncertainty, terminology, numbers, variables, formulas, code, and
   diagram source unless a content change was explicitly requested.

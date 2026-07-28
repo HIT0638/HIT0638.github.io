@@ -203,3 +203,40 @@ test("keeps math and Mermaid source compatible when TOC is disabled", async () =
   assert.match(rendered.html, /<code class="language-mermaid">/);
   assert.match(rendered.html, /flowchart TD/);
 });
+
+test("handles sparse heading structures without mutating the Markdown source", async () => {
+  const source = [
+    "A paragraph before any headings.",
+    "",
+    "### Topic without a parent",
+    "",
+    "#### Detail without a parent",
+    "",
+    "## A flat section",
+    "",
+    "```md",
+    "## Heading inside code",
+    "```",
+  ].join("\n");
+  const originalSource = source;
+
+  const rendered = await renderMarkdown(source, parseArticleTocConfig({}));
+
+  assert.equal(source, originalSource);
+  assert.deepEqual(
+    rendered.toc.map((item) => [
+      item.text,
+      item.children.map((child) => child.text),
+    ]),
+    [
+      ["Topic without a parent", ["Detail without a parent"]],
+      ["A flat section", []],
+    ],
+  );
+
+  const noHeading = await renderMarkdown(
+    "Only a paragraph, with no structural headings.",
+    parseArticleTocConfig({}),
+  );
+  assert.deepEqual(noHeading.toc, []);
+});

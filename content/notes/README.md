@@ -33,6 +33,30 @@ Keep the article's claims, numbers, formulas, code, and uncertainty intact
 when asking an agent to format or polish it. Ask explicitly if you want the
 agent to fact-check, add citations, change the argument, or reorganize sections.
 
+## Article table of contents
+
+The article page builds a left-side, collapsible TOC from semantic headings;
+the Markdown source remains the source of truth. H1 is never included. The
+default depth is H2/H3/H4, with only one H2 group open at a time. H4 entries
+appear inside their H3 group when that group is expanded.
+
+Use optional front matter to adjust it:
+
+```yaml
+---
+title: A long article
+date: 2026-07-28
+summary: A one-sentence archive summary.
+draft: false
+tocDepth: 2
+---
+```
+
+`tocDepth: 2` includes H2 and H3 only. The default `tocDepth: 3` includes
+H2-H4. Set `toc: false` to disable the TOC for an article. Keep headings
+semantic: text that is only a visual label should remain a paragraph or use
+ordinary emphasis instead of becoming a heading.
+
 ## Math
 
 Prefer standard Markdown math delimiters:
