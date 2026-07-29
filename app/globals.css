@@ -679,7 +679,7 @@ a:focus-visible {
 }
 
 .article-page-shell {
-  width: min(1160px, calc(100% - 64px));
+  width: calc(100% - 48px);
   min-height: 100vh;
   margin: 0 auto;
   padding: 34px 0 90px;
@@ -708,10 +708,8 @@ a:focus-visible {
 }
 
 .article-page-layout {
-  display: grid;
-  grid-template-columns: minmax(240px, 280px) minmax(0, 820px);
-  gap: 60px;
-  align-items: start;
+  position: relative;
+  display: block;
 }
 
 .article-page-layout-no-toc {
@@ -719,15 +717,14 @@ a:focus-visible {
 }
 
 .article-page-layout:not(.article-page-layout-no-toc) > .article-page-content {
-  grid-column: 2;
   min-width: 0;
 }
 
 .article-toc {
   position: fixed;
-  left: max(24px, calc((100vw - 1160px) / 2));
+  left: 24px;
   top: 50%;
-  width: 280px;
+  width: 250px;
   max-height: calc(100vh - 96px);
   overflow-y: auto;
   color: var(--muted);
@@ -842,6 +839,8 @@ a:focus-visible {
 }
 
 .article-page-content {
+  width: min(820px, 100%);
+  margin: 0 auto;
   padding: 68px 0 0;
   color: #111;
 }
@@ -1008,11 +1007,7 @@ a:focus-visible {
   font-size: 0.9em;
 }
 
-@media (max-width: 1050px) {
-  .article-page-layout {
-    display: block;
-  }
-
+@media (max-width: 1360px) {
   .article-toc {
     position: static;
     left: auto;
@@ -1223,7 +1218,7 @@ a:focus-visible {
   }
 
   .article-page-shell {
-    width: min(100% - 40px, 600px);
+    width: calc(100% - 40px);
     padding-top: 24px;
   }
 
