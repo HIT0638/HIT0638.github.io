@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 import remarkParse from "remark-parse";
 import { unified } from "unified";
@@ -214,6 +215,22 @@ test("renders inline math inside TOC labels", async () => {
   assert.match(rendered.toc[0].labelHtml ?? "", /class="katex"/);
   assert.match(rendered.toc[0].labelHtml ?? "", /class="katex-html"/);
   assert.match(rendered.toc[0].labelHtml ?? "", />ω<\/span>/);
+});
+
+test("keeps rendered article tables visually identifiable", async () => {
+  const styles = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    styles,
+    /\.article-body table\s*\{[\s\S]*?border-collapse:\s*collapse;/,
+  );
+  assert.match(
+    styles,
+    /\.article-body th,\s*\.article-body td\s*\{[\s\S]*?border:\s*1px solid var\(--line\);/,
+  );
 });
 
 test("handles sparse heading structures without mutating the Markdown source", async () => {

@@ -864,6 +864,33 @@ a:focus-visible {
   line-height: 1.7;
 }
 
+.article-body table {
+  width: 100%;
+  margin: 24px 0;
+  border: 1px solid var(--line);
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.article-body th,
+.article-body td {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-body th {
+  background: var(--paper-deep);
+  color: #111;
+  font-weight: 600;
+}
+
+.article-body td {
+  overflow-wrap: anywhere;
+}
+
 .article-body p {
   margin: 0 0 17px;
 }
