@@ -81,6 +81,23 @@ export default function ArticleToc({ items }: ArticleTocProps) {
     return () => observer.disconnect();
   }, [headingToRoot, observedIds]);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileOpen(false);
+    };
+    const previousOverflow = document.body.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [mobileOpen]);
+
   if (items.length === 0) return null;
 
   function handleRootToggle(id: string) {
@@ -179,6 +196,7 @@ export default function ArticleToc({ items }: ArticleTocProps) {
       <button
         className="article-toc-mobile-trigger"
         type="button"
+        aria-controls="article-toc-content"
         aria-expanded={mobileOpen}
         onClick={() => setMobileOpen((current) => !current)}
       >
@@ -187,7 +205,21 @@ export default function ArticleToc({ items }: ArticleTocProps) {
         <span aria-hidden="true">{mobileOpen ? "−" : "+"}</span>
       </button>
 
-      <div className={`article-toc-content${mobileOpen ? " is-open" : ""}`}>
+      <button
+        className={`article-toc-mobile-backdrop${
+          mobileOpen ? " is-open" : ""
+        }`}
+        type="button"
+        aria-hidden={!mobileOpen}
+        aria-label="关闭文章目录"
+        tabIndex={mobileOpen ? 0 : -1}
+        onClick={() => setMobileOpen(false)}
+      />
+
+      <div
+        className={`article-toc-content${mobileOpen ? " is-open" : ""}`}
+        id="article-toc-content"
+      >
         <ul className="article-toc-list article-toc-list-root">
           {items.map((item) => {
             const hasChildren = item.children.length > 0;
