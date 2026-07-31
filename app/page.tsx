@@ -10,7 +10,10 @@ export default function Home() {
           </span>
           <span className="brand-name">Lero β</span>
         </a>
-        <span className="header-context">articles / archive</span>
+        <nav className="site-nav header-context" aria-label="站点导航">
+          <a href="#articles">articles / archive</a>
+          <a href="/prototype/study-collections">专题 / collections</a>
+        </nav>
       </header>
 
       <div id="top" className="hero-section">
