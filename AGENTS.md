@@ -151,6 +151,27 @@ support them.
 - Do not add empty navigation items or speculative modules. Add a section only
   when there is content and a clear reading reason for it.
 
+### Study collections
+
+- The first migrated collections are `flink-interview` and `dw-interview`.
+  Their canonical Markdown and code sources live under
+  `content/collections/<slug>/docs/` and `content/collections/<slug>/code/`.
+  Keep those source files unchanged when adapting the presentation; do not
+  copy generated MkDocs `site/` output, caches, or local environment files.
+- Collection metadata and the explicit module/reference navigation map live
+  in `app/prototype/study-collections/data.ts`. When adding a source page,
+  update that map and keep its route path stable.
+- Collection pages support GFM tables/lists, KaTeX math, Mermaid code fences,
+  MkDocs `???`/`!!!` admonitions, raw `<details>` blocks, and `--8<--` code
+  snippets. Preserve the original Markdown/code as the source of truth; put
+  compatibility logic in the renderer rather than rewriting migrated content.
+- Relative links inside a collection must resolve to the collection's local
+  reading or code route. Validate at least one module with a Mermaid diagram,
+  one page with an admonition/table, and one linked code file after changes.
+- If a migrated MkDocs feature renders incorrectly, record the symptom,
+  cause, workaround, and validation under `docs/troubleshooting/` before
+  changing the source material.
+
 ## Handoff checklist
 
 1. Confirm the branch is not `main` for feature, design, fix, or tooling work.
