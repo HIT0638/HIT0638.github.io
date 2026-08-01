@@ -174,11 +174,19 @@ support them.
   The order of `modules` controls the card preview; the first three are shown
   on the shelf card.
 - For a new collection or a multi-file content migration, use a temporary
-  `feat/content-<topic>` branch for the source files only. Do not edit `app/`,
-  CSS, tests, dependencies, or renderer code on that content branch. Merge
-  the reviewed content into `main`, then make the small metadata registration
-  on a separate `feat/collection-<slug>` branch based on the updated `main`.
-  Ordinary single-note writing may still follow the lightweight `main` flow.
+  `feat/content-<topic>` branch based on the latest `main`. The same branch
+  may contain the collection's source files under
+  `content/collections/<slug>/` and the directly corresponding topic-page
+  changes under `app/prototype/study-collections/`, including its registry
+  entry in `data.ts`. Keep the branch scoped to this collection; do not mix
+  unrelated site work into it.
+- Keep the content and topic-page changes as separate focused commits when
+  practical, for example `content: add <topic> sources` followed by
+  `feat: connect <topic> collection`. Before merging, review
+  `git diff --name-only main...HEAD` and confirm that only the collection
+  content, its topic-page code, and any relevant troubleshooting record have
+  changed. Ordinary single-note writing may still follow the lightweight
+  `main` flow.
 - After registration, run `npm run build` and inspect both
   `/prototype/study-collections?variant=shelf` and
   `/prototype/study-collections/<slug>`. Validate at least one module, one
