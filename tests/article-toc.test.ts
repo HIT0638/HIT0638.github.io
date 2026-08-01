@@ -205,6 +205,26 @@ test("keeps math and Mermaid source compatible when TOC is disabled", async () =
   assert.match(rendered.html, /flowchart TD/);
 });
 
+test("keeps Markdown blocks after expanded MkDocs admonitions parseable", async () => {
+  const rendered = await renderMarkdown(
+    [
+      '??? tip "A reminder"',
+      "    Keep this close to the next section.",
+      "---",
+      "",
+      "## Next section",
+    ].join("\n"),
+    parseArticleTocConfig({}),
+    { expandMkdocsAdmonitions: true },
+  );
+
+  assert.match(
+    rendered.html,
+    /<\/details>\n<hr>\n<h2 id="next-section">Next section<\/h2>/,
+  );
+  assert.doesNotMatch(rendered.html, /\n---\n/);
+});
+
 test("renders inline math inside TOC labels", async () => {
   const rendered = await renderMarkdown(
     "## Probability $\\omega$",

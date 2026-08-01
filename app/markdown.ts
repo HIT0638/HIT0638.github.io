@@ -197,6 +197,11 @@ async function expandMkdocsAdmonitions(source: string) {
       );
     }
 
+    // Keep the next Markdown block separate from the generated raw HTML.
+    // Without this blank line, a following thematic break (`---`) is
+    // consumed as part of the HTML block instead of becoming an <hr>.
+    output.push("");
+
     index = nextIndex - 1;
   }
 
