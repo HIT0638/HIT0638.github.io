@@ -59,8 +59,8 @@ export default function StudyCollectionsPrototype() {
           <p className="study-prototype-label">STUDY COLLECTIONS</p>
           <h1 id="study-prototype-title">专题</h1>
           <p>
-            把原有的 MkDocs 学习资料，放进 Lero β 的文本系统里。这里先收录两套
-            面试专题，保留原始 Markdown 与代码的阅读路径。
+            这里收录我整理的技术专题。把零散的问题、概念和代码，放回一条可以继续
+            阅读的路径里。
           </p>
         </div>
       </section>
