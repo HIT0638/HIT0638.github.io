@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#16263F">
+  <title>Pairtree｜组会汇报</title>
+  <style>
+    :root {
+      --navy: #16263F;
+      --teal: #0F7E79;
+      --orange: #D97925;
+      --paper: #FAF8F3;
+      --ink-soft: #77809A;
+      --line: rgba(255, 255, 255, .14);
+      --shadow: 0 24px 70px rgba(5, 17, 34, .28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      background: var(--navy);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: white;
+      background:
+        radial-gradient(circle at 16% 0%, rgba(15, 126, 121, .17), transparent 30rem),
+        radial-gradient(circle at 88% 100%, rgba(217, 121, 37, .14), transparent 28rem),
+        var(--navy);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+    }
+
+    button {
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .slide-shell {
+      min-height: 100vh;
+      padding: 76px 56px 88px;
+      display: grid;
+      place-items: center;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      position: relative;
+    }
+
+    .slide-viewport {
+      width: min(100%, calc((100vh - 164px) * 16 / 9));
+      max-height: calc(100vh - 164px);
+      aspect-ratio: 16 / 9;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      box-shadow: var(--shadow);
+      background: #ECEAE4;
+    }
+
+    .slide-frame {
+      --scale: 1;
+      position: absolute;
+      width: 1280px;
+      height: 720px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(var(--scale));
+      transform-origin: center;
+      border: 0;
+      display: block;
+      background: #ECEAE4;
+      pointer-events: none;
+    }
+
+    .hud {
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .hud > * { pointer-events: auto; }
+    .hud-top { top: 0; }
+    .hud-bottom { bottom: 0; }
+
+    .brand,
+    .status {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .68);
+    }
+
+    .brand b { color: white; font-weight: 700; }
+
+    .hud-actions,
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .control {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(8, 21, 39, .46);
+      backdrop-filter: blur(14px);
+      padding: 8px 13px;
+      color: rgba(255, 255, 255, .82);
+      font-size: 12px;
+      transition: background .2s ease, border-color .2s ease, color .2s ease;
+    }
+
+    .control:hover,
+    .control:focus-visible {
+      outline: none;
+      color: white;
+      background: rgba(15, 126, 121, .7);
+      border-color: rgba(255, 255, 255, .32);
+    }
+
+    .arrow {
+      width: 40px;
+      height: 34px;
+      padding: 0;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .progress {
+      position: absolute;
+      left: 50%;
+      bottom: 25px;
+      transform: translateX(-50%);
+      width: min(260px, 35vw);
+      height: 3px;
+      border-radius: 3px;
+      background: rgba(255, 255, 255, .16);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 5.26%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--teal), var(--orange));
+      transition: width .35s ease;
+    }
+
+    .overview,
+    .help {
+      position: fixed;
+      z-index: 30;
+      inset: 0;
+      padding: 80px 6vw;
+      background: rgba(9, 21, 38, .96);
+      overflow: auto;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, visibility .2s ease;
+    }
+
+    .overview.is-open,
+    .help.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .panel-head {
+      max-width: 1180px;
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .panel-head h1 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 42px);
+      letter-spacing: -.03em;
+    }
+
+    .panel-head p {
+      margin: 8px 0 0;
+      color: rgba(255, 255, 255, .55);
+      font-size: 14px;
+    }
+
+    .thumb-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+    }
+
+    .thumb {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 8px;
+      background: #ECEAE4;
+      color: var(--navy);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .thumb:hover,
+    .thumb:focus-visible {
+      outline: none;
+      transform: translateY(-3px);
+      border-color: var(--teal);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, .2);
+    }
+
+    .thumb img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      opacity: .96;
+      background: var(--paper);
+    }
+
+    .thumb-label {
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      background: white;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .thumb-number {
+      flex: 0 0 auto;
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .help-card {
+      max-width: 600px;
+      margin: 10vh auto;
+      padding: 34px;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .help-card h1 { margin: 0 0 22px; font-size: 28px; }
+    .help-list { margin: 0; padding: 0; list-style: none; }
+    .help-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      color: rgba(255, 255, 255, .68);
+      font-size: 14px;
+    }
+    .help-list kbd {
+      color: white;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .slide-shell { padding: 64px 16px 76px; }
+      .slide-viewport {
+        width: min(100%, calc((100vh - 140px) * 16 / 9));
+        max-height: calc(100vh - 140px);
+      }
+      .hud { padding: 14px 16px; }
+      .brand { font-size: 10px; }
+      .hud-actions .control:not(.keep) { display: none; }
+      .progress { bottom: 19px; }
+      .status { font-size: 10px; }
+      .thumb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .overview, .help { padding: 72px 16px; }
+      .panel-head { align-items: start; }
+      .panel-head h1 { font-size: 26px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hud hud-top" aria-label="演示控制栏">
+    <div class="brand"><b>Pairtree</b> · 组会汇报</div>
+    <div class="hud-actions">
+      <button class="control" type="button" id="overview-button">目录 <span aria-hidden="true">M</span></button>
+      <button class="control" type="button" id="help-button">操作说明 <span aria-hidden="true">?</span></button>
+      <button class="control" type="button" id="fullscreen-button">全屏 <span aria-hidden="true">F</span></button>
+    </div>
+  </div>
+
+  <main id="deck" aria-label="Pairtree 汇报幻灯片"></main>
+
+  <div class="hud hud-bottom" aria-label="翻页控制栏">
+    <div class="status" id="slide-status">01 / 19</div>
+    <div class="progress" aria-hidden="true"><div class="progress-fill" id="progress-fill"></div></div>
+    <div class="nav-actions">
+      <button class="control arrow" type="button" id="previous-button" aria-label="上一页">‹</button>
+      <button class="control arrow" type="button" id="next-button" aria-label="下一页">›</button>
+    </div>
+  </div>
+
+  <section class="overview" id="overview" aria-hidden="true" aria-label="幻灯片目录">
+    <div class="panel-head">
+      <div>
+        <h1>幻灯片目录</h1>
+        <p>选择一页开始汇报，或按 Esc 返回当前页面。</p>
+      </div>
+      <button class="control" type="button" data-close-panel="overview">关闭</button>
+    </div>
+    <div class="thumb-grid" id="thumb-grid"></div>
+  </section>
+
+  <section class="help" id="help" aria-hidden="true" aria-label="操作说明">
+    <div class="help-card">
+      <div class="panel-head" style="margin:0 0 18px;">
+        <div><h1>汇报操作</h1><p>支持键盘、鼠标和触控操作。</p></div>
+        <button class="control" type="button" data-close-panel="help">关闭</button>
+      </div>
+      <ul class="help-list">
+        <li><span>上一页 / 下一页</span><kbd>↑ ↓　← →　PageUp PageDown</kbd></li>
+        <li><span>下一页 / 上一页</span><kbd>Space / Shift + Space</kbd></li>
+        <li><span>首页 / 末页</span><kbd>Home / End</kbd></li>
+        <li><span>打开目录</span><kbd>M</kbd></li>
+        <li><span>切换全屏</span><kbd>F</kbd></li>
+        <li><span>关闭面板</span><kbd>Esc</kbd></li>
+      </ul>
+    </div>
+  </section>
+
+  <noscript>请启用 JavaScript，以使用连续翻页和全屏汇报功能。</noscript>
+
+  <script>
+    const slides = [
+      'Pairtree：从突变关系到亚克隆树',
+      '研究背景与问题',
+      'Pairtree 的核心贡献',
+      'Pairtree 总体流程',
+      '观测模型',
+      'ω 的来源与局限',
+      'φ、η 与亚克隆频率',
+      'linfreq：先把突变聚成 cluster',
+      'linfreq：用边际似然评价聚类',
+      'Supervariant：压缩 cluster',
+      'Pairs Tensor：三种两两关系',
+      'Pairs Tensor：从 reads 到关系后验',
+      'Pairs Tensor 在算法中的位置',
+      'TreeMCMC：提出新的树结构',
+      'TreeMCMC：拟合频率并接受或拒绝',
+      '模拟数据评测',
+      '真实数据与方法边界',
+      '对三代数据亚克隆重建的启发',
+      '总结与讨论'
+    ];
+
+    const thumbnailAssets = [
+      'A01_title_tree.svg',
+      'A02_bulk_ambiguity.svg',
+      'A03_architecture_overview.svg',
+      'A04_full_dataflow.svg',
+      'A05_observation_model.svg',
+      'A06_omega_copy_number.svg',
+      'A07_phi_eta_tree.svg',
+      'A08_linfreq_clustering.svg',
+      'A09_linfreq_marginal_likelihood.svg',
+      'A10_supervariant_compression.svg',
+      'A11_pairwise_relation_geometry.svg',
+      'A12_pairs_tensor_posterior.svg',
+      'A13_tensor_to_tree_role.svg',
+      'A14_treemcmc_proposal.svg',
+      'A15_treemcmc_scoring.svg',
+      'A16_simulation_trend.svg',
+      'A17_limitations.svg',
+      'A18_short_long_read_transfer.svg',
+      'A19_take_home.svg'
+    ];
+
+    const deck = document.getElementById('deck');
+    const status = document.getElementById('slide-status');
+    const progress = document.getElementById('progress-fill');
+    const overview = document.getElementById('overview');
+    const help = document.getElementById('help');
+    const thumbGrid = document.getElementById('thumb-grid');
+    let current = 0;
+    let wheelLocked = false;
+
+    function pad(number) {
+      return String(number).padStart(2, '0');
+    }
+
+    slides.forEach((title, index) => {
+      const number = index + 1;
+      const section = document.createElement('section');
+      section.className = 'slide-shell';
+      section.id = `slide-${number}`;
+      section.setAttribute('aria-label', `第 ${number} 页：${title}`);
+      section.innerHTML = `
+        <div class="slide-viewport">
+          <iframe class="slide-frame" src="slide-${pad(number)}.html" title="第 ${number} 页：${title}" loading="${number < 3 ? 'eager' : 'lazy'}"></iframe>
+        </div>`;
+      deck.appendChild(section);
+
+      const thumb = document.createElement('button');
+      thumb.className = 'thumb';
+      thumb.type = 'button';
+      thumb.innerHTML = `
+        <img src="${thumbnailAssets[index]}" alt="" loading="lazy">
+        <span class="thumb-label"><span class="thumb-number">${pad(number)}</span><span>${title}</span></span>`;
+      thumb.addEventListener('click', () => {
+        goTo(index);
+        closePanel(overview);
+      });
+      thumbGrid.appendChild(thumb);
+    });
+
+    function fitFrames() {
+      document.querySelectorAll('.slide-viewport').forEach((viewport) => {
+        const scale = Math.min(viewport.clientWidth / 1280, viewport.clientHeight / 720);
+        viewport.querySelector('.slide-frame').style.setProperty('--scale', scale);
+      });
+    }
+
+    function updateStatus(index) {
+      current = Math.max(0, Math.min(slides.length - 1, index));
+      status.textContent = `${pad(current + 1)} / ${slides.length}`;
+      progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+      history.replaceState(null, '', `#slide-${current + 1}`);
+    }
+
+    function goTo(index, behavior = 'smooth') {
+      const target = document.getElementById(`slide-${index + 1}`);
+      if (!target) return;
+      target.scrollIntoView({ behavior, block: 'start' });
+      updateStatus(index);
+    }
+
+    function step(direction) {
+      goTo(current + direction);
+    }
+
+    function openPanel(panel) {
+      panel.classList.add('is-open');
+      panel.setAttribute('aria-hidden', 'false');
+    }
+
+    function closePanel(panel) {
+      panel.classList.remove('is-open');
+      panel.setAttribute('aria-hidden', 'true');
+    }
+
+    function closePanels() {
+      closePanel(overview);
+      closePanel(help);
+    }
+
+    document.getElementById('previous-button').addEventListener('click', () => step(-1));
+    document.getElementById('next-button').addEventListener('click', () => step(1));
+    document.getElementById('overview-button').addEventListener('click', () => openPanel(overview));
+    document.getElementById('help-button').addEventListener('click', () => openPanel(help));
+
+    document.getElementById('fullscreen-button').addEventListener('click', async () => {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen?.();
+      } else {
+        await document.exitFullscreen?.();
+      }
+      setTimeout(fitFrames, 100);
+    });
+
+    document.querySelectorAll('[data-close-panel]').forEach((button) => {
+      button.addEventListener('click', () => closePanel(document.getElementById(button.dataset.closePanel)));
+    });
+
+    document.addEventListener('keydown', (event) => {
+      const key = event.key;
+      if (key === 'Escape') {
+        closePanels();
+        return;
+      }
+      if (key.toLowerCase() === 'm') {
+        overview.classList.contains('is-open') ? closePanel(overview) : openPanel(overview);
+        return;
+      }
+      if (key === '?') {
+        help.classList.contains('is-open') ? closePanel(help) : openPanel(help);
+        return;
+      }
+      if (key.toLowerCase() === 'f') {
+        document.getElementById('fullscreen-button').click();
+        return;
+      }
+      if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(key)) {
+        event.preventDefault();
+        closePanels();
+        step(-1);
+      } else if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(key)) {
+        event.preventDefault();
+        closePanels();
+        step(event.shiftKey || key === 'PageUp' ? -1 : 1);
+      } else if (key === 'Home') {
+        event.preventDefault();
+        closePanels();
+        goTo(0);
+      } else if (key === 'End') {
+        event.preventDefault();
+        closePanels();
+        goTo(slides.length - 1);
+      }
+    });
+
+    window.addEventListener('wheel', (event) => {
+      if (overview.classList.contains('is-open') || help.classList.contains('is-open') || wheelLocked) return;
+      if (Math.abs(event.deltaY) < 8) return;
+      event.preventDefault();
+      wheelLocked = true;
+      step(event.deltaY > 0 ? 1 : -1);
+      window.setTimeout(() => { wheelLocked = false; }, 520);
+    }, { passive: false });
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      const index = Number(visible.target.id.replace('slide-', '')) - 1;
+      if (index !== current) updateStatus(index);
+    }, { threshold: [0.55, 0.75] });
+
+    document.querySelectorAll('.slide-shell').forEach((slide) => observer.observe(slide));
+    window.addEventListener('resize', fitFrames);
+    window.addEventListener('hashchange', () => {
+      const match = location.hash.match(/^#slide-(\d+)$/);
+      if (match) goTo(Number(match[1]) - 1, 'auto');
+    });
+
+    fitFrames();
+    const initial = location.hash.match(/^#slide-(\d+)$/);
+    if (initial) {
+      goTo(Number(initial[1]) - 1, 'auto');
+    } else {
+      updateStatus(0);
+    }
+  </script>
+</body>
+</html>

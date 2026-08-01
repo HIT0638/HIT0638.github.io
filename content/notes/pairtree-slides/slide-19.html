@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 19 页｜总结与讨论</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1100px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .fig { position: absolute; left: 90px; right: 90px; top: 150px; text-align: center; }
+  .fig svg { width: 1000px; max-width: 100%; height: auto; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 2px; }
+  .discuss { position: absolute; left: 90px; right: 90px; bottom: 82px; background: #FFFFFF; border: 1px solid #E7E2D6; border-radius: 12px; padding: 14px 20px; }
+  .discuss .dt { font-size: 14px; font-weight: 700; color: #D97925; margin-bottom: 8px; }
+  .discuss .dq { font-size: 14.5px; color: #46536E; line-height: 1.75; }
+  .discuss .dq b { color: #16263F; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">总结与讨论</div>
+    <div class="takeaway">主要启发是<b>分层推断架构</b>；主要瓶颈是 bulk 混合下 ω/φ 的不确定性与模型假设</div>
+
+    <div class="fig">
+      <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="50" width="320" height="190" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <rect x="40" y="50" width="320" height="6" rx="3" fill="#0F7E79"/>
+        <text x="200" y="98" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">linfreq</text>
+        <text x="200" y="150" text-anchor="middle" font-size="14" fill="#46536E">把 mutation-level 信号</text>
+        <text x="200" y="174" text-anchor="middle" font-size="14" fill="#46536E">组织成共享 φ 的 clusters</text>
+        <line x1="362" y1="145" x2="394" y2="145" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="400,145 390,140 390,150" fill="#16263F"/>
+        <rect x="400" y="50" width="320" height="190" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <rect x="400" y="50" width="320" height="6" rx="3" fill="#16263F"/>
+        <text x="560" y="98" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">Pairs Tensor</text>
+        <text x="560" y="150" text-anchor="middle" font-size="14" fill="#46536E">把局部 read evidence</text>
+        <text x="560" y="174" text-anchor="middle" font-size="14" fill="#46536E">转化为两两关系后验</text>
+        <line x1="722" y1="145" x2="754" y2="145" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="760,145 750,140 750,150" fill="#16263F"/>
+        <rect x="760" y="50" width="320" height="190" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <rect x="760" y="50" width="320" height="6" rx="3" fill="#D97925"/>
+        <text x="920" y="98" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">TreeMCMC</text>
+        <text x="920" y="150" text-anchor="middle" font-size="14" fill="#46536E">在全局树约束下</text>
+        <text x="920" y="174" text-anchor="middle" font-size="14" fill="#46536E">搜索并评价候选结构</text>
+        <rect x="40" y="280" width="1020" height="80" rx="12" fill="#E3F1F0"/>
+        <text x="70" y="313" font-size="15" font-weight="700" fill="#0F7E79">对三代数据的下一步</text>
+        <text x="70" y="341" font-size="15" fill="#16263F">优先替换 observation layer，利用 molecule-level mutation relations；保留关系后验与全局树搜索</text>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+
+    <div class="discuss">
+      <div class="dt">讨论</div>
+      <div class="dq"><b>①</b> 长 reads 的直接共现信息能否替代或补充 VAF-based tensor？　　<b>②</b> 如何把 ω 的不确定性纳入联合推断？</div>
+    </div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>19 / 19</div></div>
+  </div>
+</body>
+</html>

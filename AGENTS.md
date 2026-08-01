@@ -51,9 +51,12 @@ support them.
   duplicate when rendering. Do not add a second, different H1.
 - Use H2 for major sections, H3 for topics inside them, and H4 only when a
   topic genuinely needs another level. Do not skip heading levels.
-- Article pages exclude H1 from the TOC. By default, the TOC includes H2, H3,
-  and H4 (`tocDepth: 3`), with H2 as the first level. Use `tocDepth: 2` for a
-  compact H2/H3 TOC, or `toc: false` when an article should have no TOC.
+- Article pages exclude H1 from the visible TOC. The standard article layout
+  shows H2 in the left column and only the H3 children of the active H2 in the
+  right column. `tocDepth: 3` keeps H4 in the generated heading tree for
+  anchors and scroll tracking, but H4 is not shown in these side columns; use
+  `tocDepth: 2` to omit H4 from that tree, or `toc: false` when an article
+  should have no TOC.
 - Treat headings as semantic structure, not decorative styling. Do not promote
   a sentence to H2/H3 solely to change its appearance; it will become a
   navigable TOC entry and receive an anchor ID.
@@ -202,6 +205,24 @@ support them.
 - If a migrated MkDocs feature renders incorrectly, record the symptom,
   cause, workaround, and validation under `docs/troubleshooting/` before
   changing the source material.
+
+#### Known collection-rendering traps
+
+- When `???`/`!!!` admonitions are converted to raw `details`/`aside` HTML,
+  the renderer must insert a blank line before the next Markdown block. A
+  standalone `---` immediately after an admonition must become `<hr>`; do not
+  fix this by inserting ad hoc blank lines into every migrated article.
+  See `docs/troubleshooting/2026-08-01-markdown-horizontal-rule-after-admonition.md`.
+- Mermaid rendering must rerun when a collection route changes. Do not rely on
+  a one-time `useEffect([])` scan: a client component can be reused while the
+  RSC article content changes. Validate both a direct page load and an in-site
+  transition such as L01 → L02, confirming that Mermaid source blocks become
+  SVGs and no `data-mermaid-error` blocks remain. See
+  `docs/troubleshooting/2026-08-01-mermaid-route-change.md`.
+- If a preview shows raw Mermaid source after a renderer change, first perform
+  a full page refresh and test a route transition before editing diagram
+  source. Keep Markdown Mermaid blocks canonical; do not replace them with
+  screenshots unless a deliberate static fallback is documented.
 
 ## Handoff checklist
 

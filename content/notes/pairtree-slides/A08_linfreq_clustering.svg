@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" width="1100" height="420">
+  <!-- A08_linfreq_clustering.svg · 第 8 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="1100" height="420" fill="#FAF8F3"/>
+
+  <text x="300" y="36" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="600" fill="#16263F">mutation × sample（点的大小 ≈ prevalence）</text>
+  <g text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#77809A">
+    <text x="160" y="64">s1</text><text x="280" y="64">s2</text><text x="400" y="64">s3</text><text x="520" y="64">s4</text>
+  </g>
+  <g text-anchor="end" font-family="ui-monospace, Menlo, monospace" font-size="12" fill="#77809A">
+    <text x="100" y="94">m1</text><text x="100" y="120">m2</text><text x="100" y="146">m3</text><text x="100" y="172">m4</text>
+    <text x="100" y="198">m5</text><text x="100" y="224">m6</text><text x="100" y="250">m7</text><text x="100" y="276">m8</text>
+    <text x="100" y="302">m9</text><text x="100" y="328">m10</text><text x="100" y="354">m11</text><text x="100" y="380">m12</text>
+  </g>
+
+  <!-- cluster 包络 -->
+  <rect x="130" y="78" width="440" height="102" rx="12" fill="none" stroke="#0F7E79" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <rect x="130" y="182" width="440" height="102" rx="12" fill="none" stroke="#D97925" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <rect x="130" y="286" width="440" height="102" rx="12" fill="none" stroke="#16263F" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="44" y="133" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0F7E79">c1</text>
+  <text x="44" y="237" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#D97925">c2</text>
+  <text x="44" y="341" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#16263F">c3</text>
+
+  <!-- 点阵：c1 高 prevalence（青绿大点） -->
+  <g fill="#0F7E79">
+    <circle cx="160" cy="90" r="9"/><circle cx="280" cy="90" r="8.5"/><circle cx="400" cy="90" r="9"/><circle cx="520" cy="90" r="9"/>
+    <circle cx="160" cy="116" r="8.5"/><circle cx="280" cy="116" r="9"/><circle cx="400" cy="116" r="8.5"/><circle cx="520" cy="116" r="9"/>
+    <circle cx="160" cy="142" r="9"/><circle cx="280" cy="142" r="9"/><circle cx="400" cy="142" r="9"/><circle cx="520" cy="142" r="8.5"/>
+    <circle cx="160" cy="168" r="9"/><circle cx="280" cy="168" r="8.5"/><circle cx="400" cy="168" r="9"/><circle cx="520" cy="168" r="9"/>
+  </g>
+  <!-- c2 中 prevalence（橙） -->
+  <g fill="#D97925">
+    <circle cx="160" cy="194" r="6.5"/><circle cx="280" cy="194" r="7"/><circle cx="400" cy="194" r="6"/><circle cx="520" cy="194" r="6.5"/>
+    <circle cx="160" cy="220" r="6"/><circle cx="280" cy="220" r="6.5"/><circle cx="400" cy="220" r="6.5"/><circle cx="520" cy="220" r="7"/>
+    <circle cx="160" cy="246" r="6.5"/><circle cx="280" cy="246" r="6"/><circle cx="400" cy="246" r="7"/><circle cx="520" cy="246" r="6.5"/>
+    <circle cx="160" cy="272" r="7"/><circle cx="280" cy="272" r="6.5"/><circle cx="400" cy="272" r="6.5"/><circle cx="520" cy="272" r="6"/>
+  </g>
+  <!-- c3 低 prevalence（海军蓝） -->
+  <g fill="#16263F">
+    <circle cx="160" cy="298" r="4"/><circle cx="280" cy="298" r="3.5"/><circle cx="400" cy="298" r="4"/><circle cx="520" cy="298" r="4"/>
+    <circle cx="160" cy="324" r="3.5"/><circle cx="280" cy="324" r="4"/><circle cx="400" cy="324" r="4"/><circle cx="520" cy="324" r="3.5"/>
+    <circle cx="160" cy="350" r="4"/><circle cx="280" cy="350" r="4"/><circle cx="400" cy="350" r="3.5"/><circle cx="520" cy="350" r="4"/>
+    <circle cx="160" cy="376" r="4"/><circle cx="280" cy="376" r="4"/><circle cx="400" cy="376" r="4"/><circle cx="520" cy="376" r="4"/>
+  </g>
+
+  <!-- 箭头 -->
+  <line x1="600" y1="230" x2="650" y2="230" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="656,230 642,223 642,237" fill="#16263F"/>
+
+  <!-- 右：cluster profile -->
+  <text x="880" y="36" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="600" fill="#16263F">cluster-level profile</text>
+  <text x="880" y="58" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12.5" fill="#77809A">每个 cluster 共享一个潜在 φ 向量</text>
+
+  <rect x="700" y="90" width="110" height="40" rx="8" fill="#E3F1F0"/>
+  <text x="755" y="115" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13.5" font-weight="600" fill="#0F7E79">cluster 1</text>
+  <circle cx="860" cy="110" r="9" fill="#0F7E79"/><circle cx="930" cy="110" r="9" fill="#0F7E79"/><circle cx="1000" cy="110" r="9" fill="#0F7E79"/><circle cx="1070" cy="110" r="9" fill="#0F7E79"/>
+
+  <rect x="700" y="210" width="110" height="40" rx="8" fill="#FAECE0"/>
+  <text x="755" y="235" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13.5" font-weight="600" fill="#D97925">cluster 2</text>
+  <circle cx="860" cy="230" r="6.5" fill="#D97925"/><circle cx="930" cy="230" r="6.5" fill="#D97925"/><circle cx="1000" cy="230" r="6.5" fill="#D97925"/><circle cx="1070" cy="230" r="6.5" fill="#D97925"/>
+
+  <rect x="700" y="330" width="110" height="40" rx="8" fill="#E8ECF3"/>
+  <text x="755" y="355" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13.5" font-weight="600" fill="#16263F">cluster 3</text>
+  <circle cx="860" cy="350" r="4" fill="#16263F"/><circle cx="930" cy="350" r="4" fill="#16263F"/><circle cx="1000" cy="350" r="4" fill="#16263F"/><circle cx="1070" cy="350" r="4" fill="#16263F"/>
+
+  <text x="860" y="408" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">输出 = mutation partition（突变分组），还不是完整 clone tree</text>
+</svg>

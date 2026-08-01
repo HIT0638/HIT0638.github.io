@@ -2,6 +2,7 @@ import Link from "next/link";
 import MermaidRenderer from "../../mermaid-renderer";
 import { renderCollectionDocument, type CollectionCodeFile, type CollectionDocument } from "./content";
 import type { Collection, Module } from "./data";
+import CollectionToc from "./collection-toc";
 
 type CollectionReadingPageProps = {
   collection: Collection;
@@ -142,6 +143,10 @@ export async function CollectionReadingPage({
           />
           <MermaidRenderer />
         </section>
+
+        {pageKind === "module" && rendered.toc.length > 0 ? (
+          <CollectionToc items={rendered.toc} />
+        ) : null}
       </div>
 
       <footer className="site-footer study-prototype-footer">

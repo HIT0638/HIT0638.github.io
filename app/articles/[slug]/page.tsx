@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { articles } from "../../articles";
-import ArticleToc from "../../article-toc";
+import ArticleSplitToc from "../../article-split-toc";
 import MermaidRenderer from "../../mermaid-renderer";
 import { renderMarkdown } from "../../markdown";
 
@@ -68,7 +68,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           toc.length === 0 ? " article-page-layout-no-toc" : ""
         }`}
       >
-        <ArticleToc items={toc} />
+        <ArticleSplitToc items={toc} />
         <article className="article-page-content">
           <h1>{article.title}</h1>
           <div

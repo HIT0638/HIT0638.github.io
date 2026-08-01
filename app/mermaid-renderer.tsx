@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function MermaidRenderer() {
+  const pathname = usePathname();
+
   useEffect(() => {
     const blocks = Array.from(
       document.querySelectorAll<HTMLElement>(
@@ -13,7 +16,10 @@ export default function MermaidRenderer() {
     if (blocks.length === 0) return;
 
     let cancelled = false;
-    const pageId = window.location.pathname.replace(/[^a-zA-Z0-9_-]/g, "-");
+    const pageId = (pathname ?? window.location.pathname).replace(
+      /[^a-zA-Z0-9_-]/g,
+      "-",
+    );
 
     async function renderBlocks() {
       const { default: mermaid } = await import("mermaid");
@@ -78,7 +84,7 @@ export default function MermaidRenderer() {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }

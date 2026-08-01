@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 2 页｜研究背景与问题</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1050px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .stage { position: absolute; left: 90px; right: 90px; top: 158px; }
+  .stage svg { width: 1100px; height: auto; display: block; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 4px; }
+  .qbar { position: absolute; left: 90px; right: 90px; bottom: 84px; background: #E8ECF3; border-radius: 10px; padding: 13px 22px; font-size: 16px; color: #16263F; }
+  .qbar b { color: #D97925; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">研究背景与问题</div>
+    <div class="takeaway">bulk 测序只提供混合后的频率 —— 单看 VAF/CCF 模式，通常不能唯一确定亚克隆关系</div>
+    <div class="stage">
+      <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg">
+        <text x="170" y="46" text-anchor="middle" font-size="16" font-weight="600" fill="#16263F">肿瘤样本（bulk sample）</text>
+        <rect x="20" y="64" width="300" height="230" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <g>
+          <circle cx="60" cy="106" r="13" fill="#C6CDD6"/><circle cx="105" cy="106" r="13" fill="#0F7E79"/><circle cx="150" cy="106" r="13" fill="#C6CDD6"/><circle cx="195" cy="106" r="13" fill="#D97925"/><circle cx="240" cy="106" r="13" fill="#0F7E79"/><circle cx="285" cy="106" r="13" fill="#C6CDD6"/>
+          <circle cx="60" cy="150" r="13" fill="#0F7E79"/><circle cx="105" cy="150" r="13" fill="#C6CDD6"/><circle cx="150" cy="150" r="13" fill="#16263F"/><circle cx="195" cy="150" r="13" fill="#C6CDD6"/><circle cx="240" cy="150" r="13" fill="#D97925"/><circle cx="285" cy="150" r="13" fill="#0F7E79"/>
+          <circle cx="60" cy="194" r="13" fill="#C6CDD6"/><circle cx="105" cy="194" r="13" fill="#D97925"/><circle cx="150" cy="194" r="13" fill="#0F7E79"/><circle cx="195" cy="194" r="13" fill="#C6CDD6"/><circle cx="240" cy="194" r="13" fill="#16263F"/><circle cx="285" cy="194" r="13" fill="#D97925"/>
+          <circle cx="60" cy="238" r="13" fill="#0F7E79"/><circle cx="105" cy="238" r="13" fill="#C6CDD6"/><circle cx="150" cy="238" r="13" fill="#D97925"/><circle cx="195" cy="238" r="13" fill="#C6CDD6"/><circle cx="240" cy="238" r="13" fill="#0F7E79"/><circle cx="285" cy="238" r="13" fill="#C6CDD6"/>
+        </g>
+        <g font-size="12.5" fill="#77809A">
+          <circle cx="46" cy="320" r="6" fill="#C6CDD6"/><text x="58" y="325">正常细胞</text>
+          <circle cx="146" cy="320" r="6" fill="#0F7E79"/><text x="158" y="325">亚克隆 C1</text>
+          <circle cx="246" cy="320" r="6" fill="#D97925"/><text x="258" y="325">C2</text>
+          <circle cx="296" cy="320" r="6" fill="#16263F"/><text x="308" y="325">C3</text>
+        </g>
+        <text x="170" y="362" text-anchor="middle" font-size="14" fill="#77809A">正常细胞与多个亚克隆混合在同一样本中</text>
+
+        <line x1="340" y1="180" x2="386" y2="180" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="392,180 378,173 378,187" fill="#16263F"/>
+
+        <text x="520" y="66" text-anchor="middle" font-size="16" font-weight="600" fill="#16263F">bulk reads → VAF</text>
+        <text x="520" y="88" text-anchor="middle" font-size="12" fill="#77809A">（变异等位基因频率，示意）</text>
+        <line x1="460" y1="102" x2="460" y2="222" stroke="#C6CDD6" stroke-width="1"/>
+        <g font-size="14" fill="#46536E">
+          <text x="398" y="127">mut a</text><text x="398" y="167">mut b</text><text x="398" y="207">mut c</text>
+        </g>
+        <rect x="460" y="110" width="200" height="20" rx="3" fill="#16263F"/>
+        <rect x="460" y="150" width="111" height="20" rx="3" fill="#16263F"/>
+        <rect x="460" y="190" width="111" height="20" rx="3" fill="#16263F"/>
+        <g font-size="13" fill="#77809A">
+          <text x="668" y="125">≈ 45%</text><text x="579" y="165">≈ 25%</text><text x="579" y="205">≈ 25%</text>
+        </g>
+        <text x="540" y="270" text-anchor="middle" font-size="14" fill="#77809A">同一组 bulk 频率模式</text>
+
+        <text x="745" y="205" text-anchor="middle" font-size="58" font-weight="700" fill="#D97925">?</text>
+
+        <text x="930" y="46" text-anchor="middle" font-size="16" font-weight="600" fill="#16263F">同一频率 → 多棵可能的树</text>
+        <g>
+          <line x1="850" y1="111" x2="850" y2="151" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="850" y1="180" x2="850" y2="218" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="850" cy="96" r="15" fill="#16263F"/><circle cx="850" cy="166" r="14" fill="#16263F"/><circle cx="850" cy="232" r="13" fill="#16263F"/>
+          <text x="874" y="101" font-size="13.5" fill="#46536E">a</text><text x="872" y="171" font-size="13.5" fill="#46536E">b</text><text x="870" y="237" font-size="13.5" fill="#46536E">c</text>
+          <text x="850" y="286" text-anchor="middle" font-size="14" fill="#46536E">候选树 1：线性演化</text>
+        </g>
+        <g>
+          <line x1="1010" y1="111" x2="972" y2="168" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="1010" y1="111" x2="1048" y2="168" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="1010" cy="96" r="15" fill="#16263F"/><circle cx="972" cy="182" r="14" fill="#16263F"/><circle cx="1048" cy="182" r="14" fill="#16263F"/>
+          <text x="1032" y="101" font-size="13.5" fill="#46536E">a</text>
+          <text x="972" y="216" text-anchor="middle" font-size="13.5" fill="#46536E">b</text>
+          <text x="1048" y="216" text-anchor="middle" font-size="13.5" fill="#46536E">c</text>
+          <text x="1010" y="286" text-anchor="middle" font-size="14" fill="#46536E">候选树 2：分支演化</text>
+        </g>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+    <div class="qbar"><b>关键问题</b>：哪些突变出现在同一批细胞中？哪些突变具有祖先—后代关系？</div>
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>02 / 19</div></div>
+  </div>
+</body>
+</html>

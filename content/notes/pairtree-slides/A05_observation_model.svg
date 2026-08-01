@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 380" width="400" height="380">
+  <!-- A05_observation_model.svg · 第 5 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="400" height="380" fill="#FAF8F3"/>
+
+  <!-- 层 1：细胞层面 φ -->
+  <rect x="60" y="24" width="280" height="76" rx="12" fill="#E3F1F0" stroke="#0F7E79" stroke-width="1.5"/>
+  <text x="200" y="56" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="16" font-weight="700" fill="#0F7E79">携带突变的细胞比例</text>
+  <text x="200" y="82" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" fill="#16263F">φ（cellular prevalence）</text>
+
+  <!-- 箭头 1：× ω -->
+  <line x1="200" y1="100" x2="200" y2="146" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="200,152 194,140 206,140" fill="#16263F"/>
+  <text x="216" y="130" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#7B5EA7">× ω（校正项）</text>
+
+  <!-- 层 2：有效 variant probability -->
+  <rect x="60" y="152" width="280" height="76" rx="12" fill="#F3EFF7" stroke="#7B5EA7" stroke-width="1.5"/>
+  <text x="200" y="184" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="16" font-weight="700" fill="#7B5EA7">有效 variant probability</text>
+  <text x="200" y="210" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="17" fill="#16263F">ω × φ</text>
+
+  <!-- 箭头 2：Binomial 采样 -->
+  <line x1="200" y1="228" x2="200" y2="274" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="200,280 194,268 206,268" fill="#16263F"/>
+  <text x="216" y="258" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#77809A">Binomial 采样</text>
+
+  <!-- 层 3：观测 reads -->
+  <rect x="60" y="280" width="280" height="76" rx="12" fill="#E8ECF3" stroke="#16263F" stroke-width="1.5"/>
+  <text x="200" y="312" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="16" font-weight="700" fill="#16263F">观测 reads：V / T</text>
+  <text x="200" y="338" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">即 VAF（测序层面的观测值）</text>
+</svg>

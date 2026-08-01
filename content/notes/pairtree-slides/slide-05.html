@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 5 页｜观测模型</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1050px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .takeaway .phi { color: #0F7E79; font-weight: 700; font-family: Georgia, serif; font-style: italic; }
+  .takeaway .om  { color: #7B5EA7; font-weight: 700; font-family: Georgia, serif; font-style: italic; }
+  .takeaway .vaf { color: #D97925; font-weight: 600; }
+
+  .vars { position: absolute; left: 90px; top: 186px; width: 340px; }
+  .vars .vrow { display: flex; align-items: flex-start; margin-bottom: 26px; }
+  .vars .sym { flex: 0 0 40px; font-family: Georgia, serif; font-style: italic; font-size: 24px; font-weight: 700; line-height: 1.2; }
+  .vars .def { font-size: 15px; color: #46536E; line-height: 1.55; padding-top: 3px; }
+  .c-navy { color: #16263F; } .c-teal { color: #0F7E79; } .c-purple { color: #7B5EA7; }
+
+  .formula { position: absolute; left: 480px; top: 216px; width: 400px; background: #FFFFFF; border: 1px solid #E7E2D6; border-radius: 14px; padding: 30px 28px; text-align: center; }
+  .formula .main { font-family: Georgia, serif; font-size: 22px; color: #16263F; line-height: 1.5; }
+  .formula .main i { font-style: italic; }
+  .formula hr { border: none; border-top: 1px solid #E7E2D6; margin: 20px 0; }
+  .formula .approx { font-family: Georgia, serif; font-size: 18px; color: #46536E; }
+  .formula .idx { margin-top: 16px; font-size: 12.5px; color: #77809A; font-family: -apple-system, "PingFang SC", sans-serif; }
+
+  .pipe { position: absolute; right: 90px; top: 170px; width: 400px; }
+  .pipe svg { width: 400px; height: auto; display: block; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 4px; }
+
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">观测模型</div>
+    <div class="takeaway"><span class="vaf">VAF ≠ φ</span> —— <span class="om">ω</span> 把细胞层面的携带比例 <span class="phi">φ</span> 映射为测序层面的观测信号</div>
+
+    <div class="vars">
+      <div class="vrow"><div class="sym c-navy">V</div><div class="def"><b>variant reads</b>：支持该突变的 reads 数</div></div>
+      <div class="vrow"><div class="sym c-navy">T</div><div class="def"><b>total reads</b>：该位点的总 reads 数</div></div>
+      <div class="vrow"><div class="sym c-teal">φ</div><div class="def"><b>cellular prevalence</b>：样本全部细胞中携带该突变的细胞比例</div></div>
+      <div class="vrow"><div class="sym c-purple">ω</div><div class="def"><b>校正项</b>：由 purity（纯度）、CNA（拷贝数变异）、LOH、mutant multiplicity 决定，<b>外部输入</b>。定义为“携带该 mutation 的细胞”中，一个 read 观察到 mutant allele 的概率”</div></div>
+    </div>
+
+    <div class="formula">
+      <div class="main"><i>V</i><sub><i>js</i></sub> ∼ Binomial( <i>T</i><sub><i>js</i></sub>, <i>ω</i><sub><i>js</i></sub> <i>φ</i><sub><i>js</i></sub> )</div>
+      <hr>
+      <div class="approx">E[ <i>V</i> / <i>T</i> ] ≈ <i>ωφ</i></div>
+      <div class="idx">j：突变（mutation）&nbsp;·&nbsp; s：样本（sample）</div>
+    </div>
+
+    <div class="pipe">
+      <svg viewBox="0 0 400 380" xmlns="http://www.w3.org/2000/svg">
+        <rect x="60" y="24" width="280" height="76" rx="12" fill="#E3F1F0" stroke="#0F7E79" stroke-width="1.5"/>
+        <text x="200" y="56" text-anchor="middle" font-size="16" font-weight="700" fill="#0F7E79">携带突变的细胞比例</text>
+        <text x="200" y="82" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="15" fill="#16263F">φ（cellular prevalence）</text>
+        <line x1="200" y1="100" x2="200" y2="146" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="200,152 194,140 206,140" fill="#16263F"/>
+        <text x="216" y="130" font-size="14" fill="#7B5EA7">× ω（校正项）</text>
+        <rect x="60" y="152" width="280" height="76" rx="12" fill="#F3EFF7" stroke="#7B5EA7" stroke-width="1.5"/>
+        <text x="200" y="184" text-anchor="middle" font-size="16" font-weight="700" fill="#7B5EA7">有效 variant probability</text>
+        <text x="200" y="210" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="17" fill="#16263F">ω × φ</text>
+        <line x1="200" y1="228" x2="200" y2="274" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="200,280 194,268 206,268" fill="#16263F"/>
+        <text x="216" y="258" font-size="14" fill="#77809A">Binomial 采样</text>
+        <rect x="60" y="280" width="280" height="76" rx="12" fill="#E8ECF3" stroke="#16263F" stroke-width="1.5"/>
+        <text x="200" y="312" text-anchor="middle" font-size="16" font-weight="700" fill="#16263F">观测 reads：V / T</text>
+        <text x="200" y="338" text-anchor="middle" font-size="14" fill="#46536E">即 VAF（测序层面的观测值）</text>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>05 / 19</div></div>
+  </div>
+</body>
+</html>

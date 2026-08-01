@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 17 页｜真实数据与方法边界</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1100px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .left { position: absolute; left: 90px; top: 182px; width: 620px; }
+  .cards { display: flex; gap: 18px; margin-bottom: 28px; }
+  .numcard { flex: 1; background: #FFFFFF; border: 1px solid #E7E2D6; border-radius: 12px; padding: 20px 14px 16px; text-align: center; }
+  .numcard .n { font-family: Georgia, serif; font-size: 34px; font-weight: 700; color: #16263F; line-height: 1.1; }
+  .numcard .n i { font-style: italic; font-size: 22px; color: #77809A; }
+  .numcard .l { font-size: 13px; color: #77809A; margin-top: 8px; line-height: 1.45; }
+  .mainres { font-size: 16px; color: #16263F; line-height: 1.7; background: #E3F1F0; border-radius: 10px; padding: 14px 18px; margin-bottom: 22px; }
+  .btitle { font-size: 14px; font-weight: 700; color: #16263F; margin-bottom: 10px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: #ECEAE4; color: #46536E; font-size: 13px; padding: 6px 13px; border-radius: 14px; }
+  .fig { position: absolute; right: 90px; top: 182px; width: 460px; }
+  .fig svg { width: 460px; height: auto; display: block; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 4px; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">真实数据与方法边界</div>
+    <div class="takeaway">14 个 B-ALL 案例支持 Pairtree 的实用性，但解读树结果<b>不能脱离 ω、ISA 假设与输入质量</b></div>
+
+    <div class="left">
+      <div class="cards">
+        <div class="numcard"><div class="n">14</div><div class="l">B-ALL cases<br>（B 系急性淋巴细胞白血病）</div></div>
+        <div class="numcard"><div class="n"><i>≤</i>90</div><div class="l">每个癌症的样本数<br>（最多约 90）</div></div>
+        <div class="numcard"><div class="n"><i>≤</i>26</div><div class="l">亚克隆数量<br>（最多约 26）</div></div>
+      </div>
+      <div class="mainres">在多数案例中，Pairtree 重建的克隆树<b>与专家基于 VAF 的拟合相当或更好</b>（最终数字与图号以论文原文核对为准）。</div>
+      <div class="btitle">影响树结果的输入与假设</div>
+      <div class="chips">
+        <span class="chip">ω 依赖外部估计</span>
+        <span class="chip">ISA violation（无限位点假设违背）</span>
+        <span class="chip">混合比例估计</span>
+        <span class="chip">CNA / LOH 错误</span>
+      </div>
+    </div>
+
+    <div class="fig">
+      <svg viewBox="0 0 460 360" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="30" width="200" height="270" rx="8" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <rect x="20" y="30" width="200" height="40" rx="8" fill="#0F7E79"/>
+        <rect x="20" y="54" width="200" height="16" fill="#0F7E79"/>
+        <text x="120" y="57" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">能说明什么</text>
+        <g font-size="13" fill="#46536E">
+          <text x="38" y="106">• 在给定输入与假设下，</text>
+          <text x="50" y="126">方法有效</text>
+          <text x="38" y="172">• 多数案例达到或超过</text>
+          <text x="50" y="192">专家基于 VAF 的拟合</text>
+          <text x="38" y="238">• 支持方法的实用性</text>
+        </g>
+        <rect x="240" y="30" width="200" height="270" rx="8" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <rect x="240" y="30" width="200" height="40" rx="8" fill="#D97925"/>
+        <rect x="240" y="54" width="200" height="16" fill="#D97925"/>
+        <text x="340" y="57" text-anchor="middle" font-size="15" font-weight="700" fill="#FFFFFF">不能说明什么</text>
+        <g font-size="13" fill="#46536E">
+          <text x="258" y="106">• 真实树被唯一识别</text>
+          <text x="270" y="126">（存在不可辨识性）</text>
+          <text x="258" y="172">• 脱离 ω、ISA 假设与</text>
+          <text x="270" y="192">输入质量的结论</text>
+          <text x="258" y="238">• benchmark = 完全验证</text>
+          <text x="270" y="258">真实 clone tree</text>
+        </g>
+        <text x="230" y="336" text-anchor="middle" font-size="11.5" fill="#77809A">结果数字与图号以论文原文核对为准</text>
+      </svg>
+      <p class="figcap">方法边界双栏框（自绘）</p>
+    </div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>17 / 19</div></div>
+  </div>
+</body>
+</html>

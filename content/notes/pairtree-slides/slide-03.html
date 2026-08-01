@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 3 页｜Pairtree 的核心贡献</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1050px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .stage { position: absolute; left: 90px; right: 90px; top: 168px; }
+  .stage svg { width: 1100px; height: auto; display: block; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 4px; }
+  .omegabox { position: absolute; right: 90px; bottom: 84px; max-width: 470px; background: #F3EFF7; border-left: 4px solid #7B5EA7; border-radius: 8px; padding: 12px 18px; font-size: 14.5px; color: #5E4A84; line-height: 1.6; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">Pairtree 的核心贡献</div>
+    <div class="takeaway">把难以直接求解的全局树重建，拆成三个可计算的层次 —— 每一层只解决一个问题</div>
+    <div class="stage">
+      <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="40" width="280" height="220" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="170" y="86" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="21" font-weight="700" fill="#16263F">linfreq</text>
+        <rect x="104" y="118" width="68" height="58" rx="12" fill="none" stroke="#0F7E79" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <rect x="198" y="124" width="62" height="54" rx="12" fill="none" stroke="#D97925" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <g>
+          <circle cx="121" cy="134" r="5" fill="#0F7E79"/><circle cx="149" cy="132" r="5" fill="#0F7E79"/><circle cx="136" cy="148" r="5" fill="#0F7E79"/><circle cx="119" cy="160" r="5" fill="#0F7E79"/><circle cx="153" cy="162" r="5" fill="#0F7E79"/>
+          <circle cx="212" cy="140" r="5" fill="#D97925"/><circle cx="240" cy="143" r="5" fill="#D97925"/><circle cx="225" cy="160" r="5" fill="#D97925"/><circle cx="242" cy="166" r="5" fill="#D97925"/><circle cx="210" cy="164" r="5" fill="#D97925"/>
+        </g>
+        <text x="170" y="214" text-anchor="middle" font-size="14" fill="#46536E">把共享 prevalence（携带率）</text>
+        <text x="170" y="236" text-anchor="middle" font-size="14" fill="#46536E">的突变聚成 clusters</text>
+
+        <line x1="312" y1="150" x2="406" y2="150" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="412,150 398,143 398,157" fill="#16263F"/>
+
+        <rect x="410" y="40" width="280" height="220" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="550" y="86" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="21" font-weight="700" fill="#16263F">Supervariant</text>
+        <circle cx="500" cy="136" r="6" fill="#0F7E79"/><circle cx="492" cy="158" r="6" fill="#0F7E79"/><circle cx="512" cy="152" r="6" fill="#0F7E79"/>
+        <line x1="528" y1="148" x2="572" y2="148" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="578,148 566,142 566,154" fill="#16263F"/>
+        <circle cx="600" cy="148" r="12" fill="#0F7E79"/>
+        <text x="550" y="214" text-anchor="middle" font-size="14" fill="#46536E">把每个 cluster 压缩成</text>
+        <text x="550" y="236" text-anchor="middle" font-size="14" fill="#46536E">一个后续分析单位</text>
+
+        <line x1="692" y1="150" x2="786" y2="150" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="792,150 778,143 778,157" fill="#16263F"/>
+
+        <rect x="790" y="40" width="280" height="220" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="930" y="76" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">Pairs Tensor</text>
+        <text x="930" y="98" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">+ TreeMCMC</text>
+        <g fill="#E8ECF3" stroke="#9AA3B2" stroke-width="0.75">
+          <rect x="872" y="118" width="12" height="12"/><rect x="888" y="118" width="12" height="12"/><rect x="904" y="118" width="12" height="12"/>
+          <rect x="872" y="134" width="12" height="12"/><rect x="888" y="134" width="12" height="12"/><rect x="904" y="134" width="12" height="12"/>
+          <rect x="872" y="150" width="12" height="12"/><rect x="888" y="150" width="12" height="12"/><rect x="904" y="150" width="12" height="12"/>
+        </g>
+        <g>
+          <line x1="968" y1="130" x2="950" y2="156" stroke="#16263F" stroke-width="2" stroke-linecap="round"/>
+          <line x1="968" y1="130" x2="986" y2="156" stroke="#16263F" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="968" cy="124" r="6.5" fill="#16263F"/><circle cx="950" cy="162" r="5.5" fill="#16263F"/><circle cx="986" cy="162" r="5.5" fill="#16263F"/>
+        </g>
+        <text x="930" y="214" text-anchor="middle" font-size="14" fill="#46536E">先得到两两关系证据</text>
+        <text x="930" y="236" text-anchor="middle" font-size="14" fill="#46536E">再搜索全局亚克隆树</text>
+
+        <rect x="95" y="296" width="150" height="38" rx="19" fill="#E3F1F0"/>
+        <text x="170" y="321" text-anchor="middle" font-size="16" font-weight="600" fill="#0F7E79">cluster</text>
+        <rect x="475" y="296" width="150" height="38" rx="19" fill="#E8ECF3"/>
+        <text x="550" y="321" text-anchor="middle" font-size="16" font-weight="600" fill="#16263F">compress</text>
+        <rect x="855" y="296" width="150" height="38" rx="19" fill="#FAECE0"/>
+        <text x="930" y="321" text-anchor="middle" font-size="16" font-weight="600" fill="#D97925">infer / search</text>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+    <div class="omegabox">旁注：<b>ω（copy-number 校正）由外部提供</b>，Pairtree 条件于该输入进行推断 —— 后面第 6 页专门展开。</div>
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>03 / 19</div></div>
+  </div>
+</body>
+</html>

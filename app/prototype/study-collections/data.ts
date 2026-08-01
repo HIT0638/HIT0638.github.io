@@ -25,10 +25,7 @@ export const collections: Collection[] = [
     subtitle: "数据开发岗 / 实时计算",
     summary: "把 74 道 Flink 面试题压缩成 7 个有主线的学习模块。",
     stats: ["7 modules", "74 questions", "reference + code"],
-    supportPages: [
-      { code: "DOC", title: "任务书 MISSION", detail: "为什么做这门课", path: "MISSION.md" },
-      { code: "DOC", title: "我的笔记 NOTES", detail: "学习偏好与备忘", path: "NOTES.md" },
-    ],
+    supportPages: [],
     modules: [
       { code: "L01", title: "定位 / 架构 / DataStream API", detail: "作业执行链路与基础认知", path: "L01-position-arch-api.md" },
       { code: "L02", title: "时间语义 / Watermark / 窗口", detail: "事件时间、乱序与窗口", path: "L02-time-watermark-window.md" },

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" width="1100" height="360">
+  <!-- A09_linfreq_marginal_likelihood.svg · 第 9 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="1100" height="360" fill="#FAF8F3"/>
+
+  <!-- 三段式 -->
+  <rect x="30" y="60" width="280" height="140" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="170" y="94" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="16" font-weight="700" fill="#16263F">mutation data</text>
+  <g fill="#0F7E79">
+    <circle cx="140" cy="122" r="5"/><circle cx="170" cy="122" r="5"/><circle cx="200" cy="122" r="5"/>
+    <circle cx="140" cy="144" r="5"/><circle cx="170" cy="144" r="5"/><circle cx="200" cy="144" r="5"/>
+    <circle cx="140" cy="166" r="5"/><circle cx="170" cy="166" r="5"/><circle cx="200" cy="166" r="5"/>
+  </g>
+
+  <line x1="310" y1="130" x2="404" y2="130" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="410,130 398,124 398,136" fill="#16263F"/>
+
+  <rect x="410" y="60" width="280" height="140" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="550" y="94" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#16263F">shared φ + Beta 先验</text>
+  <line x1="460" y1="168" x2="640" y2="168" stroke="#C6CDD6" stroke-width="1.5"/>
+  <line x1="460" y1="136" x2="640" y2="136" stroke="#7B5EA7" stroke-width="2.5" stroke-linecap="round"/>
+  <text x="550" y="122" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#7B5EA7">φ ~ Beta(1,1)</text>
+
+  <line x1="690" y1="130" x2="784" y2="130" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="790,130 778,124 778,136" fill="#16263F"/>
+
+  <rect x="790" y="60" width="280" height="140" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="930" y="94" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#16263F">integrated cluster evidence</text>
+  <rect x="870" y="150" width="26" height="26" fill="#16263F"/>
+  <rect x="908" y="132" width="26" height="44" fill="#16263F"/>
+  <rect x="946" y="114" width="26" height="62" fill="#16263F"/>
+  <line x1="856" y1="176" x2="1000" y2="176" stroke="#C6CDD6" stroke-width="1.5"/>
+
+  <!-- 简化积分公式 -->
+  <text x="550" y="252" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#16263F">P(D<tspan dy="4" font-size="14">c</tspan><tspan dy="-4">) = ∫ P(D</tspan><tspan dy="4" font-size="14">c</tspan><tspan dy="-4"> | φ</tspan><tspan dy="4" font-size="14">c</tspan><tspan dy="-4">) P(φ</tspan><tspan dy="4" font-size="14">c</tspan><tspan dy="-4">) dφ</tspan><tspan dy="4" font-size="14">c</tspan></text>
+  <text x="550" y="280" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#77809A">对每个候选 cluster 积分掉潜在 φ，比较边际证据（marginal evidence）</text>
+
+  <!-- 底部标注 -->
+  <rect x="30" y="302" width="180" height="36" rx="18" fill="#FAECE0"/>
+  <text x="120" y="325" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#D97925">output = partition</text>
+  <rect x="790" y="292" width="280" height="30" rx="15" fill="#F3EFF7"/>
+  <text x="930" y="311" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#7B5EA7">T′ = max(V, ωT)：有效深度（计算近似）</text>
+  <rect x="790" y="328" width="280" height="30" rx="15" fill="#ECEAE4"/>
+  <text x="930" y="347" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#77809A">Gibbs / DPMM 风格更新 assignment</text>
+</svg>

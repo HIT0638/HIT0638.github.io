@@ -200,7 +200,7 @@ export async function renderCollectionDocument(
 ): Promise<RenderedMarkdown> {
   return renderMarkdown(
     document.source,
-    { enabled: false, depth: 3 },
+    { enabled: true, depth: 3 },
     { expandMkdocsAdmonitions: true },
   );
 }

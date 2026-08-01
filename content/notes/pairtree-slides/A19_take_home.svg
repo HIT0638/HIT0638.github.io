@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 380" width="1100" height="380">
+  <!-- A19_take_home.svg · 第 19 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="1100" height="380" fill="#FAF8F3"/>
+
+  <!-- 三个核心模块 -->
+  <rect x="40" y="50" width="320" height="190" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <rect x="40" y="50" width="320" height="6" rx="3" fill="#0F7E79"/>
+  <text x="200" y="98" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">linfreq</text>
+  <text x="200" y="150" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">把 mutation-level 信号</text>
+  <text x="200" y="174" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">组织成共享 φ 的 clusters</text>
+
+  <line x1="362" y1="145" x2="394" y2="145" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="400,145 390,140 390,150" fill="#16263F"/>
+
+  <rect x="400" y="50" width="320" height="190" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <rect x="400" y="50" width="320" height="6" rx="3" fill="#16263F"/>
+  <text x="560" y="98" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">Pairs Tensor</text>
+  <text x="560" y="150" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">把局部 read evidence</text>
+  <text x="560" y="174" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">转化为两两关系后验</text>
+
+  <line x1="722" y1="145" x2="754" y2="145" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="760,145 750,140 750,150" fill="#16263F"/>
+
+  <rect x="760" y="50" width="320" height="190" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <rect x="760" y="50" width="320" height="6" rx="3" fill="#D97925"/>
+  <text x="920" y="98" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">TreeMCMC</text>
+  <text x="920" y="150" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">在全局树约束下</text>
+  <text x="920" y="174" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">搜索并评价候选结构</text>
+
+  <!-- 三代数据横条 -->
+  <rect x="40" y="280" width="1020" height="80" rx="12" fill="#E3F1F0"/>
+  <text x="70" y="313" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#0F7E79">对三代数据的下一步</text>
+  <text x="70" y="341" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" fill="#16263F">优先替换 observation layer，利用 molecule-level mutation relations；保留关系后验与全局树搜索</text>
+</svg>
