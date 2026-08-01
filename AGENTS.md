@@ -172,6 +172,24 @@ support them.
   cause, workaround, and validation under `docs/troubleshooting/` before
   changing the source material.
 
+#### Known collection-rendering traps
+
+- When `???`/`!!!` admonitions are converted to raw `details`/`aside` HTML,
+  the renderer must insert a blank line before the next Markdown block. A
+  standalone `---` immediately after an admonition must become `<hr>`; do not
+  fix this by inserting ad hoc blank lines into every migrated article.
+  See `docs/troubleshooting/2026-08-01-markdown-horizontal-rule-after-admonition.md`.
+- Mermaid rendering must rerun when a collection route changes. Do not rely on
+  a one-time `useEffect([])` scan: a client component can be reused while the
+  RSC article content changes. Validate both a direct page load and an in-site
+  transition such as L01 → L02, confirming that Mermaid source blocks become
+  SVGs and no `data-mermaid-error` blocks remain. See
+  `docs/troubleshooting/2026-08-01-mermaid-route-change.md`.
+- If a preview shows raw Mermaid source after a renderer change, first perform
+  a full page refresh and test a route transition before editing diagram
+  source. Keep Markdown Mermaid blocks canonical; do not replace them with
+  screenshots unless a deliberate static fallback is documented.
+
 ## Handoff checklist
 
 1. Confirm the branch is not `main` for feature, design, fix, or tooling work.
