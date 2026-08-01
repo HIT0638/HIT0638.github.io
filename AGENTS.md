@@ -161,6 +161,29 @@ support them.
 - Collection metadata and the explicit module/reference navigation map live
   in `app/prototype/study-collections/data.ts`. When adding a source page,
   update that map and keep its route path stable.
+- To add a new collection, first create its source tree under
+  `content/collections/<slug>/`:
+  `docs/index.md` is the overview, `docs/` contains module pages,
+  `docs/reference/` contains optional reference pages, and `code/` contains
+  linked code or snippet sources. Use a lowercase kebab-case `<slug>` and
+  preserve the original Markdown/code as the source of truth.
+- A new collection is not discovered from files alone. Add one entry to
+  `app/prototype/study-collections/data.ts` with a unique `code` and `slug`,
+  card metadata, and explicit `supportPages`, `modules`, and `references`
+  paths. Every listed path must exist under the collection's `docs/` tree.
+  The order of `modules` controls the card preview; the first three are shown
+  on the shelf card.
+- For a new collection or a multi-file content migration, use a temporary
+  `feat/content-<topic>` branch for the source files only. Do not edit `app/`,
+  CSS, tests, dependencies, or renderer code on that content branch. Merge
+  the reviewed content into `main`, then make the small metadata registration
+  on a separate `feat/collection-<slug>` branch based on the updated `main`.
+  Ordinary single-note writing may still follow the lightweight `main` flow.
+- After registration, run `npm run build` and inspect both
+  `/prototype/study-collections?variant=shelf` and
+  `/prototype/study-collections/<slug>`. Validate at least one module, one
+  table/admonition or Mermaid block when present, one relative document link,
+  and one code link or `--8<--` snippet when present.
 - Collection pages support GFM tables/lists, KaTeX math, Mermaid code fences,
   MkDocs `???`/`!!!` admonitions, raw `<details>` blocks, and `--8<--` code
   snippets. Preserve the original Markdown/code as the source of truth; put
