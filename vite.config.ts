@@ -1,4 +1,4 @@
-import { extname, resolve, sep } from "node:path";
+import { resolve, sep } from "node:path";
 import vinext from "vinext";
 import { defineConfig, type Plugin } from "vite";
 import hostingConfig from "./.openai/hosting.json";
@@ -11,21 +11,16 @@ const { d1, r2 } = hostingConfig;
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
-const notesDirectory = `${resolve(process.cwd(), "content/notes")}${sep}`;
+const contentDirectory = `${resolve(process.cwd(), "content")}${sep}`;
 
-function markdownContentReload(): Plugin {
+function contentFullReload(): Plugin {
   return {
-    name: "markdown-content-full-reload",
+    name: "content-full-reload",
     apply: "serve",
     hotUpdate: {
       order: "pre",
       handler(context) {
-        if (
-          !context.file.startsWith(notesDirectory) ||
-          extname(context.file) !== ".md"
-        ) {
-          return;
-        }
+        if (!context.file.startsWith(contentDirectory)) return;
 
         if (this.environment.name === "client") {
           context.server.environments.client.hot.send({
@@ -77,7 +72,7 @@ export default defineConfig(async () => {
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
     plugins: [
-      markdownContentReload(),
+      contentFullReload(),
       vinext(),
       sites(),
       cloudflare({
