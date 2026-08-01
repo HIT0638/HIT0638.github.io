@@ -5,6 +5,8 @@ import type { ArticleTocItem } from "./article-outline.ts";
 
 type ArticleTocProps = {
   items: ArticleTocItem[];
+  className?: string;
+  label?: string;
 };
 
 function buildHeadingToRootMap(items: ArticleTocItem[]) {
@@ -23,7 +25,11 @@ function flattenItems(items: ArticleTocItem[]): ArticleTocItem[] {
   return items.flatMap((item) => [item, ...flattenItems(item.children)]);
 }
 
-export default function ArticleToc({ items }: ArticleTocProps) {
+export default function ArticleToc({
+  items,
+  className,
+  label = "文章目录",
+}: ArticleTocProps) {
   const firstRootId = items[0]?.id ?? null;
   const [openRootId, setOpenRootId] = useState<string | null>(firstRootId);
   const [openChildIds, setOpenChildIds] = useState<Set<string>>(
@@ -192,7 +198,10 @@ export default function ArticleToc({ items }: ArticleTocProps) {
   }
 
   return (
-    <nav className="article-toc" aria-label="文章目录">
+    <nav
+      className={`article-toc${className ? ` ${className}` : ""}`}
+      aria-label={label}
+    >
       <button
         className="article-toc-mobile-trigger"
         type="button"
@@ -200,7 +209,7 @@ export default function ArticleToc({ items }: ArticleTocProps) {
         aria-expanded={mobileOpen}
         onClick={() => setMobileOpen((current) => !current)}
       >
-        <span>文章目录</span>
+        <span>{label}</span>
         <span className="article-toc-mobile-current">{activeLabel}</span>
         <span aria-hidden="true">{mobileOpen ? "−" : "+"}</span>
       </button>

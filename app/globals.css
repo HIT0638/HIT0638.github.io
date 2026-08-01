@@ -1320,9 +1320,7 @@ a:focus-visible {
 }
 
 .study-prototype-intro {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.42fr);
-  gap: 80px;
+  display: block;
   padding: 84px 0 72px;
 }
 
@@ -1637,9 +1635,9 @@ a:focus-visible {
 
 .study-prototype-doc-layout {
   display: grid;
-  width: min(1240px, calc(100% - 72px));
-  grid-template-columns: minmax(220px, 270px) minmax(0, 760px);
-  gap: clamp(50px, 9vw, 130px);
+  width: min(1440px, calc(100% - 72px));
+  grid-template-columns: minmax(210px, 250px) minmax(0, 760px) minmax(180px, 240px);
+  gap: clamp(28px, 4vw, 64px);
   align-items: start;
   margin: 0 auto;
   padding: 70px 0 96px;
@@ -1712,6 +1710,51 @@ a:focus-visible {
 
 .study-prototype-doc-content {
   min-width: 0;
+}
+
+.study-prototype-doc-toc-shell {
+  min-width: 0;
+}
+
+.study-prototype-doc-toc-label {
+  margin-bottom: 14px;
+}
+
+@media (min-width: 1081px) {
+  .study-prototype-doc-toc-shell {
+    position: sticky;
+    top: 28px;
+  }
+
+  .study-prototype-doc-toc-shell .article-toc {
+    position: static;
+    width: auto;
+    max-height: calc(100vh - 76px);
+    overflow-y: auto;
+    transform: none;
+  }
+
+  .study-prototype-doc-toc-shell .article-toc-mobile-trigger,
+  .study-prototype-doc-toc-shell .article-toc-mobile-backdrop {
+    display: none;
+  }
+
+  .study-prototype-doc-toc-shell .article-toc-content {
+    position: static;
+    display: block;
+    width: auto;
+    height: auto;
+    max-height: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    transform: none;
+    visibility: visible;
+    pointer-events: auto;
+  }
 }
 
 .study-prototype-doc-heading {
@@ -1892,6 +1935,21 @@ a:focus-visible {
   color: var(--white);
 }
 
+@media (max-width: 1080px) {
+  .study-prototype-doc-layout {
+    grid-template-columns: minmax(190px, 240px) minmax(0, 1fr);
+    gap: clamp(28px, 5vw, 52px);
+  }
+
+  .study-prototype-doc-toc-shell {
+    display: contents;
+  }
+
+  .study-prototype-doc-toc-label {
+    display: none;
+  }
+}
+
 @media (max-width: 800px) {
   .study-prototype-intro,
   .study-prototype-stage {
@@ -1959,6 +2017,10 @@ a:focus-visible {
     display: block;
     width: calc(100% - 40px);
     padding-top: 50px;
+  }
+
+  .study-prototype-doc-toc-label {
+    display: none;
   }
 
   .study-prototype-doc-nav {
