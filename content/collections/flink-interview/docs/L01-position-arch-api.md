@@ -87,7 +87,6 @@ env.execute("my-job");
     | 一般回答 | 优秀回答 |
     |---------|---------|
     | "Flink 是流处理，Spark 是批处理" | "Flink 以流为核心——逐条处理、Watermark 驱动窗口、KeyedState 按 key 隔离。Spark Streaming 是微批——把流切成小批，时延受 batch 间隔限制。Flink 的流批一体是把批当有界流跑同一套运行时，而非 Spark 的两套 API" |
-
 ---
 
 ## 2. Flink 架构：JobManager / TaskManager / Task Slot
