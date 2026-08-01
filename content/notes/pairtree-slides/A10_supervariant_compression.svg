@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" width="1100" height="400">
+  <!-- A10_supervariant_compression.svg · 第 10 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="1100" height="400" fill="#FAF8F3"/>
+
+  <!-- 左：mutation cluster -->
+  <text x="210" y="56" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#0F7E79">mutation cluster（同一 cluster 的多个突变）</text>
+  <rect x="40" y="70" width="340" height="210" rx="14" fill="none" stroke="#0F7E79" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g font-family="ui-monospace, Menlo, monospace" font-size="13" fill="#16263F">
+    <rect x="60" y="90" width="300" height="56" rx="8" fill="#FFFFFF" stroke="#E7E2D6"/>
+    <text x="210" y="124" text-anchor="middle">mut j₁&#160;&#160;&#160;V=38, T=100, ω=0.40</text>
+    <rect x="60" y="158" width="300" height="56" rx="8" fill="#FFFFFF" stroke="#E7E2D6"/>
+    <text x="210" y="192" text-anchor="middle">mut j₂&#160;&#160;&#160;V=41, T=105, ω=0.38</text>
+    <rect x="60" y="226" width="300" height="56" rx="8" fill="#FFFFFF" stroke="#E7E2D6"/>
+    <text x="210" y="260" text-anchor="middle">mut j₃&#160;&#160;&#160;V=35, T= 98, ω=0.42</text>
+  </g>
+
+  <!-- 箭头 -->
+  <line x1="390" y1="175" x2="462" y2="175" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="468,175 456,169 456,181" fill="#16263F"/>
+  <text x="426" y="158" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#77809A">compress</text>
+
+  <!-- 右：supervariant card -->
+  <rect x="480" y="100" width="300" height="150" rx="14" fill="#E8ECF3" stroke="#16263F" stroke-width="2"/>
+  <text x="630" y="140" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="16" font-weight="700" fill="#16263F">supervariant</text>
+  <g font-family="Georgia, serif" font-style="italic" font-size="16" fill="#16263F">
+    <text x="630" y="174" text-anchor="middle">V* = min(V, N*)</text>
+    <text x="630" y="200" text-anchor="middle">N* = 2 · N · ω</text>
+    <text x="630" y="226" text-anchor="middle">ω* = 0.5</text>
+  </g>
+
+  <!-- 底部：期望保持等式链 + 限定 -->
+  <text x="420" y="340" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#16263F">E[V*] = N*·ω*·φ = N·ω·φ = E[V]</text>
+  <text x="420" y="366" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12.5" fill="#77809A">（不触发 cap 的情形）</text>
+
+  <rect x="830" y="312" width="250" height="52" rx="10" fill="#F3EFF7"/>
+  <text x="955" y="334" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#7B5EA7">保持的是期望 reads；</text>
+  <text x="955" y="352" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#7B5EA7">方差与完整 likelihood 不严格等价</text>
+</svg>

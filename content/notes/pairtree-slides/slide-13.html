@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 13 页｜Pairs Tensor 在算法中的位置</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1100px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .fig { position: absolute; left: 90px; right: 90px; top: 172px; text-align: center; }
+  .fig svg { width: 1100px; max-width: 100%; height: auto; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 2px; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">Pairs Tensor 在算法中的位置</div>
+    <div class="takeaway">tensor 提供局部关系证据、<b>指导 proposal</b>，但最终树必须在全局频率约束下用 read likelihood 重新评价</div>
+
+    <div class="fig">
+      <svg viewBox="0 0 1100 380" xmlns="http://www.w3.org/2000/svg">
+        <rect x="40" y="90" width="280" height="150" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="180" y="124" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="16" font-weight="700" fill="#16263F">Pairs Tensor</text>
+        <g stroke="#9AA3B2" stroke-width="0.75">
+          <rect x="118" y="140" width="26" height="26" fill="#3A6EA5" opacity="0.35"/><rect x="144" y="140" width="26" height="26" fill="#D97925" opacity="0.35"/><rect x="170" y="140" width="26" height="26" fill="#2E8B57" opacity="0.35"/>
+          <rect x="118" y="166" width="26" height="26" fill="#D97925" opacity="0.35"/><rect x="144" y="166" width="26" height="26" fill="#3A6EA5" opacity="0.35"/><rect x="170" y="166" width="26" height="26" fill="#2E8B57" opacity="0.35"/>
+          <rect x="118" y="192" width="26" height="26" fill="#2E8B57" opacity="0.35"/><rect x="144" y="192" width="26" height="26" fill="#D97925" opacity="0.35"/><rect x="170" y="192" width="26" height="26" fill="#3A6EA5" opacity="0.35"/>
+        </g>
+        <text x="230" y="200" text-anchor="middle" font-size="11.5" fill="#77809A">每对 supervariant</text>
+        <line x1="320" y1="165" x2="430" y2="165" stroke="#0F7E79" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="436,165 424,159 424,171" fill="#0F7E79"/>
+        <text x="375" y="148" text-anchor="middle" font-size="13" font-weight="600" fill="#0F7E79">guides proposal</text>
+        <text x="375" y="192" text-anchor="middle" font-size="11" fill="#77809A">（指导，而非决定）</text>
+        <rect x="440" y="90" width="280" height="150" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="580" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#16263F">candidate tree（候选树）</text>
+        <line x1="580" y1="159" x2="552" y2="182" stroke="#16263F" stroke-width="2" stroke-linecap="round"/>
+        <line x1="580" y1="159" x2="608" y2="182" stroke="#16263F" stroke-width="2" stroke-linecap="round"/>
+        <line x1="552" y1="198" x2="552" y2="216" stroke="#16263F" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="580" cy="150" r="9" fill="#16263F"/><circle cx="552" cy="190" r="8" fill="#16263F"/><circle cx="608" cy="190" r="8" fill="#16263F"/><circle cx="552" cy="224" r="7" fill="#16263F"/>
+        <line x1="720" y1="165" x2="830" y2="165" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="836,165 824,159 824,171" fill="#16263F"/>
+        <text x="775" y="148" text-anchor="middle" font-size="11.5" fill="#77809A">refit η/φ + global likelihood</text>
+        <rect x="840" y="90" width="220" height="150" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="950" y="124" text-anchor="middle" font-size="15" font-weight="700" fill="#16263F">全局评价</text>
+        <rect x="885" y="145" width="130" height="14" rx="3" fill="#0F7E79"/>
+        <rect x="885" y="170" width="82" height="14" rx="3" fill="#C6CDD6"/>
+        <rect x="885" y="195" width="104" height="14" rx="3" fill="#C6CDD6"/>
+        <text x="1022" y="157" font-size="11" fill="#0F7E79">best</text>
+        <rect x="40" y="292" width="1020" height="52" rx="12" fill="#E8ECF3"/>
+        <text x="550" y="325" text-anchor="middle" font-size="16" fill="#16263F"><tspan font-weight="700">pairwise posterior ≠ final tree posterior</tspan> —— 局部关系证据通过 proposal 与全局评价相连</text>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>13 / 19</div></div>
+  </div>
+</body>
+</html>

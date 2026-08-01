@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400">
+  <!-- A16_simulation_trend.svg · 第 16 页视觉资产 · 趋势重绘（示意），数值与图号以论文原文为准 -->
+  <rect width="640" height="400" fill="#FAF8F3"/>
+
+  <!-- 网格与坐标轴 -->
+  <line x1="90" y1="150" x2="590" y2="150" stroke="#E7E2D6" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="90" y1="240" x2="590" y2="240" stroke="#E7E2D6" stroke-width="1" stroke-dasharray="4 4"/>
+  <line x1="90" y1="330" x2="596" y2="330" stroke="#16263F" stroke-width="1.5"/>
+  <polygon points="602,330 592,325 592,335" fill="#16263F"/>
+  <line x1="90" y1="330" x2="90" y2="54" stroke="#16263F" stroke-width="1.5"/>
+  <polygon points="90,48 85,58 95,58" fill="#16263F"/>
+  <text x="340" y="364" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#46536E">亚克隆数量（subclones）</text>
+  <text x="38" y="195" text-anchor="middle" transform="rotate(-90 38 195)" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#46536E">树恢复准确性（相对）</text>
+
+  <!-- 趋势曲线：~30 以内平台期，之后下降 -->
+  <path d="M 110 110 C 260 102 340 120 430 190 S 540 290 560 298" fill="none" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- 关键标注 -->
+  <circle cx="330" cy="118" r="6" fill="#0F7E79"/>
+  <text x="330" y="94" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0F7E79">≈ 30 个以内：恢复较强</text>
+  <circle cx="560" cy="298" r="6" fill="#D97925"/>
+  <text x="552" y="278" text-anchor="end" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#D97925">≈ 100 个：明显下降</text>
+
+  <g font-family="-apple-system, sans-serif" font-size="12" fill="#77809A" text-anchor="middle">
+    <text x="170" y="348">10</text><text x="330" y="348">30</text><text x="560" y="348">100</text>
+  </g>
+
+  <text x="320" y="392" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#77809A">趋势重绘（示意）—— 数值、指标与图号以论文原文为准</text>
+</svg>

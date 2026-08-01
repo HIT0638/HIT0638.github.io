@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 330" width="1100" height="330">
+  <!-- A04_full_dataflow.svg · 第 4 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="1100" height="330" fill="#FAF8F3"/>
+
+  <!-- 层背景 -->
+  <rect x="16" y="56" width="564" height="244" rx="12" fill="#F3EFF7"/>
+  <rect x="596" y="56" width="236" height="244" rx="12" fill="#EAF4F3"/>
+  <rect x="848" y="56" width="236" height="244" rx="12" fill="#FBF1E7"/>
+  <text x="32" y="84" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#7B5EA7">observation layer · 观测层</text>
+  <text x="610" y="84" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0F7E79">local relation layer · 局部关系层</text>
+  <text x="862" y="84" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#D97925">global tree layer · 全局树层</text>
+
+  <!-- ω 外部提供标签 -->
+  <rect x="240" y="70" width="118" height="22" rx="11" fill="none" stroke="#7B5EA7" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="299" y="85" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#7B5EA7">ω 外部提供</text>
+
+  <!-- 阶段框 -->
+  <rect x="36" y="120" width="120" height="64" rx="10" fill="#FFFFFF" stroke="#D8D2C4"/>
+  <text x="96" y="146" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#16263F">输入</text>
+  <text x="96" y="170" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#16263F">V, T, ω</text>
+
+  <rect x="192" y="120" width="130" height="64" rx="10" fill="#FFFFFF" stroke="#D8D2C4"/>
+  <text x="257" y="159" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="16" font-weight="700" fill="#16263F">linfreq</text>
+
+  <rect x="358" y="120" width="150" height="64" rx="10" fill="#FFFFFF" stroke="#D8D2C4"/>
+  <text x="433" y="159" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#16263F">supervariant</text>
+
+  <rect x="616" y="120" width="196" height="64" rx="10" fill="#FFFFFF" stroke="#D8D2C4"/>
+  <text x="714" y="159" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#16263F">Pairs Tensor</text>
+
+  <rect x="868" y="120" width="196" height="64" rx="10" fill="#FFFFFF" stroke="#D8D2C4"/>
+  <text x="966" y="159" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="15" font-weight="700" fill="#16263F">TreeMCMC</text>
+
+  <!-- 箭头 -->
+  <g stroke="#16263F" stroke-width="2.5" stroke-linecap="round">
+    <line x1="156" y1="152" x2="186" y2="152"/><line x1="322" y1="152" x2="352" y2="152"/>
+    <line x1="508" y1="152" x2="610" y2="152"/><line x1="812" y1="152" x2="862" y2="152"/>
+  </g>
+  <g fill="#16263F">
+    <polygon points="192,152 180,146 180,158"/><polygon points="358,152 346,146 346,158"/>
+    <polygon points="616,152 604,146 604,158"/><polygon points="868,152 856,146 856,158"/>
+  </g>
+
+  <!-- 输出数据对象（斜体）+ 各阶段目的 -->
+  <g text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="12.5" fill="#46536E">
+    <text x="96" y="216">mutation-level data</text>
+    <text x="257" y="216">cluster partition</text>
+    <text x="433" y="216">compressed units</text>
+    <text x="714" y="216">relation posterior</text>
+    <text x="966" y="216">posterior tree samples</text>
+  </g>
+  <g text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#77809A">
+    <text x="96" y="238">每个突变 × 样本的 reads 与 ω</text>
+    <text x="257" y="238">聚类：共享 φ 的突变成簇</text>
+    <text x="433" y="238">压缩 cluster 为分析单位</text>
+    <text x="714" y="238">积分得到两两关系后验</text>
+    <text x="966" y="238">全局搜索并评价候选树</text>
+  </g>
+</svg>

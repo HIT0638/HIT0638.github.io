@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 360" width="460" height="360">
+  <!-- A17_limitations.svg · 第 17 页视觉资产 · 方法边界双栏框 -->
+  <rect width="460" height="360" fill="#FAF8F3"/>
+
+  <!-- 左栏：能说明什么 -->
+  <rect x="20" y="30" width="200" height="270" rx="8" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <rect x="20" y="30" width="200" height="40" rx="8" fill="#0F7E79"/>
+  <rect x="20" y="54" width="200" height="16" fill="#0F7E79"/>
+  <text x="120" y="57" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">能说明什么</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#46536E">
+    <text x="38" y="106">• 在给定输入与假设下，</text>
+    <text x="50" y="126">方法有效</text>
+    <text x="38" y="172">• 多数案例达到或超过</text>
+    <text x="50" y="192">专家基于 VAF 的拟合</text>
+    <text x="38" y="238">• 支持方法的实用性</text>
+  </g>
+
+  <!-- 右栏：不能说明什么 -->
+  <rect x="240" y="30" width="200" height="270" rx="8" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <rect x="240" y="30" width="200" height="40" rx="8" fill="#D97925"/>
+  <rect x="240" y="54" width="200" height="16" fill="#D97925"/>
+  <text x="340" y="57" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#FFFFFF">不能说明什么</text>
+  <g font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#46536E">
+    <text x="258" y="106">• 真实树被唯一识别</text>
+    <text x="270" y="126">（存在不可辨识性）</text>
+    <text x="258" y="172">• 脱离 ω、ISA 假设与</text>
+    <text x="270" y="192">输入质量的结论</text>
+    <text x="258" y="238">• benchmark = 完全验证</text>
+    <text x="270" y="258">真实 clone tree</text>
+  </g>
+
+  <text x="230" y="336" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="11.5" fill="#77809A">结果数字与图号以论文原文核对为准</text>
+</svg>

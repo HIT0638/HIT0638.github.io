@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 400" width="620" height="400">
+  <!-- A06_omega_copy_number.svg · 第 6 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="620" height="400" fill="#FAF8F3"/>
+
+  <!-- 正常细胞组 -->
+  <rect x="20" y="36" width="280" height="194" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="160" y="68" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#46536E">正常细胞 · 50%</text>
+  <rect x="70" y="96" width="180" height="16" rx="8" fill="#C6CDD6"/>
+  <rect x="70" y="126" width="180" height="16" rx="8" fill="#C6CDD6"/>
+  <text x="160" y="200" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#77809A">copy number = 2，无突变</text>
+
+  <!-- 肿瘤细胞组 -->
+  <rect x="320" y="36" width="280" height="194" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="460" y="68" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="700" fill="#16263F">肿瘤细胞 · 50%</text>
+  <rect x="370" y="96" width="180" height="16" rx="8" fill="#16263F"/>
+  <rect x="370" y="126" width="180" height="16" rx="8" fill="#16263F"/>
+  <rect x="370" y="156" width="180" height="16" rx="8" fill="#16263F"/>
+  <circle cx="420" cy="104" r="8" fill="#D97925" stroke="#FAF8F3" stroke-width="2"/>
+  <text x="460" y="200" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#77809A">copy number = 3，突变在 1 条拷贝上</text>
+
+  <!-- 计算链 -->
+  <rect x="20" y="264" width="184" height="58" rx="10" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="112" y="288" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#77809A">总 allele 数</text>
+  <text x="112" y="309" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#16263F">0.5×2 + 0.5×3 = 2.5</text>
+
+  <line x1="204" y1="293" x2="224" y2="293" stroke="#9AA3B2" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="230,293 220,288 220,298" fill="#9AA3B2"/>
+
+  <rect x="232" y="264" width="160" height="58" rx="10" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="312" y="288" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="12" fill="#77809A">突变 allele 数</text>
+  <text x="312" y="309" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#16263F">0.5×1 = 0.5</text>
+
+  <line x1="392" y1="293" x2="412" y2="293" stroke="#9AA3B2" stroke-width="2" stroke-linecap="round"/>
+  <polygon points="418,293 408,288 408,298" fill="#9AA3B2"/>
+
+  <rect x="420" y="264" width="180" height="58" rx="10" fill="#F3EFF7" stroke="#7B5EA7" stroke-width="1.5"/>
+  <text x="510" y="288" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="12" fill="#7B5EA7">ω = Q / W</text>
+  <text x="510" y="310" text-anchor="middle" font-family="Georgia, serif" font-size="16" font-weight="700" fill="#7B5EA7">0.5 / 2.5 = 0.2</text>
+
+  <!-- 结论 -->
+  <text x="310" y="368" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">该位点 E[VAF] ≈ 0.2 × φ，而不是 0.5 × φ</text>
+</svg>

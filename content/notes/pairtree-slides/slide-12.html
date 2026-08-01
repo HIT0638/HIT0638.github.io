@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 12 页｜Pairs Tensor：从 reads 到关系后验</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1100px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .formulas { position: absolute; left: 90px; right: 90px; top: 148px; text-align: center; font-family: Georgia, serif; font-style: italic; font-size: 19px; color: #16263F; line-height: 1.75; }
+  .formulas .sep { color: #C6CDD6; margin: 0 28px; font-style: normal; }
+  .fig { position: absolute; left: 90px; right: 90px; top: 232px; text-align: center; }
+  .fig svg { width: 980px; max-width: 100%; height: auto; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 2px; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">Pairs Tensor：从 reads 到关系后验</div>
+    <div class="takeaway">在每种关系允许的频率区域内积分 read likelihood，结合关系先验，得到<b>关系后验</b></div>
+
+    <div class="formulas">
+      P(D<sub>AB</sub> | r) = ∫<sub>Ω<sub>r</sub></sub> P(D<sub>AB</sub> | φ<sub>A</sub>, φ<sub>B</sub>) dφ<sub>A</sub> dφ<sub>B</sub>
+      <span class="sep">|</span>
+      P(r | D<sub>AB</sub>) ∝ P(D<sub>AB</sub> | r) · P(r)
+    </div>
+
+    <div class="fig">
+      <svg viewBox="0 0 1100 400" xmlns="http://www.w3.org/2000/svg">
+        <text x="330" y="48" text-anchor="middle" font-size="15" font-weight="600" fill="#16263F">在各关系允许的区域 Ω<tspan dy="3" font-size="10">r</tspan><tspan dy="-3"> 内积分 read evidence</tspan></text>
+        <polygon points="60,220 210,220 210,70" fill="#3A6EA5" opacity="0.12"/>
+        <rect x="60" y="70" width="150" height="150" fill="none" stroke="#C6CDD6" stroke-width="1.2"/>
+        <g fill="#3A6EA5" opacity="0.75">
+          <circle cx="180" cy="200" r="3"/><circle cx="195" cy="185" r="3"/><circle cx="160" cy="210" r="3"/><circle cx="200" cy="210" r="3"/><circle cx="175" cy="190" r="3"/><circle cx="190" cy="170" r="3"/><circle cx="150" cy="215" r="3"/><circle cx="205" cy="150" r="3"/><circle cx="185" cy="205" r="3"/><circle cx="170" cy="200" r="3"/><circle cx="200" cy="190" r="3"/><circle cx="195" cy="120" r="3"/>
+        </g>
+        <text x="135" y="248" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#16263F">P(D | A→B)</text>
+        <polygon points="260,220 260,70 410,70" fill="#D97925" opacity="0.12"/>
+        <rect x="260" y="70" width="150" height="150" fill="none" stroke="#C6CDD6" stroke-width="1.2"/>
+        <g fill="#D97925" opacity="0.75">
+          <circle cx="280" cy="100" r="3"/><circle cx="300" cy="90" r="3"/><circle cx="275" cy="130" r="3"/><circle cx="290" cy="110" r="3"/><circle cx="320" cy="85" r="3"/><circle cx="270" cy="160" r="3"/><circle cx="310" cy="95" r="3"/><circle cx="285" cy="140" r="3"/><circle cx="305" cy="105" r="3"/><circle cx="295" cy="120" r="3"/><circle cx="270" cy="110" r="3"/><circle cx="330" cy="80" r="3"/>
+        </g>
+        <text x="335" y="248" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#16263F">P(D | B→A)</text>
+        <polygon points="460,220 610,220 460,70" fill="#2E8B57" opacity="0.10"/>
+        <rect x="460" y="70" width="150" height="150" fill="none" stroke="#C6CDD6" stroke-width="1.2"/>
+        <g fill="#2E8B57" opacity="0.75">
+          <circle cx="480" cy="200" r="3"/><circle cx="500" cy="210" r="3"/><circle cx="470" cy="180" r="3"/><circle cx="520" cy="200" r="3"/><circle cx="490" cy="190" r="3"/><circle cx="540" cy="200" r="3"/><circle cx="480" cy="150" r="3"/><circle cx="510" cy="170" r="3"/><circle cx="560" cy="210" r="3"/><circle cx="470" cy="120" r="3"/>
+        </g>
+        <text x="535" y="248" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#16263F">P(D | branching)</text>
+        <line x1="645" y1="145" x2="705" y2="145" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="711,145 699,139 699,151" fill="#16263F"/>
+        <text x="880" y="48" text-anchor="middle" font-size="15" font-weight="600" fill="#16263F">关系后验 P(r | D<tspan dy="3" font-size="10">AB</tspan><tspan dy="-3">)</tspan></text>
+        <g font-size="13" fill="#46536E" text-anchor="end">
+          <text x="725" y="106">A→B</text><text x="725" y="166">B→A</text><text x="725" y="226">branching</text>
+        </g>
+        <rect x="735" y="90" width="186" height="22" rx="3" fill="#3A6EA5"/>
+        <rect x="735" y="150" width="69" height="22" rx="3" fill="#D97925"/>
+        <rect x="735" y="210" width="45" height="22" rx="3" fill="#2E8B57"/>
+        <g font-family="Georgia, serif" font-size="13" fill="#77809A">
+          <text x="929" y="106">0.62</text><text x="812" y="166">0.23</text><text x="788" y="226">0.15</text>
+        </g>
+        <text x="880" y="262" text-anchor="middle" font-size="11" fill="#77809A">（示意数值，结合关系先验 P(r) 归一化）</text>
+        <text x="550" y="330" text-anchor="middle" font-size="15" fill="#46536E">tensor 的一个元素 = 三种关系的后验分布，<tspan font-weight="700" fill="#16263F">而不是一条确定的边</tspan></text>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>12 / 19</div></div>
+  </div>
+</body>
+</html>

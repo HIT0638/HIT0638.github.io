@@ -8,8 +8,8 @@ draft: false
 # Pairtree 亚克隆重建论文笔记
 ---
 
-## 🧭 0. Pairtree 解决什么问题
-
+## 0. Pairtree 解决什么问题
+ 
 Pairtree 的目标，是从多个 bulk DNA 样本中的 somatic mutation read counts 出发，推断不同亚克隆之间的祖先关系，并给出一个或多个可能的 clone tree。
 
 它的主线可以压缩成：
@@ -18,7 +18,7 @@ Pairtree 的目标，是从多个 bulk DNA 样本中的 somatic mutation read co
 2. 将跨样本频率模式相近的 mutation 聚成 cluster（补：（注：跨样本频率模式相近并不是两两mutation判断（我没看pairwise聚类方式，只看了linfreq），而是CRP过程主导的采样方式下，mutation不同的cluster归属模式计算出来的以cluster为单位的边际似然增量之间比较得到的结果）
 3. 将每个 cluster 压缩成一个 supervariant（补：压缩是有目的的）
 4. 对任意两个 supervariant，计算三种祖先关系的后验概率，组成 Pairs Tensor
-5. 用 Pairs Tensor 指导 TreeMCMC 搜索整体 clone tree
+5. 用 Pairs Tensor 指导 TreeMCMC 搜索整体 clone tree（补：是不是主要两关键部分，一个是如何用tensor指导树结构的改变，另一个是怎么定义和计算树的评分）
 
 这篇论文最值得借鉴的思想，是把“整体树重建”拆成两层：
 
@@ -34,7 +34,7 @@ Pairtree 的目标，是从多个 bulk DNA 样本中的 somatic mutation read co
 
 ---
 
-## 🧬 1. 符号和核心概念
+## 1. 符号和核心概念
 
 理解 Pairtree 前，最好先固定四个层次：**reads、alleles、cells、clones**。它们对应的“比例”不是同一个量。
 
@@ -176,7 +176,7 @@ Pairtree 将 \(\omega\) 作为输入，而不是在主要算法中从 reads 重�
 
 ---
 
-## 🔄 2. Pairtree 整体数据流
+## 2. Pairtree 整体数据流
 
 Pairtree 的输入和输出之间，可以先用下面这条主线理解：
 
@@ -285,7 +285,7 @@ Pairs Tensor 不是简单地作为一个额外分数项加到最终树 likelihoo
 
 ---
 
-## 🧮 3. \(\omega\) 与 \(\phi\)：模型假设和现实局限
+## 3. \(\omega\) 与 \(\phi\)：模型假设和现实局限
 
 ### 3.1 从细胞混合到 VAF
 
@@ -432,7 +432,7 @@ Misspecified ω：
 
 ---
 
-## 🧩 4. Mutation clustering：linfreq
+## 4. Mutation clustering：linfreq
 
 ### 4.1 聚类目标
 
@@ -607,7 +607,7 @@ T'=\max(V,\omega T)
 
 ---
 
-## 📦 5. Supervariant：把 cluster 压缩成一个节点
+## 5. Supervariant：把 cluster 压缩成一个节点
 
 ### 5.1 为什么要做转换
 
@@ -684,7 +684,7 @@ min 截断和整数化还会进一步引入近似。它的实际目标是保留�
 
 ---
 
-## 🔗 6. Pairs Tensor：从 pairwise evidence 到关系后验
+## 6. Pairs Tensor：从 pairwise evidence 到关系后验
 
 ### 6.1 三种关系
 
@@ -837,7 +837,7 @@ flowchart TD
 
 ---
 
-## 🌳 7. TreeMCMC：从局部关系搜索整体树
+## 7. TreeMCMC：从局部关系搜索整体树
 
 ### 7.1 树中的 \(\eta\) 和 \(\phi\)
 
@@ -1000,7 +1000,7 @@ MCMC 运行多条 chain，并进行 burn-in、thinning 等处理，得到一组�
 
 ---
 
-## 🧪 8. 评测与边界
+## 8. 评测与边界
 
 ### 8.1 模拟数据评测了什么
 
@@ -1089,7 +1089,7 @@ Pairtree 的运行时间和内存需求会随着 subclone 数量超线性增加�
 
 ---
 
-## 🧬 9. 对三代数据亚克隆重建的启发
+## 9. 对三代数据亚克隆重建的启发
 
 ### 9.1 可以直接借鉴的不是 VAF 公式，而是推断架构
 
@@ -1194,7 +1194,7 @@ long-read molecule observations
 
 ---
 
-## 📝 10. 最后压缩成几句话
+## 10. 最后压缩成几句话
 
 1. \(\phi\) 是样本细胞层面的 mutation 携带率，不是 VAF，也不是 mutant copy fraction。
 2. \(\eta\) 是 clone 本身的细胞频率；\(\phi\) 通常是某个 clone 及其后代频率之和。

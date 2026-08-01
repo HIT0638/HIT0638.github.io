@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 360" width="1100" height="360">
+  <!-- A03_architecture_overview.svg · 第 3 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="1100" height="360" fill="#FAF8F3"/>
+
+  <!-- 卡片 1: linfreq -->
+  <rect x="30" y="40" width="280" height="220" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="170" y="86" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="21" font-weight="700" fill="#16263F">linfreq</text>
+  <rect x="104" y="118" width="68" height="58" rx="12" fill="none" stroke="#0F7E79" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <rect x="198" y="124" width="62" height="54" rx="12" fill="none" stroke="#D97925" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <g>
+    <circle cx="121" cy="134" r="5" fill="#0F7E79"/><circle cx="149" cy="132" r="5" fill="#0F7E79"/><circle cx="136" cy="148" r="5" fill="#0F7E79"/><circle cx="119" cy="160" r="5" fill="#0F7E79"/><circle cx="153" cy="162" r="5" fill="#0F7E79"/>
+    <circle cx="212" cy="140" r="5" fill="#D97925"/><circle cx="240" cy="143" r="5" fill="#D97925"/><circle cx="225" cy="160" r="5" fill="#D97925"/><circle cx="242" cy="166" r="5" fill="#D97925"/><circle cx="210" cy="164" r="5" fill="#D97925"/>
+  </g>
+  <text x="170" y="214" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">把共享 prevalence（携带率）</text>
+  <text x="170" y="236" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">的突变聚成 clusters</text>
+
+  <!-- 箭头 1→2 -->
+  <line x1="312" y1="150" x2="406" y2="150" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="412,150 398,143 398,157" fill="#16263F"/>
+
+  <!-- 卡片 2: Supervariant -->
+  <rect x="410" y="40" width="280" height="220" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="550" y="86" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="21" font-weight="700" fill="#16263F">Supervariant</text>
+  <circle cx="500" cy="136" r="6" fill="#0F7E79"/><circle cx="492" cy="158" r="6" fill="#0F7E79"/><circle cx="512" cy="152" r="6" fill="#0F7E79"/>
+  <line x1="528" y1="148" x2="572" y2="148" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+  <polygon points="578,148 566,142 566,154" fill="#16263F"/>
+  <circle cx="600" cy="148" r="12" fill="#0F7E79"/>
+  <text x="550" y="214" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">把每个 cluster 压缩成</text>
+  <text x="550" y="236" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">一个后续分析单位</text>
+
+  <!-- 箭头 2→3 -->
+  <line x1="692" y1="150" x2="786" y2="150" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+  <polygon points="792,150 778,143 778,157" fill="#16263F"/>
+
+  <!-- 卡片 3: Pairs Tensor + TreeMCMC -->
+  <rect x="790" y="40" width="280" height="220" rx="14" fill="#FFFFFF" stroke="#E7E2D6"/>
+  <text x="930" y="76" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">Pairs Tensor</text>
+  <text x="930" y="98" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="18" font-weight="700" fill="#16263F">+ TreeMCMC</text>
+  <g fill="#E8ECF3" stroke="#9AA3B2" stroke-width="0.75">
+    <rect x="872" y="118" width="12" height="12"/><rect x="888" y="118" width="12" height="12"/><rect x="904" y="118" width="12" height="12"/>
+    <rect x="872" y="134" width="12" height="12"/><rect x="888" y="134" width="12" height="12"/><rect x="904" y="134" width="12" height="12"/>
+    <rect x="872" y="150" width="12" height="12"/><rect x="888" y="150" width="12" height="12"/><rect x="904" y="150" width="12" height="12"/>
+  </g>
+  <g>
+    <line x1="968" y1="130" x2="950" y2="156" stroke="#16263F" stroke-width="2" stroke-linecap="round"/>
+    <line x1="968" y1="130" x2="986" y2="156" stroke="#16263F" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="968" cy="124" r="6.5" fill="#16263F"/><circle cx="950" cy="162" r="5.5" fill="#16263F"/><circle cx="986" cy="162" r="5.5" fill="#16263F"/>
+  </g>
+  <text x="930" y="214" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">先得到两两关系证据</text>
+  <text x="930" y="236" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" fill="#46536E">再搜索全局亚克隆树</text>
+
+  <!-- 动词 chips -->
+  <rect x="95" y="296" width="150" height="38" rx="19" fill="#E3F1F0"/>
+  <text x="170" y="321" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="16" font-weight="600" fill="#0F7E79">cluster</text>
+  <rect x="475" y="296" width="150" height="38" rx="19" fill="#E8ECF3"/>
+  <text x="550" y="321" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="16" font-weight="600" fill="#16263F">compress</text>
+  <rect x="855" y="296" width="150" height="38" rx="19" fill="#FAECE0"/>
+  <text x="930" y="321" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="16" font-weight="600" fill="#D97925">infer / search</text>
+</svg>

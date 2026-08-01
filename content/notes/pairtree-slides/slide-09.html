@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 9 页｜linfreq：用边际似然评价聚类</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1100px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .fig { position: absolute; left: 90px; right: 90px; top: 168px; text-align: center; }
+  .fig svg { width: 1100px; max-width: 100%; height: auto; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 2px; }
+  .notebar { position: absolute; left: 90px; right: 90px; bottom: 84px; background: #ECEAE4; border-radius: 10px; padding: 12px 18px; font-size: 14px; color: #46536E; line-height: 1.6; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">linfreq：用边际似然评价聚类</div>
+    <div class="takeaway">对共享 φ <b>积分</b>、比较 assignment 的边际证据 —— 而不是一次性最大似然固定 φ</div>
+
+    <div class="fig">
+      <svg viewBox="0 0 1100 360" xmlns="http://www.w3.org/2000/svg">
+        <rect x="30" y="60" width="280" height="140" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="170" y="94" text-anchor="middle" font-family="ui-monospace, Menlo, monospace" font-size="16" font-weight="700" fill="#16263F">mutation data</text>
+        <g fill="#0F7E79">
+          <circle cx="140" cy="122" r="5"/><circle cx="170" cy="122" r="5"/><circle cx="200" cy="122" r="5"/>
+          <circle cx="140" cy="144" r="5"/><circle cx="170" cy="144" r="5"/><circle cx="200" cy="144" r="5"/>
+          <circle cx="140" cy="166" r="5"/><circle cx="170" cy="166" r="5"/><circle cx="200" cy="166" r="5"/>
+        </g>
+        <line x1="310" y1="130" x2="404" y2="130" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="410,130 398,124 398,136" fill="#16263F"/>
+        <rect x="410" y="60" width="280" height="140" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="550" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#16263F">shared φ + Beta 先验</text>
+        <line x1="460" y1="168" x2="640" y2="168" stroke="#C6CDD6" stroke-width="1.5"/>
+        <line x1="460" y1="136" x2="640" y2="136" stroke="#7B5EA7" stroke-width="2.5" stroke-linecap="round"/>
+        <text x="550" y="122" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="14" fill="#7B5EA7">φ ~ Beta(1,1)</text>
+        <line x1="690" y1="130" x2="784" y2="130" stroke="#16263F" stroke-width="2.5" stroke-linecap="round"/>
+        <polygon points="790,130 778,124 778,136" fill="#16263F"/>
+        <rect x="790" y="60" width="280" height="140" rx="12" fill="#FFFFFF" stroke="#E7E2D6"/>
+        <text x="930" y="94" text-anchor="middle" font-size="15" font-weight="700" fill="#16263F">integrated cluster evidence</text>
+        <rect x="870" y="150" width="26" height="26" fill="#16263F"/>
+        <rect x="908" y="132" width="26" height="44" fill="#16263F"/>
+        <rect x="946" y="114" width="26" height="62" fill="#16263F"/>
+        <line x1="856" y1="176" x2="1000" y2="176" stroke="#C6CDD6" stroke-width="1.5"/>
+        <text x="550" y="252" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="21" fill="#16263F">P(D<tspan dy="4" font-size="14">c</tspan><tspan dy="-4">) = ∫ P(D</tspan><tspan dy="4" font-size="14">c</tspan><tspan dy="-4"> | φ</tspan><tspan dy="4" font-size="14">c</tspan><tspan dy="-4">) P(φ</tspan><tspan dy="4" font-size="14">c</tspan><tspan dy="-4">) dφ</tspan><tspan dy="4" font-size="14">c</tspan></text>
+        <text x="550" y="280" text-anchor="middle" font-size="13" fill="#77809A">对每个候选 cluster 积分掉潜在 φ，比较边际证据（marginal evidence）</text>
+        <rect x="30" y="302" width="180" height="36" rx="18" fill="#FAECE0"/>
+        <text x="120" y="325" text-anchor="middle" font-size="14" font-weight="600" fill="#D97925">output = partition</text>
+        <rect x="790" y="292" width="280" height="30" rx="15" fill="#F3EFF7"/>
+        <text x="930" y="311" text-anchor="middle" font-size="12" fill="#7B5EA7">T′ = max(V, ωT)：有效深度（计算近似）</text>
+        <rect x="790" y="328" width="280" height="30" rx="15" fill="#ECEAE4"/>
+        <text x="930" y="347" text-anchor="middle" font-size="12" fill="#77809A">Gibbs / DPMM 风格更新 assignment</text>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+
+    <div class="notebar"><b>工作假设</b>：cluster 内突变共享 φ<sub>cs</sub>；先验 φ<sub>cs</sub> ~ Beta(1,1)（按论文实现）。完整 Beta-Binomial 推导放入备份页 B3，主线只保留上面的简化积分形式。</div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>09 / 19</div></div>
+  </div>
+</body>
+</html>

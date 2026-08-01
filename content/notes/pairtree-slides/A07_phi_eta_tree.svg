@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 430" width="560" height="430">
+  <!-- A07_phi_eta_tree.svg · 第 7 页视觉资产 · 示意图，基于 Pairtree 模型整理 -->
+  <rect width="560" height="430" fill="#FAF8F3"/>
+
+  <text x="150" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#0F7E79">突变携带率 φ（含后代）</text>
+  <text x="420" y="32" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#D97925">clone 频率 η（自身）</text>
+
+  <!-- 后代求和括号：φ2 涵盖 C2+C3 -->
+  <rect x="238" y="182" width="84" height="188" rx="16" fill="none" stroke="#0F7E79" stroke-width="1.2" stroke-dasharray="5 4"/>
+
+  <!-- 树边 -->
+  <line x1="280" y1="116" x2="280" y2="192" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+  <line x1="280" y1="238" x2="280" y2="320" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- 节点 -->
+  <circle cx="280" cy="90" r="26" fill="#16263F"/>
+  <circle cx="280" cy="215" r="23" fill="#16263F"/>
+  <circle cx="280" cy="340" r="20" fill="#16263F"/>
+  <text x="280" y="96" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="15" font-weight="600" fill="#FAF8F3">C1</text>
+  <text x="280" y="221" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="14" font-weight="600" fill="#FAF8F3">C2</text>
+  <text x="280" y="346" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" font-weight="600" fill="#FAF8F3">C3</text>
+
+  <!-- φ 标签（左，青绿） -->
+  <g text-anchor="middle" font-family="Georgia, serif" font-style="italic" fill="#0F7E79">
+    <text x="150" y="86" font-size="17" font-weight="700">φ₁ = 1.0</text>
+    <text x="150" y="106" font-size="11.5" font-style="normal">= η₁ + η₂ + η₃</text>
+    <text x="150" y="211" font-size="17" font-weight="700">φ₂ = 0.5</text>
+    <text x="150" y="231" font-size="11.5" font-style="normal">= η₂ + η₃</text>
+    <text x="150" y="336" font-size="17" font-weight="700">φ₃ = 0.2</text>
+    <text x="150" y="356" font-size="11.5" font-style="normal">= η₃</text>
+  </g>
+
+  <!-- η 标签（右，橙） -->
+  <g text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="17" font-weight="700" fill="#D97925">
+    <text x="420" y="90">η₁ = 0.5</text>
+    <text x="420" y="215">η₂ = 0.3</text>
+    <text x="420" y="340">η₃ = 0.2</text>
+  </g>
+
+  <text x="280" y="412" text-anchor="middle" font-family="-apple-system, 'PingFang SC', sans-serif" font-size="13" fill="#77809A">虚线框：φ₂ 对后代 clone 频率求和（示意数值）</text>
+</svg>

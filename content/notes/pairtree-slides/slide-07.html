@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 7 页｜φ、η 与亚克隆频率</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1100px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .takeaway .phi { color: #0F7E79; font-weight: 700; font-family: Georgia, serif; font-style: italic; }
+  .takeaway .eta { color: #D97925; font-weight: 700; font-family: Georgia, serif; font-style: italic; }
+  .fig { position: absolute; left: 90px; top: 168px; width: 560px; }
+  .fig svg { width: 560px; height: auto; display: block; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 4px; }
+  .panel { position: absolute; right: 90px; top: 176px; width: 480px; }
+  .vrow { display: flex; align-items: flex-start; margin-bottom: 22px; }
+  .sym { flex: 0 0 56px; font-family: Georgia, serif; font-style: italic; font-size: 21px; font-weight: 700; line-height: 1.3; }
+  .def { font-size: 15px; color: #46536E; line-height: 1.55; padding-top: 3px; }
+  .c-teal { color: #0F7E79; } .c-orange { color: #D97925; }
+  .formula { background: #FFFFFF; border: 1px solid #E7E2D6; border-radius: 12px; padding: 22px 24px; text-align: center; margin: 6px 0 22px; }
+  .formula .f { font-family: Georgia, serif; font-style: italic; font-size: 21px; color: #16263F; }
+  .note { font-size: 14.5px; color: #46536E; line-height: 1.7; background: #ECEAE4; border-radius: 10px; padding: 13px 16px; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">φ、η 与亚克隆频率</div>
+    <div class="takeaway"><span class="phi">φ</span> 是突变的样本级携带率（包含后代），<span class="eta">η</span> 是单个 clone 的自身频率 —— 树结构把两者联系起来</div>
+
+    <div class="fig">
+      <svg viewBox="0 0 560 430" xmlns="http://www.w3.org/2000/svg">
+        <text x="150" y="32" text-anchor="middle" font-size="13" font-weight="600" fill="#0F7E79">突变携带率 φ（含后代）</text>
+        <text x="420" y="32" text-anchor="middle" font-size="13" font-weight="600" fill="#D97925">clone 频率 η（自身）</text>
+        <rect x="238" y="182" width="84" height="188" rx="16" fill="none" stroke="#0F7E79" stroke-width="1.2" stroke-dasharray="5 4"/>
+        <line x1="280" y1="116" x2="280" y2="192" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <line x1="280" y1="238" x2="280" y2="320" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="280" cy="90" r="26" fill="#16263F"/><circle cx="280" cy="215" r="23" fill="#16263F"/><circle cx="280" cy="340" r="20" fill="#16263F"/>
+        <text x="280" y="96" text-anchor="middle" font-size="15" font-weight="600" fill="#FAF8F3">C1</text>
+        <text x="280" y="221" text-anchor="middle" font-size="14" font-weight="600" fill="#FAF8F3">C2</text>
+        <text x="280" y="346" text-anchor="middle" font-size="13" font-weight="600" fill="#FAF8F3">C3</text>
+        <g text-anchor="middle" font-family="Georgia, serif" font-style="italic" fill="#0F7E79">
+          <text x="150" y="86" font-size="17" font-weight="700">φ₁ = 1.0</text>
+          <text x="150" y="106" font-size="11.5" font-style="normal">= η₁ + η₂ + η₃</text>
+          <text x="150" y="211" font-size="17" font-weight="700">φ₂ = 0.5</text>
+          <text x="150" y="231" font-size="11.5" font-style="normal">= η₂ + η₃</text>
+          <text x="150" y="336" font-size="17" font-weight="700">φ₃ = 0.2</text>
+          <text x="150" y="356" font-size="11.5" font-style="normal">= η₃</text>
+        </g>
+        <g text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="17" font-weight="700" fill="#D97925">
+          <text x="420" y="90">η₁ = 0.5</text><text x="420" y="215">η₂ = 0.3</text><text x="420" y="340">η₃ = 0.2</text>
+        </g>
+        <text x="280" y="412" text-anchor="middle" font-size="13" fill="#77809A">虚线框：φ₂ 对后代 clone 频率求和（示意数值）</text>
+      </svg>
+      <p class="figcap">示意图，基于 Pairtree 模型整理</p>
+    </div>
+
+    <div class="panel">
+      <div class="vrow"><div class="sym c-orange">η<sub>ks</sub></div><div class="def">sample <i>s</i> 中 clone <i>k</i> 的 <b>population frequency</b>（该 clone 自身的频率）</div></div>
+      <div class="vrow"><div class="sym c-teal">φ<sub>js</sub></div><div class="def">sample <i>s</i> 中携带 mutation/node <i>j</i> 的<b>细胞比例</b>（cellular prevalence）</div></div>
+      <div class="formula">
+        <div class="f">φ<sub>js</sub> = Σ<sub>k∈Desc(j)</sub> η<sub>ks</sub></div>
+      </div>
+      <div class="note">φ <b>不是 VAF</b>（中间还隔着一个 ω 映射），也<b>不是单个 clone 的频率</b> —— 它包含该节点及其全部后代 clone。</div>
+    </div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>07 / 19</div></div>
+  </div>
+</body>
+</html>

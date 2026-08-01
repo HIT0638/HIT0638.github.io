@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>第 16 页｜模拟数据评测</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ECEAE4; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
+  .slide { position: relative; width: 1280px; height: 720px; background: #FAF8F3; box-shadow: 0 8px 40px rgba(22,38,63,.10); overflow: hidden; }
+  .pagetitle { position: absolute; left: 90px; top: 54px; font-size: 32px; font-weight: 700; color: #16263F; letter-spacing: .5px; }
+  .takeaway { position: absolute; left: 90px; top: 106px; font-size: 19px; color: #46536E; max-width: 1100px; }
+  .takeaway::before { content: ""; display: inline-block; width: 10px; height: 10px; background: #0F7E79; border-radius: 2px; margin-right: 12px; }
+  .fig { position: absolute; left: 90px; top: 172px; width: 640px; }
+  .fig svg { width: 640px; height: auto; display: block; }
+  .figcap { text-align: center; color: #77809A; font-size: 12.5px; margin-top: 4px; }
+  .panel { position: absolute; right: 90px; top: 186px; width: 430px; }
+  .ptitle { font-size: 15px; font-weight: 700; color: #16263F; margin-bottom: 14px; }
+  .row { display: flex; align-items: flex-start; margin-bottom: 20px; font-size: 15px; color: #46536E; line-height: 1.6; }
+  .row::before { content: ""; flex: 0 0 8px; height: 8px; background: #16263F; border-radius: 2px; margin: 8px 12px 0 0; }
+  .row.good::before { background: #0F7E79; }
+  .row.bad::before { background: #D97925; }
+  .caution { margin-top: 10px; background: #F3EFF7; border-left: 4px solid #7B5EA7; border-radius: 8px; padding: 12px 16px; font-size: 13.5px; color: #5E4A84; line-height: 1.65; }
+  .footer { position: absolute; left: 90px; right: 90px; bottom: 30px; border-top: 1px solid #E7E2D6; padding-top: 12px; display: flex; justify-content: space-between; color: #77809A; font-size: 12.5px; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="pagetitle">模拟数据评测</div>
+    <div class="takeaway">中等亚克隆数量下恢复能力较强；<b>树规模增大后，推断难度明显上升</b></div>
+
+    <div class="fig">
+      <svg viewBox="0 0 640 400" xmlns="http://www.w3.org/2000/svg">
+        <line x1="90" y1="150" x2="590" y2="150" stroke="#E7E2D6" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="90" y1="240" x2="590" y2="240" stroke="#E7E2D6" stroke-width="1" stroke-dasharray="4 4"/>
+        <line x1="90" y1="330" x2="596" y2="330" stroke="#16263F" stroke-width="1.5"/>
+        <polygon points="602,330 592,325 592,335" fill="#16263F"/>
+        <line x1="90" y1="330" x2="90" y2="54" stroke="#16263F" stroke-width="1.5"/>
+        <polygon points="90,48 85,58 95,58" fill="#16263F"/>
+        <text x="340" y="364" text-anchor="middle" font-size="13" fill="#46536E">亚克隆数量（subclones）</text>
+        <text x="38" y="195" text-anchor="middle" transform="rotate(-90 38 195)" font-size="13" fill="#46536E">树恢复准确性（相对）</text>
+        <path d="M 110 110 C 260 102 340 120 430 190 S 540 290 560 298" fill="none" stroke="#16263F" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="330" cy="118" r="6" fill="#0F7E79"/>
+        <text x="330" y="94" text-anchor="middle" font-size="13" font-weight="600" fill="#0F7E79">≈ 30 个以内：恢复较强</text>
+        <circle cx="560" cy="298" r="6" fill="#D97925"/>
+        <text x="552" y="278" text-anchor="end" font-size="13" font-weight="600" fill="#D97925">≈ 100 个：明显下降</text>
+        <g font-size="12" fill="#77809A" text-anchor="middle">
+          <text x="170" y="348">10</text><text x="330" y="348">30</text><text x="560" y="348">100</text>
+        </g>
+        <text x="320" y="392" text-anchor="middle" font-size="12" fill="#77809A">趋势重绘（示意）—— 数值、指标与图号以论文原文为准</text>
+      </svg>
+      <p class="figcap">趋势重绘（示意），基于论文摘要与正文结论整理</p>
+    </div>
+
+    <div class="panel">
+      <div class="ptitle">结果解读</div>
+      <div class="row">数据规模：<b>576 个 simulated datasets</b>，覆盖不同样本数、测序深度与亚克隆规模</div>
+      <div class="row good">约 <b>30 个 subclones 以内</b>：树结构恢复能力较强，可利用多达 ~100 个样本</div>
+      <div class="row bad">到 <b>~100 个 subclones</b>：性能明显下降 —— 这不是"所有规模都同样可靠"</div>
+      <div class="caution">本页只保留论文可直接支持的结论；具体指标定义、误差线与图号在最终版对照原文核对。</div>
+    </div>
+
+    <div class="footer"><div>Pairtree · 组会汇报</div><div>16 / 19</div></div>
+  </div>
+</body>
+</html>
