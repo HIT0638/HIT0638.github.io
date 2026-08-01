@@ -1,8 +1,8 @@
 import Link from "next/link";
-import ArticleToc from "../../article-toc";
 import MermaidRenderer from "../../mermaid-renderer";
 import { renderCollectionDocument, type CollectionCodeFile, type CollectionDocument } from "./content";
 import type { Collection, Module } from "./data";
+import CollectionToc from "./collection-toc";
 
 type CollectionReadingPageProps = {
   collection: Collection;
@@ -145,19 +145,7 @@ export async function CollectionReadingPage({
         </section>
 
         {pageKind === "module" && rendered.toc.length > 0 ? (
-          <aside
-            className="study-prototype-doc-toc-shell"
-            aria-label="当前模块目录"
-          >
-            <p className="study-prototype-label study-prototype-doc-toc-label">
-              IN THIS MODULE
-            </p>
-            <ArticleToc
-              className="study-prototype-doc-toc"
-              items={rendered.toc}
-              label="模块目录"
-            />
-          </aside>
+          <CollectionToc items={rendered.toc} />
         ) : null}
       </div>
 
